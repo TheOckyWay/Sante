@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
-import AuthForm from '../features/auth/AuthForm';
-import Home from '../features/home/Home';
-import { me } from './store';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Route, Routes } from "react-router-dom";
+import AuthForm from "../components/auth/AuthForm";
+import Home from "../components/home/Home";
+import Recipes from "../components/recipes/Recipes";
+import SingleRecipe from "../components/recipes/SingleRecipe";
+import { me } from "./store";
 
 /**
  * COMPONENT
@@ -23,6 +25,8 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/*" element={<Home />} />
           <Route to="/home" element={<Home />} />
+          <Route path="/recipes" element={<Recipes />} />
+          <Route path="/recipes/:id" element={<SingleRecipe />} />
         </Routes>
       ) : (
         <Routes>
