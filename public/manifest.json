@@ -3,9 +3,9 @@
   "name": "Sante",
   "icons": [
     {
-      "src": "/images/logo.png",
+      "src": "/images/temp-logo-cap.png",
       "type": "image/png",
-      "size": "1024x1024"
+      "sizes": "1024x1024"
     }
   ],
   "start_url": ".",
