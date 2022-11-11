@@ -16,12 +16,19 @@ function SingleRecipe() {
 
   return (
     <div>
-      <div>
-        <h1>{recipe.name}</h1>
-        <h3>{recipe.calories}</h3>
-        <h3>{recipe.protein}</h3>
-        <h3>{recipe.cuisine}</h3>
-        <h3>{recipe.diet}</h3>
+      <div className="single-recipe">
+        <img src={recipe.imageUrl} />
+        <div>
+          <h1>{recipe.name}</h1>
+          <h3>Cooking Time: {recipe.cookTime}</h3>
+          <h3>Calories: {recipe.calories}</h3>
+          <h3>Diet: {recipe.diet}</h3>
+          <h3>Protein: {recipe.protein}</h3>
+          <h3>Carbohydrates: {recipe.carbs}</h3>
+          <h3>Fat: {recipe.fat}</h3>
+          <h3>Course Type: {recipe.courseType}</h3>
+          <h3>Cuisine: {recipe.cuisine}</h3>
+        </div>
       </div>
     </div>
   );

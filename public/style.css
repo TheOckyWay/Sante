@@ -19,3 +19,13 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+/* All Recipes */
+.all-recipes-single-recipe {
+  display: flex;
+  margin-top: 20px;
+}
+
+.single-recipe {
+  display: flex;
+}

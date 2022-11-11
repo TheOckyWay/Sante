@@ -5,12 +5,10 @@ const {
   models: { User, Recipes },
 } = require("../server/db");
 
-
 async function seed() {
-  await db.sync({ force: true }); 
+  await db.sync({ force: true });
   console.log("db synced!");
 
- 
   const users = await Promise.all([
     User.create({ username: "Hamza", password: "123" }),
     User.create({ username: "Prince", password: "123" }),
@@ -23,22 +21,111 @@ async function seed() {
       name: "Cheese Pizza",
       calories: 300,
       protein: 50,
+      carbs: 100,
+      fat: 5,
       cuisine: "Italian",
-      diet: "vegetarian",
+      diet: "Vegetarian",
+      courseType: "Lunch",
+      cookTime: 120,
     }),
     Recipes.create({
       name: "French Fries",
       calories: 150,
       protein: 4,
+      carbs: 100,
+      fat: 5,
+      courseType: "Side",
       cuisine: "French",
-      diet: "vegan",
+      diet: "Vegan",
+      cookTime: 120,
     }),
     Recipes.create({
-      name: "Bacon Egg And Cheese",
+      name: "Bacon Egg and Cheese",
       calories: 600,
       protein: 20,
-      cuisine: "New York",
-      diet: "normal",
+      carbs: 100,
+      fat: 5,
+      courseType: "Lunch",
+      cuisine: "American",
+      diet: "Normal",
+      cookTime: 120,
+    }),
+    Recipes.create({
+      name: "Escargot",
+      calories: 600,
+      protein: 20,
+      carbs: 100,
+      fat: 5,
+      courseType: "Dinner",
+      cuisine: "French",
+      diet: "Normal",
+      cookTime: 120,
+    }),
+    Recipes.create({
+      name: "Beignet",
+      calories: 600,
+      protein: 20,
+      carbs: 100,
+      fat: 5,
+      courseType: "Appetizer",
+      cuisine: "French",
+      diet: "Normal",
+      cookTime: 120,
+    }),
+    Recipes.create({
+      name: "Sushi",
+      calories: 600,
+      protein: 20,
+      carbs: 100,
+      fat: 5,
+      courseType: "Lunch",
+      cuisine: "Japanese",
+      diet: "Pescatarian",
+      cookTime: 120,
+    }),
+    Recipes.create({
+      name: "Mangu",
+      calories: 600,
+      protein: 20,
+      carbs: 100,
+      fat: 5,
+      courseType: "Breakfast",
+      cuisine: "Dominican",
+      diet: "Normal",
+      cookTime: 120,
+    }),
+    Recipes.create({
+      name: "Samosa",
+      calories: 600,
+      protein: 20,
+      carbs: 100,
+      fat: 5,
+      courseType: "Entree",
+      cuisine: "Indian",
+      diet: "Normal",
+      cookTime: 120,
+    }),
+    Recipes.create({
+      name: "Tacos",
+      calories: 600,
+      protein: 20,
+      carbs: 100,
+      fat: 5,
+      courseType: "Lunch",
+      cuisine: "Mexican",
+      diet: "Normal",
+      cookTime: 120,
+    }),
+    Recipes.create({
+      name: "Poutine",
+      calories: 600,
+      protein: 20,
+      carbs: 100,
+      fat: 5,
+      courseType: "Main",
+      cuisine: "Canadian",
+      diet: "Normal",
+      cookTime: 120,
     }),
   ]);
 
@@ -51,7 +138,6 @@ async function seed() {
     },
   };
 }
-
 
 async function runSeed() {
   console.log("seeding...");
@@ -67,10 +153,8 @@ async function runSeed() {
   }
 }
 
-
 if (module === require.main) {
   runSeed();
 }
-
 
 module.exports = seed;
