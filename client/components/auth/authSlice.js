@@ -48,6 +48,36 @@ export const authenticate = createAsyncThunk(
   }
 );
 
+export const editProfile = createAsyncThunk(
+  "auth/profile",
+  async ({ name, email }) => {
+    const token = window.localStorage.getItem(TOKEN);
+    try {
+      if (token) {
+        const { data } = await axios.put(
+          "/auth/profile",
+          {
+            name,
+            email,
+          },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        return data;
+      }
+    } catch (err) {
+      if (err.response.data) {
+        return thunkAPI.rejectWithValue(err.response.data);
+      } else {
+        return "There was an issue with your request.";
+      }
+    }
+  }
+)
+
 /*
   SLICE
 */
@@ -73,6 +103,9 @@ export const authSlice = createSlice({
     });
     builder.addCase(authenticate.rejected, (state, action) => {
       state.error = action.payload;
+    });
+    builder.addCase(editProfile.fulfilled, (state, action) => {
+      state.me = action.payload;
     });
   },
 });
