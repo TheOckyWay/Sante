@@ -23,6 +23,7 @@ const Tracker = db.define("tracker", {
         allowNull: false,
       },
     date: {
+      // o: this should be an integer... please check your schema diagram
         type: Sequelize.INTEGER,
         allowNull: false,
       },

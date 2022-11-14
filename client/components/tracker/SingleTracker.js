@@ -9,6 +9,8 @@ function SingleRecipe() {
   const { id } = useParams();
 
   const tracker = useSelector((state) => state.tracker.singleTracker);
+
+  // o: remove before pushing to main
   console.log(tracker)
 
   useEffect(() => {

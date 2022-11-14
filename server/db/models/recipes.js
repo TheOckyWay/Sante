@@ -33,6 +33,7 @@ const Recipes = db.define("recipe", {
   cuisine: {
     type: Sequelize.STRING,
   },
+  // o: this isn't in your schema diagram
   imageUrl: {
     type: Sequelize.STRING,
     defaultValue:

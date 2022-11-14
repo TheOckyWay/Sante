@@ -3,6 +3,8 @@ import axios from 'axios';
 
 export const fetchTrackers = createAsyncThunk('fetchTrackers', async () => {
 	const { data } = await axios.get('/api/trackers');
+
+	// o: remove before pushing to main or use debugger
 	console.log(data);
 	return data;
 });
@@ -11,6 +13,8 @@ export const fetchSingleTracker = createAsyncThunk(
 	'fetchSingleTracker',
 	async (id) => {
 		const { data } = await axios.get(`/api/trackers/${id}`);
+
+		// o: remove before pushing to main or use debugger
 		console.log(data);
 		return data;
 	}

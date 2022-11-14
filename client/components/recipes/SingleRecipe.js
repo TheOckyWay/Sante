@@ -8,6 +8,7 @@ function SingleRecipe() {
 
   const { id } = useParams();
 
+  // o: destructure
   const recipe = useSelector((state) => state.recipes.singleRecipes);
 
   useEffect(() => {

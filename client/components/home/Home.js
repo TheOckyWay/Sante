@@ -16,6 +16,7 @@ const Home = (props) => {
 
 	const tracker = useSelector((state) => state.tracker.singleTracker);
 
+	// o: remove before pushing to main
 	console.log(tracker);
 
 	return (

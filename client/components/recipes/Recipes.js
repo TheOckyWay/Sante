@@ -8,6 +8,7 @@ function Recipes() {
 
   const recipes = useSelector((state) => state.recipes.allRecipes);
 
+  // o: remove before pushing to main
   console.log(recipes);
   useEffect(() => {
     dispatch(fetchRecipes());
@@ -17,6 +18,7 @@ function Recipes() {
     <div>
       <h1>Recipes</h1>
       <div id="all-recipes">
+        {/* o: destructure */}
         {recipes.map((recipe) => {
           return (
             <div key={recipe.id} className="all-recipes-single-recipe">

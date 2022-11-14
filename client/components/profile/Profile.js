@@ -9,6 +9,7 @@ function Profile() {
 		dispatch(fetchUser(user.id));
 	}, [dispatch]);
 
+	// o: destructure
 	const user = useSelector((state) => state.auth.me);
 
 	return (
