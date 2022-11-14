@@ -10,10 +10,10 @@ async function seed() {
   console.log("db synced!");
 
   const users = await Promise.all([
-    User.create({ username: "Hamza", password: "123" }),
-    User.create({ username: "Prince", password: "123" }),
-    User.create({ username: "Alvin", password: "123" }),
-    User.create({ username: "Andrew", password: "123" }),
+    User.create({ username: "Hamza", password: "123", firstName: 'Muhammad', lastName: 'Hamza', location: 'Queens, NY', email: 'hamza@foo.com'}),
+    User.create({ username: "Prince", password: "123", firstName: 'Prince', lastName: 'Karim', location: 'Queens, NY', email: 'prince@fullstack.com'}),
+    User.create({ username: "Alvin", password: "123", firstName: 'Alvin', lastName: 'Espinal', location: 'New York, NY', email: 'alvin@fs.com'}),
+    User.create({ username: "Andrew", password: "123", firstName: 'Andrew', lastName: 'Espinal', location: 'Queens, NY', email: 'andrew@fs.com'}),
   ]);
 
   const trackers = await Promise.all([
