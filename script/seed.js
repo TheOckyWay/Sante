@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Recipes },
+  models: { User, Recipes, Tracker },
 } = require("../server/db");
 
 async function seed() {
@@ -14,6 +14,16 @@ async function seed() {
     User.create({ username: "Prince", password: "123" }),
     User.create({ username: "Alvin", password: "123" }),
     User.create({ username: "Andrew", password: "123" }),
+  ]);
+
+  const trackers = await Promise.all([
+    Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
+    Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
+    Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
+    Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
+    Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, })
+
+
   ]);
 
   await Promise.all([

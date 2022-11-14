@@ -5,7 +5,11 @@ import AuthForm from "../components/auth/AuthForm";
 import Home from "../components/home/Home";
 import Recipes from "../components/recipes/Recipes";
 import SingleRecipe from "../components/recipes/SingleRecipe";
+import AllTracker from "../components/tracker/AllTrackers";
+import SingleTracker from "../components/tracker/SingleTracker";
 import { me } from "./store";
+
+
 
 /**
  * COMPONENT
@@ -26,7 +30,9 @@ const AppRoutes = () => {
           <Route path="/*" element={<Home />} />
           <Route to="/home" element={<Home />} />
           <Route path="/recipes" element={<Recipes />} />
+          <Route path="/trackers" element={<AllTracker />} />
           <Route path="/recipes/:id" element={<SingleRecipe />} />
+          <Route path="/trackers/:id" element={<SingleTracker />} />
         </Routes>
       ) : (
         <Routes>
