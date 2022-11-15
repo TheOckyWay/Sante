@@ -22,7 +22,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.post("/:id/add-to-tracker", async (req, res, next) => {
+router.put("/:id/add-to-tracker", async (req, res, next) => {
   try {
     const { calories, protein, carbs, fat } = req.body.newFood;
 

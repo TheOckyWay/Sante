@@ -29,7 +29,7 @@ export const addToSingleTracker = createAsyncThunk(
   async (incomingData) => {
     try {
       const { id } = incomingData;
-      const { data } = await axios.post(
+      const { data } = await axios.put(
         `/api/trackers/${id}/add-to-tracker`,
         incomingData
       );
