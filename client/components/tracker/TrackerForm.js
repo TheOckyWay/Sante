@@ -45,7 +45,6 @@ function TrackerForm() {
       fat: "",
       courseType: "",
     });
-    dispatch(fetchSingleTracker(id));
   }
 
   let tracker = useSelector((state) => state.tracker.singleTracker);
