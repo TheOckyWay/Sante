@@ -22,5 +22,21 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.post("/:id/add-to-tracker", async (req, res, next) => {
+  try {
+    const { calories, protein, carbs, fat } = req.body.newFood;
+
+    const tracker = await Tracker.findByPk(req.params.id);
+    await tracker.decrement({
+      totalCalories: Number(calories),
+      totalProtein: Number(protein),
+      totalCarbs: Number(carbs),
+      totalFat: Number(fat),
+    });
+    res.json(tracker);
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;

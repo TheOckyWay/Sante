@@ -2,15 +2,41 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchTrackers = createAsyncThunk("fetchTrackers", async () => {
-  const { data } = await axios.get("/api/trackers");
-  return data;
+  try {
+    const { data } = await axios.get("/api/trackers");
+    return data;
+  } catch (err) {
+    console.error(err);
+    return err.message;
+  }
 });
 
 export const fetchSingleTracker = createAsyncThunk(
   "fetchSingleTracker",
   async (id) => {
-    const { data } = await axios.get(`/api/trackers/${id}`);
-    return data;
+    try {
+      const { data } = await axios.get(`/api/trackers/${id}`);
+      return data;
+    } catch (err) {
+      console.error(err);
+      return err.message;
+    }
+  }
+);
+
+export const addToSingleTracker = createAsyncThunk(
+  "addToSingleTracker",
+  async (incomingData) => {
+    try {
+      const { id } = incomingData;
+      const { data } = await axios.post(
+        `/api/trackers/${id}/add-to-tracker`,
+        incomingData
+      );
+    } catch (err) {
+      console.error(err);
+      return err.message;
+    }
   }
 );
 
@@ -26,6 +52,9 @@ const trackersSlice = createSlice({
       state.allTracker = action.payload;
     });
     builder.addCase(fetchSingleTracker.fulfilled, (state, action) => {
+      state.singleTracker = action.payload;
+    });
+    builder.addCase(addToSingleTracker.fulfilled, (state, action) => {
       state.singleTracker = action.payload;
     });
   },
