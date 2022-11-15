@@ -22,7 +22,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.put("/:id/add-to-tracker", async (req, res, next) => {
+router.put("/:id", async (req, res, next) => {
   try {
     const { calories, protein, carbs, fat } = req.body.newFood;
 
@@ -38,5 +38,7 @@ router.put("/:id/add-to-tracker", async (req, res, next) => {
     next(error);
   }
 });
+
+
 
 module.exports = router;
