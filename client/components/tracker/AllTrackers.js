@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchTrackers } from "./trackerSlice";
+import SingleTracker from './SingleTracker'
 
 function AllTracker() {
   const dispatch = useDispatch();
@@ -22,11 +23,15 @@ function AllTracker() {
                 <Link to={`/trackers/${tracker.id}`}>
                   <h2>{`${tracker.id}`}</h2>
                 </Link>
-                <h3>totalCalories: {tracker.totalCalories}</h3>
+                {/* <h3>totalCalories: {tracker.totalCalories}</h3> */}
               </div>
             </div>
           );
         })}
+        
+       <div>
+               <SingleTracker />
+        </div>
       </div>
   );
 }
