@@ -33,7 +33,14 @@ const AppRoutes = () => {
           <Route path="/trackers" element={<AllTracker />} />
           <Route path="/recipes/:id" element={<SingleRecipe />} />
           <Route path="/trackers/:id" element={<SingleTracker />} />
-          <Route path="/trackers/:id/add-to-tracker" element={<TrackerForm />} />
+          <Route
+            path="/trackers/:id/add-food"
+            element={<TrackerForm action={"addFood"} />}
+          />
+          <Route
+            path="/trackers/:id/add-water"
+            element={<TrackerForm action={"addWater"} />}
+          />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       ) : (
