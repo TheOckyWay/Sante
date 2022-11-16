@@ -34,8 +34,11 @@ function SingleRecipe() {
           <h3>Fat: {totalFat}</h3>
           <h3>Date: {date}</h3>
         </div>
-        <Link to={`/trackers/${trackerId}/add-to-tracker`}>
+        <Link to={`/trackers/${trackerId}/add-food`}>
           <h3>Add Food</h3>
+        </Link>
+        <Link to={`/trackers/${trackerId}/add-water`}>
+          <h3>Add Water</h3>
         </Link>
       </div>
     </div>
