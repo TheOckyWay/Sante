@@ -11,7 +11,7 @@ const Home = (props) => {
   const user = useSelector((state) => state.auth.me);
 
   useEffect(() => {
-    dispatch(fetchSingleTracker(user.id));
+    dispatch(fetchSingleTracker(1));
   }, [dispatch]);
 
   const tracker = useSelector((state) => state.tracker.singleTracker);
