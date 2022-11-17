@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Recipes, Tracker },
+  models: { User, Recipes },
 } = require("../server/db");
 
 async function seed() {
@@ -10,21 +10,48 @@ async function seed() {
   console.log("db synced!");
 
   const users = await Promise.all([
-    User.create({ username: "Hamza", password: "123", firstName: 'Muhammad', lastName: 'Hamza', location: 'Queens, NY', email: 'hamza@foo.com'}),
-    User.create({ username: "Prince", password: "123", firstName: 'Prince', lastName: 'Karim', location: 'Queens, NY', email: 'prince@fullstack.com'}),
-    User.create({ username: "Alvin", password: "123", firstName: 'Alvin', lastName: 'Espinal', location: 'New York, NY', email: 'alvin@fs.com'}),
-    User.create({ username: "Andrew", password: "123", firstName: 'Andrew', lastName: 'Espinal', location: 'Queens, NY', email: 'andrew@fs.com'}),
+    User.create({
+      username: "Hamza",
+      password: "123",
+      firstName: "Muhammad",
+      lastName: "Hamza",
+      location: "Queens, NY",
+      email: "hamza@foo.com",
+    }),
+    User.create({
+      username: "Prince",
+      password: "123",
+      firstName: "Prince",
+      lastName: "Karim",
+      location: "Queens, NY",
+      email: "prince@fullstack.com",
+    }),
+    User.create({
+      username: "Alvin",
+      password: "123",
+      firstName: "Alvin",
+      lastName: "Espinal",
+      location: "New York, NY",
+      email: "alvin@fs.com",
+    }),
+    User.create({
+      username: "Andrew",
+      password: "123",
+      firstName: "Andrew",
+      lastName: "Ozoria",
+      location: "Queens, NY",
+      email: "andrew@fs.com",
+    }),
   ]);
 
-  const trackers = await Promise.all([
-    Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
-    Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
-    Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
-    Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
-    Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, })
+  // const trackers = await Promise.all([
+  //   Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
+  //   Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
+  //   Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
+  //   Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
+  //   Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, })
 
-
-  ]);
+  // ]);
 
   await Promise.all([
     Recipes.create({
