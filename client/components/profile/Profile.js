@@ -1,9 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from './profileSlice';
+import { logout } from '../../app/store';
 
 function Profile() {
 	const dispatch = useDispatch();
+
+	const logoutAndRedirectHome = () => {
+		dispatch(logout());
+		navigate('/login');
+	};
 
 	useEffect(() => {
 		dispatch(fetchUser(user.id));
@@ -19,6 +25,9 @@ function Profile() {
 			</h3>
 			<h3>Location: {user.location}</h3>
 			<h3>Email: {user.email}</h3>
+			<button type="button" onClick={logoutAndRedirectHome}>
+				Logout
+			</button>
 		</div>
 	);
 }
