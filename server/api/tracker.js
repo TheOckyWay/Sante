@@ -25,7 +25,6 @@ router.get("/", async (req, res, next) => {
     });
 
     const tracker = await Tracker.findAll({ include: [Recipes] });
-    console.log(tracker);
     res.json(tracker);
   } catch (error) {
     next(error);

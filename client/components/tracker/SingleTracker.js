@@ -8,15 +8,15 @@ function SingleRecipe() {
   const { id } = useParams();
 
   const tracker = useSelector((state) => state.tracker.singleTracker);
-  const {
-    id: trackerId,
-    totalCalories,
-    waterIntake,
-    totalProtein,
-    totalCarbs,
-    totalFat,
-    date,
-  } = tracker;
+  // const {
+  //   id: trackerId,
+  //   totalCalories,
+  //   waterIntake,
+  //   totalProtein,
+  //   totalCarbs,
+  //   totalFat,
+  //   date,
+  // } = tracker;
 
   useEffect(() => {
     dispatch(fetchSingleTracker(id));
@@ -24,23 +24,26 @@ function SingleRecipe() {
 
   return (
     <div>
-      <div>
+      {/* this check is just because of new stuff will change back to normal later */}
+      {tracker ? (
         <div>
-          <h1>{trackerId}</h1>
-          <h3>Calories: {totalCalories}</h3>
-          <h3>water: {waterIntake}</h3>
-          <h3>Protein: {totalProtein}</h3>
-          <h3>Carbohydrates: {totalCarbs}</h3>
-          <h3>Fat: {totalFat}</h3>
-          <h3>Date: {date}</h3>
+          <div>
+            <h1>{tracker.id}</h1>
+            <h3>Calories: {tracker.totalCalories}</h3>
+            <h3>water: {tracker.waterIntake}</h3>
+            <h3>Protein: {tracker.totalProtein}</h3>
+            <h3>Carbohydrates: {tracker.totalCarbs}</h3>
+            <h3>Fat: {tracker.totalFat}</h3>
+            <h3>Date: {tracker.date}</h3>
+          </div>
+          <Link to={`/trackers/${tracker.id}/add-food`}>
+            <h3>Add Food</h3>
+          </Link>
+          <Link to={`/trackers/${tracker.id}/add-water`}>
+            <h3>Add Water</h3>
+          </Link>
         </div>
-        <Link to={`/trackers/${trackerId}/add-food`}>
-          <h3>Add Food</h3>
-        </Link>
-        <Link to={`/trackers/${trackerId}/add-water`}>
-          <h3>Add Water</h3>
-        </Link>
-      </div>
+      ) : null}
     </div>
   );
 }
