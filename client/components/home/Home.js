@@ -18,12 +18,17 @@ const Home = (props) => {
 
   return (
     <div>
-      <h3>Welcome, {user.username}</h3>
-      <p>Total Calories: {tracker.totalCalories}</p>
-      <p>Total Water: {tracker.waterIntake}</p>
-      <p>Carbs: {tracker.totalCarbs}</p>
-      <p>Protein: {tracker.totalProtein}</p>
-      <p>Fat: {tracker.totalFat}</p>
+      {/* added this check since the tracker doesn't exist at this point for now... can remove later*/}
+      {tracker ? (
+        <div>
+          <h3>Welcome, {user.username}</h3>
+          <p>Total Calories: {tracker.totalCalories}</p>
+          <p>Total Water: {tracker.waterIntake}</p>
+          <p>Carbs: {tracker.totalCarbs}</p>
+          <p>Protein: {tracker.totalProtein}</p>
+          <p>Fat: {tracker.totalFat}</p>
+        </div>
+      ) : null}
     </div>
   );
 };
