@@ -64,6 +64,8 @@ async function seed() {
       diet: "Vegetarian",
       courseType: "Lunch",
       cookTime: 120,
+      imageUrl:
+        "https://images.pexels.com/photos/3644/pizza-restaurant-dinner-lunch.jpg",
     }),
     Recipes.create({
       name: "French Fries",
@@ -75,6 +77,8 @@ async function seed() {
       cuisine: "French",
       diet: "Vegan",
       cookTime: 120,
+      imageUrl:
+        "https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     }),
     Recipes.create({
       name: "Bacon Egg and Cheese",
@@ -84,8 +88,10 @@ async function seed() {
       fat: 5,
       courseType: "Lunch",
       cuisine: "American",
-      diet: "Normal",
+      diet: "N/A",
       cookTime: 120,
+      imageUrl:
+        "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i25A5vG7jGEg/v0/-1x-1.jpg/",
     }),
     Recipes.create({
       name: "Escargot",
@@ -95,8 +101,10 @@ async function seed() {
       fat: 5,
       courseType: "Dinner",
       cuisine: "French",
-      diet: "Normal",
+      diet: "N/A",
       cookTime: 120,
+      imageUrl:
+        "https://images.pexels.com/photos/5388683/pexels-photo-5388683.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     }),
     Recipes.create({
       name: "Beignet",
@@ -106,8 +114,10 @@ async function seed() {
       fat: 5,
       courseType: "Appetizer",
       cuisine: "French",
-      diet: "Normal",
+      diet: "N/A",
       cookTime: 120,
+      imageUrl:
+        "https://images.pexels.com/photos/13988842/pexels-photo-13988842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     }),
     Recipes.create({
       name: "Sushi",
@@ -119,6 +129,8 @@ async function seed() {
       cuisine: "Japanese",
       diet: "Pescatarian",
       cookTime: 120,
+      imageUrl:
+        "https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     }),
     Recipes.create({
       name: "Mangu",
@@ -128,8 +140,10 @@ async function seed() {
       fat: 5,
       courseType: "Breakfast",
       cuisine: "Dominican",
-      diet: "Normal",
+      diet: "N/A",
       cookTime: 120,
+      imageUrl:
+        "https://www.dominicancooking.com/wp-content/uploads/dominican-mangu-recipe-DSC6702.jpg",
     }),
     Recipes.create({
       name: "Samosa",
@@ -139,8 +153,10 @@ async function seed() {
       fat: 5,
       courseType: "Entree",
       cuisine: "Indian",
-      diet: "Normal",
+      diet: "N/A",
       cookTime: 120,
+      imageUrl:
+        "https://images.pexels.com/photos/13354489/pexels-photo-13354489.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     }),
     Recipes.create({
       name: "Tacos",
@@ -150,8 +166,10 @@ async function seed() {
       fat: 5,
       courseType: "Lunch",
       cuisine: "Mexican",
-      diet: "Normal",
+      diet: "N/A",
       cookTime: 120,
+      imageUrl:
+        "https://images.pexels.com/photos/2087748/pexels-photo-2087748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     }),
     Recipes.create({
       name: "Poutine",
@@ -161,8 +179,10 @@ async function seed() {
       fat: 5,
       courseType: "Main",
       cuisine: "Canadian",
-      diet: "Normal",
+      diet: "N/A",
       cookTime: 120,
+      imageUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Poutine.JPG/1024px-Poutine.JPG",
     }),
   ]);
 

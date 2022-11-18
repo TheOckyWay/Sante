@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from './profileSlice';
 import { logout } from '../../app/store';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const logoutAndRedirectHome = () => {
 		dispatch(logout());

@@ -23,13 +23,12 @@ const AuthForm = ({ name, displayName }) => {
 
 	return (
 		<div>
-			{/* <form onSubmit={handleSubmit} name={name}>
+			<form onSubmit={handleSubmit} name={name}>
 				<div>
 					<label htmlFor="username">
 						<small>Username</small>
 					</label>
 					<input name="username" type="text" />
-					<br />
 				</div>
 				<div>
 					<label htmlFor="password">
@@ -41,8 +40,8 @@ const AuthForm = ({ name, displayName }) => {
 					<button type="submit">{displayName}</button>
 				</div>
 				{error && <div> {error} </div>}
-			</form> */}
-			<LoginPage />
+			</form>
+			{/* <LoginPage /> */}
 		</div>
 	);
 };
