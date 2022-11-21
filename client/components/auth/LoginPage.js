@@ -64,7 +64,7 @@ function LoginPage(props) {
 						name="username"
 						error={error ? true : false}
 						autoFocus
-						InputLabelProps={{ shrink: true }}
+						// InputLabelProps={{ shrink: true }}
 						onInput={(e) => setUsername(e.target.value)}
 					/>
 					<TextField
@@ -76,7 +76,7 @@ function LoginPage(props) {
 						type="password"
 						id="password"
 						error={error ? true : false}
-						InputLabelProps={{ shrink: true }}
+						// InputLabelProps={{ shrink: true }}
 						onInput={(e) => setPassword(e.target.value)}
 					/>
 					<Button
