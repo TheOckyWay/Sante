@@ -7,6 +7,7 @@ function Recipes() {
   const dispatch = useDispatch();
 
   const recipes = useSelector((state) => state.recipes.allRecipes);
+  console.log(recipes);
 
   useEffect(() => {
     dispatch(fetchRecipes());

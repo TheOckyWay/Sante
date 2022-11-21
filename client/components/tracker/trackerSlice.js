@@ -2,24 +2,34 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchTrackers = createAsyncThunk("fetchTrackers", async () => {
-  try {
-    const { data } = await axios.get("/api/trackers");
-    return data;
-  } catch (err) {
-    console.error(err);
-    return err.message;
+  const token = localStorage.getItem("token");
+  if (token) {
+    try {
+      const { data } = await axios.get("/api/trackers", {
+        headers: { authorization: token },
+      });
+      return data;
+    } catch (err) {
+      console.error(err);
+      return err.message;
+    }
   }
 });
 
 export const fetchSingleTracker = createAsyncThunk(
   "fetchSingleTracker",
   async (id) => {
-    try {
-      const { data } = await axios.get(`/api/trackers/${id}`);
-      return data;
-    } catch (err) {
-      console.error(err);
-      return err.message;
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const { data } = await axios.get(`/api/trackers/${id}`, {
+          headers: { authorization: token },
+        });
+        return data;
+      } catch (err) {
+        console.error(err);
+        return err.message;
+      }
     }
   }
 );
@@ -27,13 +37,18 @@ export const fetchSingleTracker = createAsyncThunk(
 export const addToSingleTracker = createAsyncThunk(
   "addToSingleTracker",
   async (incomingData) => {
-    try {
-      const { id } = incomingData;
-      const { data } = await axios.put(`/api/trackers/${id}`, incomingData);
-      return data;
-    } catch (err) {
-      console.error(err);
-      return err.message;
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const { id } = incomingData;
+        const { data } = await axios.put(`/api/trackers/${id}`, incomingData, {
+          headers: { authorization: token },
+        });
+        return data;
+      } catch (err) {
+        console.error(err);
+        return err.message;
+      }
     }
   }
 );

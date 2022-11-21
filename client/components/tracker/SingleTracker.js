@@ -17,6 +17,7 @@ function SingleRecipe() {
     totalFat,
     date,
   } = tracker;
+  console.log(tracker);
 
   useEffect(() => {
     dispatch(fetchSingleTracker(id));

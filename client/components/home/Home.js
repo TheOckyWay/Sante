@@ -9,21 +9,30 @@ const Home = (props) => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.auth.me);
+  const tracker = useSelector((state) => state.tracker.singleTracker);
+
 
   useEffect(() => {
-    dispatch(fetchSingleTracker(1));
+    dispatch(fetchSingleTracker(tracker.id));
   }, [dispatch]);
-
-  const tracker = useSelector((state) => state.tracker.singleTracker);
 
   return (
     <div>
-      <h3>Welcome, {user.username}</h3>
-      <p>Total Calories: {tracker.totalCalories}</p>
-      <p>Total Water: {tracker.waterIntake}</p>
-      <p>Carbs: {tracker.totalCarbs}</p>
-      <p>Protein: {tracker.totalProtein}</p>
-      <p>Fat: {tracker.totalFat}</p>
+      {tracker !== undefined ? (
+        <div>
+          <h3>Welcome, {user.username}</h3>
+          <p>Total Calories: {tracker.totalCalories}</p>
+          <p>Total Water: {tracker.waterIntake}</p>
+          <p>Carbs: {tracker.totalCarbs}</p>
+          <p>Protein: {tracker.totalProtein}</p>
+          <p>Fat: {tracker.totalFat}</p>
+        </div>
+      ) : (
+        <div>
+          <h3>Welcome, {user.username}</h3>
+          <p>No information to show at the moment</p>
+        </div>
+      )}
     </div>
   );
 };
