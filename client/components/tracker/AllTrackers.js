@@ -16,19 +16,19 @@ function AllTracker() {
   return (
     <div>
       <h1>Trackers</h1>
-        {trackers.map((tracker) => {
-          return (
-            <div key={tracker.id} >
-              <div>
-                <Link to={`/trackers/${tracker.id}`}>
-                  <h2>{`${tracker.id}`}</h2>
-                </Link>
-                <h3>totalCalories: {tracker.totalCalories}</h3>
-              </div>
+      {trackers.map((tracker) => {
+        return (
+          <div key={tracker.id}>
+            <div>
+              <Link to={`/trackers/${tracker.id}`}>
+                <h2>{`${tracker.date}`}</h2>
+              </Link>
+              <h3>totalCalories: {tracker.totalCalories}</h3>
             </div>
-          );
-        })}
-      </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
