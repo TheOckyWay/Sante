@@ -16,10 +16,12 @@ import { blue } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
 import { logout } from "../../app/store";
+import { useNavigate } from "react-router-dom";
 
 
 function Profile() {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const user = useSelector((state) => state.auth.me);
 	const [weightGoal, setWeightGoal] = React.useState(user.targetChange);
 	const [activity, setActivity] = React.useState(user.activityFactor);
