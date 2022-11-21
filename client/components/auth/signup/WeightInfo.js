@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function WeightInfo() {
-  return (
-	<div>WeightInfo</div>
-  )
+	return <div>WeightInfo</div>;
 }
 
-export default WeightInfo
+export default WeightInfo;

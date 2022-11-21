@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
 	Box,
 	Container,
@@ -7,17 +7,16 @@ import {
 	Button,
 	Grid,
 	Link,
-} from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
-import { authenticate } from '../../app/store';
+} from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { authenticate } from "../../app/store";
 
 // InputLabelProps={{ shrink: true }} used to make text appear on top
-// 	- If the code above is not present, the text inside is directly on the edge of the outline 
-
+// 	- If the code above is not present, the text inside is directly on the edge of the outline
 
 function LoginPage(props) {
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
+	const [username, setUsername] = useState("");
+	const [password, setPassword] = useState("");
 	// returns 'incorrect username/password' as a string
 	const { error } = useSelector((state) => state.auth);
 
@@ -44,9 +43,9 @@ function LoginPage(props) {
 			<Box
 				sx={{
 					marginTop: 8,
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'center',
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
 				}}
 			>
 				<Typography component="h1" variant="h5">
@@ -65,7 +64,7 @@ function LoginPage(props) {
 						name="username"
 						error={error ? true : false}
 						autoFocus
-						InputLabelProps={{ shrink: true }}
+						// InputLabelProps={{ shrink: true }}
 						onInput={(e) => setUsername(e.target.value)}
 					/>
 					<TextField
@@ -77,7 +76,7 @@ function LoginPage(props) {
 						type="password"
 						id="password"
 						error={error ? true : false}
-						InputLabelProps={{ shrink: true }}
+						// InputLabelProps={{ shrink: true }}
 						onInput={(e) => setPassword(e.target.value)}
 					/>
 					<Button

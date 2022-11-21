@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
 	Stack,
 	TextField,
@@ -7,12 +7,12 @@ import {
 	OutlinedInput,
 	InputAdornment,
 	IconButton,
-} from '@mui/material';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 function BasicInfo() {
 	const [values, setValues] = React.useState({
-		password: '',
+		password: "",
 		showPassword: false,
 	});
 
@@ -70,9 +70,9 @@ function BasicInfo() {
 					</InputLabel>
 					<OutlinedInput
 						id="outlined-adornment-password"
-						type={values.showPassword ? 'text' : 'password'}
+						type={values.showPassword ? "text" : "password"}
 						value={values.password}
-						onChange={handleChange('password')}
+						onChange={handleChange("password")}
 						endAdornment={
 							<InputAdornment position="end">
 								<IconButton

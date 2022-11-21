@@ -4,6 +4,7 @@ const {
   db,
   models: { User, Recipes },
 } = require("../server/db");
+require("dotenv").config();
 
 async function seed() {
   await db.sync({ force: true });
@@ -17,6 +18,15 @@ async function seed() {
       lastName: "Hamza",
       location: "Queens, NY",
       email: "hamza@foo.com",
+      age: 25,
+      sex: "male",
+      currentHeight: 60,
+      currentWeight: 250,
+      targetWeight: 200,
+      startingWeight: 250,
+      targetWater: 4000,
+      activityFactor: "Lightly Active",
+      targetChange: "Lose Weight",
     }),
     User.create({
       username: "Prince",
@@ -25,6 +35,15 @@ async function seed() {
       lastName: "Karim",
       location: "Queens, NY",
       email: "prince@fullstack.com",
+      age: 25,
+      sex: "male",
+      currentHeight: 60,
+      currentWeight: 250,
+      targetWeight: 200,
+      startingWeight: 250,
+      targetWater: 4000,
+      activityFactor: "Lightly Active",
+      targetChange: "Lose Weight",
     }),
     User.create({
       username: "Alvin",
@@ -33,14 +52,32 @@ async function seed() {
       lastName: "Espinal",
       location: "New York, NY",
       email: "alvin@fs.com",
+      age: 25,
+      sex: "male",
+      currentHeight: 60,
+      currentWeight: 250,
+      targetWeight: 200,
+      startingWeight: 250,
+      targetWater: 4000,
+      activityFactor: "Lightly Active",
+      targetChange: "Lose Weight",
     }),
     User.create({
       username: "Andrew",
       password: "123",
       firstName: "Andrew",
-      lastName: "Ozoria",
+      lastName: "Espinal",
       location: "Queens, NY",
       email: "andrew@fs.com",
+      age: 25,
+      sex: "male",
+      currentHeight: 60,
+      currentWeight: 250,
+      targetWeight: 200,
+      startingWeight: 250,
+      targetWater: 4000,
+      activityFactor: "Lightly Active",
+      targetChange: "Lose Weight",
     }),
   ]);
 
@@ -190,8 +227,10 @@ async function seed() {
   console.log(`seeded successfully`);
   return {
     users: {
-      cody: users[0],
-      murphy: users[1],
+      Hamza: users[0],
+      Andrew: users[1],
+      Prince: users[2],
+      Alvin: users[3],
     },
   };
 }

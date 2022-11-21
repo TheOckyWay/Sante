@@ -4,9 +4,15 @@ import AppRoutes from "./AppRoutes";
 
 const App = () => {
 	return (
-		<div className="iphone">
-			<Navbar />
+		<div>
+			<div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
+      		<h1 style={{border: 'solid black',padding: '5px' }}>Santé</h1>
+     		</div>
+			<hr/>
 			<AppRoutes />
+			<hr/>
+			<Navbar />
+			
 		</div>
 	);
 };

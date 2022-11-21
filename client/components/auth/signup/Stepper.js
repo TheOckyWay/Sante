@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
 	Box,
 	Stepper,
@@ -6,9 +6,9 @@ import {
 	StepLabel,
 	Button,
 	Typography,
-} from '@mui/material';
-import BasicInfo from './BasicInfo';
-import WeightInfo from './WeightInfo';
+} from "@mui/material";
+import BasicInfo from "./BasicInfo";
+import WeightInfo from "./WeightInfo";
 
 function StepperPage() {
 	const [activeStep, setActiveStep] = useState(0);
@@ -22,16 +22,16 @@ function StepperPage() {
 	};
 
 	const steps = [
-		'Basic Info',
-		'Weight',
-		'Weight Goal',
-		'Exercise',
-		'Target Macros',
+		"Basic Info",
+		"Weight",
+		"Weight Goal",
+		"Exercise",
+		"Target Macros",
 	];
 
 	return (
 		<>
-			<Box sx={{ width: '100%' }}>
+			<Box sx={{ width: "100%" }}>
 				<Stepper activeStep={activeStep}>
 					{steps.map((label, index) => {
 						const stepProps = {};
@@ -44,7 +44,7 @@ function StepperPage() {
 						);
 					})}
 				</Stepper>
-				<Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+				<Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
 					<Button
 						color="inherit"
 						disabled={activeStep === 0}
@@ -53,15 +53,15 @@ function StepperPage() {
 					>
 						Back
 					</Button>
-					<Box sx={{ flex: '1 1 auto' }} />
+					<Box sx={{ flex: "1 1 auto" }} />
 					<Button onClick={handleNext}>
-						{activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+						{activeStep === steps.length - 1 ? "Finish" : "Next"}
 					</Button>
 				</Box>
 			</Box>
 			<div>
-				{activeStep === 0 ? <BasicInfo /> : ''}
-				{activeStep === 1 ? <WeightInfo /> : ''}
+				{activeStep === 0 ? <BasicInfo /> : ""}
+				{activeStep === 1 ? <WeightInfo /> : ""}
 			</div>
 		</>
 	);

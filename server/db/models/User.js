@@ -20,11 +20,41 @@ const User = db.define('user', {
   lastName: {
     type: Sequelize.STRING,
   },
+  age: {
+    type: Sequelize.INTEGER,
+  },
+  sex: {
+    type: Sequelize.ENUM('male', 'female'),
+  },
+  activityFactor: {
+    type: Sequelize.STRING,
+  },
+  currentHeight: {
+    type: Sequelize.INTEGER,
+  },
   location: {
     type: Sequelize.STRING,
   },
   email: {
     type: Sequelize.STRING,
+  },
+  currentWeight: {
+    type: Sequelize.INTEGER,
+  },
+  targetWeight: {
+    type: Sequelize.INTEGER,
+  },
+  startingWeight: {
+    type: Sequelize.INTEGER,
+  },
+  targetCalories: {
+    type: Sequelize.INTEGER,
+  },
+  targetWater: {
+    type: Sequelize.INTEGER,
+  },
+  targetChange: {
+    type: Sequelize.STRING
   }
 })
 
