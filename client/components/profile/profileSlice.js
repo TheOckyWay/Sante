@@ -6,7 +6,7 @@ export const fetchUser = createAsyncThunk('fetchUser', async (userId) => {
 	return data;
 });
 
-export const weightGoalChange = createAsyncThunk('weightGoalChange', async (targetChange) => {
+export const weightGoalChange = createAsyncThunk('auth/profile', async (targetChange) => {
 	const { data } = await axios.put(`/auth/profile`, {targetChange});
 	console.log(data)
 	return data;

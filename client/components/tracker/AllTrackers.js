@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchTrackers } from "./trackerSlice";
 import SingleTracker from "./SingleTracker";
-import { Tabs } from '@mui/material';
 
 function AllTracker() {
   const dispatch = useDispatch();
@@ -26,10 +25,10 @@ function AllTracker() {
               </Link>
               <h3>totalCalories: {tracker.totalCalories}</h3>
             </div>
-          );
-        })}
-        </Tabs>
-      </div>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
