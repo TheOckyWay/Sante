@@ -1,23 +1,41 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Stack } from '@mui/material';
-import { fetchUser,modifyTargetChange } from './profileSlice';
+import { fetchUser,weightGoalChange } from './profileSlice';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import FormHelperText from '@mui/material/FormHelperText';
 
 function Profile() {
-
+	const dispatch = useDispatch();
 
 	const user = useSelector((state) => state.auth.me);
 	console.log(user)
+	 
+	const [weightGoal, setWeightGoal] = React.useState(user.targetChange);
+	const [activity, setActivity] = React.useState(user.activityFactor);
 
+		
 
+  const handleWeightGoalChange = (event) => {
+	// event.preventDefault()
+	setWeightGoal(event.target.value);
+	const userUpdate= { weightGoal	}
+	dispatch(weightGoalChange({ userUpdate}))
+    
+  };
 
-	const dispatch = useDispatch();
+  const handleActivityChange = (event) => {
+	// event.preventDefault()
+	setActivity(event.target.value)
+	const userUpdate= { activity }
+  };
+
+	
 
 	useEffect(() => {
 		dispatch(fetchUser(user.id));
@@ -94,13 +112,50 @@ function Profile() {
 
 		
 
-		<Stack >
-		<h3>Weight Goal:  {user.targetChange}</h3>
-		<h3>Activity Factor: {user.activityFactor}</h3>
+		<Stack  direction="row" >
+
+		<FormControl sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel>Weight Goal</InputLabel>
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+          value={weightGoal}
+          label="Weight Goal"
+          onChange={handleWeightGoalChange}
+        >
+          <MenuItem value={'Maintain Weight'}>Maintain Weight</MenuItem>
+          <MenuItem value={'Lose Weight'}>Lose Weight</MenuItem>
+          <MenuItem value={'Gain Weight'}>Gain Weight</MenuItem>
+        </Select>
+		<FormHelperText>Edit Weight Goal</FormHelperText>
+      </FormControl>
+
+
+	  <FormControl sx={{ m: 1, minWidth: 120 }}>
+        <InputLabel>Activity Factor</InputLabel>
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+          value={activity}
+          label="Activity Factor"
+          onChange={handleActivityChange}
+        >
+          <MenuItem value={'Sedentary'}>Sedentary</MenuItem>
+          <MenuItem value={'Lightly Active'}>Lightly Active</MenuItem>
+          <MenuItem value={'Moderately Active'}>Moderately Active</MenuItem>
+		  <MenuItem value={'Very Active'}>Very Active</MenuItem>
+          <MenuItem value={'Extra Active'}>Extra Active</MenuItem>
+        </Select>
+		<FormHelperText>Edit Activity Factor</FormHelperText>
+      </FormControl>
+
+		
     	</Stack>
 		
 		
 		<Box>
+		<h3>Weight Goal:  {user.targetChange}</h3>
+		<h3>Activity Factor: {user.activityFactor}</h3>
 		<h3>Starting Weight: {user.startingWeight}</h3>
 		<h3>Current Weight: {user.currentWeight}</h3>
 		<h3>Target Weight: {user.targetWeight}</h3>

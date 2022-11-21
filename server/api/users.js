@@ -25,3 +25,17 @@ router.get("/:userId", async (req, res, next) => {
     next(err);
   }
 });
+
+
+
+router.put('/profile', async (req, res, next) => {
+	try {
+		const { targetChange } =
+			req.body.targetChange;
+		const { user } = req;
+		await user.update({ targetChange });
+		res.send(user);
+	} catch (err) {
+		next(err);
+	}
+});

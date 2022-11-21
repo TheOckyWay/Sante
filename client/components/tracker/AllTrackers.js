@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchTrackers } from "./trackerSlice";
 import SingleTracker from "./SingleTracker";
+import { Tabs } from '@mui/material';
 
 function AllTracker() {
   const dispatch = useDispatch();
@@ -15,7 +16,8 @@ function AllTracker() {
 
   return (
     <div>
-      <h1>Trackers</h1>
+      <Tabs>
+      {/* <h1>Trackers</h1> */}
         {trackers.map((tracker) => {
           return (
             <div key={tracker.id} >
@@ -28,6 +30,7 @@ function AllTracker() {
             </div>
           );
         })}
+        </Tabs>
       </div>
   );
 }
