@@ -16,51 +16,51 @@ import { me } from "./store";
  */
 
 const AppRoutes = () => {
-  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const dispatch = useDispatch();
+	const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(me());
-  }, []);
+	useEffect(() => {
+		dispatch(me());
+	}, []);
 
-  return (
-    <div>
-      {isLoggedIn ? (
-        <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route to="/home" element={<Home />} />
-          <Route path="/recipes" element={<Recipes />} />
-          <Route path="/trackers" element={<AllTracker />} />
-          <Route path="/recipes/:id" element={<SingleRecipe />} />
-          <Route path="/trackers/:id" element={<SingleTracker />} />
-          <Route
-            path="/trackers/:id/add-food"
-            element={<TrackerForm action={"addFood"} />}
-          />
-          <Route
-            path="/trackers/:id/add-water"
-            element={<TrackerForm action={"addWater"} />}
-          />
-          <Route path="/profile" element={<Profile />} />
-        </Routes>
-      ) : (
-        <Routes>
-          <Route
-            path="/*"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
-          <Route
-            path="/login"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
-          <Route
-            path="/signup"
-            element={<AuthForm name="signup" displayName="Sign Up" />}
-          />
-        </Routes>
-      )}
-    </div>
-  );
+	return (
+		<div>
+			{isLoggedIn ? (
+				<Routes>
+					<Route path="/*" element={<Home />} />
+					<Route to="/home" element={<Home />} />
+					<Route path="/recipes" element={<Recipes />} />
+					<Route path="/trackers" element={<AllTracker />} />
+					<Route path="/recipes/:id" element={<SingleRecipe />} />
+					<Route path="/trackers/:id" element={<SingleTracker />} />
+					<Route
+						path="/trackers/:id/add-food"
+						element={<TrackerForm action={"addFood"} />}
+					/>
+					<Route
+						path="/trackers/:id/add-water"
+						element={<TrackerForm action={"addWater"} />}
+					/>
+					<Route path="/profile" element={<Profile />} />
+				</Routes>
+			) : (
+				<Routes>
+					<Route
+						path="/*"
+						element={<AuthForm name="login" displayName="Login" />}
+					/>
+					<Route
+						path="/login"
+						element={<AuthForm name="login" displayName="Login" />}
+					/>
+					<Route
+						path="/signup"
+						element={<AuthForm name="signup" displayName="Sign Up" />}
+					/>
+				</Routes>
+			)}
+		</div>
+	);
 };
 
 export default AppRoutes;
