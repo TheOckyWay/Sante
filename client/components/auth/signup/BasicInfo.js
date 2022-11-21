@@ -32,7 +32,7 @@ function BasicInfo() {
 	};
 
 	return (
-		<div>
+		<div margin="auto">
 			<h1>Welcome!</h1>
 			<Stack
 				direction="column"
