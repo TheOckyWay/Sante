@@ -17,6 +17,7 @@ function formatDate(date) {
 }
 
 router.get("/", async (req, res, next) => {
+
   const token = req.headers.authorization;
   const user = await User.findByToken(token);
   if (user) {
@@ -37,6 +38,7 @@ router.get("/", async (req, res, next) => {
     } catch (error) {
       next(error);
     }
+
   }
 });
 

@@ -5,12 +5,12 @@ import recipesReducer from "../components/recipes/recipeSlice";
 import trackerReducer from "../components/tracker/trackerSlice";
 
 const store = configureStore({
-  reducer: {
-    auth: authReducer,
-    recipes: recipesReducer,
-    tracker: trackerReducer,
-  },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
+	reducer: {
+		auth: authReducer,
+		recipes: recipesReducer,
+		tracker: trackerReducer,
+	},
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
 
 export default store;

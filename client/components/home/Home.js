@@ -6,7 +6,8 @@ import { fetchSingleTracker } from "../tracker/trackerSlice";
  * COMPONENT
  */
 const Home = (props) => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
+
 
   const user = useSelector((state) => state.auth.me);
   const tracker = useSelector((state) => state.tracker.singleTracker);
@@ -35,6 +36,7 @@ const Home = (props) => {
       )}
     </div>
   );
+
 };
 
 export default Home;
