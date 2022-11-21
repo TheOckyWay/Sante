@@ -33,6 +33,34 @@ router.get('/me', async (req, res, next) => {
   }
 });
 
+const getToken = async (req, res, next) => {
+  try {
+    console.log('hamza gettoken')
+    const token = req.headers.authorization;
+    const user = await User.findByToken(token);
+    req.user = user;
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
 
 
+router.put("/profile",getToken, async (req, res, next) => {
+  const userId = req.user.id;
+  try {
+    for (let key in req.body) {
+      if (req.body[key] === "") {
+        delete req.body[key];
+      }
+    }
+    console.log('/profile change route ')
+    const user = await User.findByPk(userId);
+    const editUser = await user.update(req.body);
+
+    res.json(editUser);
+  } catch (err) {
+    next(err);
+  }
+});
 

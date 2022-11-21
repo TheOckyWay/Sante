@@ -2,13 +2,16 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Stack } from '@mui/material';
 import { fetchUser,weightGoalChange } from './profileSlice';
+import { editProfile, me } from "../auth/authSlice";
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
+import createStatsCollector from 'mocha/lib/stats-collector';
 
 function Profile() {
 	const dispatch = useDispatch();
@@ -23,25 +26,26 @@ function Profile() {
 
   const handleWeightGoalChange = (event) => {
 	// event.preventDefault()
-	setWeightGoal(event.target.value);
-	const userUpdate= { weightGoal	}
-	dispatch(weightGoalChange({ userUpdate}))
+	setWeightGoal(event.target.value)
+	const userUpdate=  weightGoal
+	dispatch(editProfile({targetChange: userUpdate}))
+	dispatch(me())
     
   };
 
   const handleActivityChange = (event) => {
 	// event.preventDefault()
 	setActivity(event.target.value)
-	const userUpdate= { activity }
+	const userUpdate=  activity 
+	dispatch(editProfile({activityFactor: userUpdate}))
   };
 
 	
 
 	useEffect(() => {
 		dispatch(fetchUser(user.id));
-	}, [dispatch]);
+	}, []);
 
-	
 
 
 

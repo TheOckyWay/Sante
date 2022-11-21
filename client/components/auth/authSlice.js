@@ -50,15 +50,15 @@ export const authenticate = createAsyncThunk(
 
 export const editProfile = createAsyncThunk(
   "auth/profile",
-  async ({ name, email }) => {
+  async ({ targetChange, activityFactor }) => {
     const token = window.localStorage.getItem(TOKEN);
     try {
       if (token) {
         const { data } = await axios.put(
           "/auth/profile",
           {
-            name,
-            email,
+            targetChange,
+            activityFactor,
           },
           {
             headers: {
