@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Stack } from '@mui/material';
-import { fetchUser,weightGoalChange } from './profileSlice';
+import { Stack, Typography } from '@mui/material';
+import { fetchUser } from './profileSlice';
 import { editProfile, me } from "../auth/authSlice";
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -11,40 +11,30 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
-import createStatsCollector from 'mocha/lib/stats-collector';
+import Avatar from '@mui/material/Avatar';
+import { deepOrange } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
+import Divider from '@mui/material/Divider';
+
 
 function Profile() {
 	const dispatch = useDispatch();
-
 	const user = useSelector((state) => state.auth.me);
-	console.log(user)
-	 
 	const [weightGoal, setWeightGoal] = React.useState(user.targetChange);
 	const [activity, setActivity] = React.useState(user.activityFactor);
 
-		
-
   const handleWeightGoalChange = (event) => {
-	// event.preventDefault()
 	setWeightGoal(event.target.value)
-	const userUpdate=  weightGoal
-	dispatch(editProfile({targetChange: userUpdate}))
-	dispatch(me())
-    
   };
-
   const handleActivityChange = (event) => {
-	// event.preventDefault()
 	setActivity(event.target.value)
-	const userUpdate=  activity 
-	dispatch(editProfile({activityFactor: userUpdate}))
   };
-
-	
-
+  const handleChange = (event) =>{
+	dispatch(editProfile({targetChange: weightGoal,activityFactor: activity }))
+  };
 	useEffect(() => {
 		dispatch(fetchUser(user.id));
-	}, []);
+	}, [dispatch]);
 
 
 
@@ -98,6 +88,18 @@ function Profile() {
 		water = 3700
 	}
 
+	  
+
+	  const Mid = styled('mid')(({ theme }) => ({
+		...theme.typography.button,
+		backgroundColor: theme.palette.background.paper,
+		padding: theme.spacing(1),
+		background: 'linear-gradient(to right, rgba(161,196,253,0.45), rgba(194,233,251,0.45))',
+		boxShadow: '0 3px 5px 2px rgba(48,207,208,0.5)',
+		width: '50%',
+		height: '50',
+		textAlign: 'center',
+	  }));
 
 	//component
 	return (
@@ -107,13 +109,28 @@ function Profile() {
 		alignItems="center"
 		spacing={1}
 		>
-		<Box>
-		<h3>Userame: {user.username}</h3>
-		<h3>Name: {user.firstName} {user.lastName}</h3>
-		<h3>Location: {user.location}</h3>
-		<h3>Email: {user.email}</h3>
-		</Box>
 
+	
+		<Avatar>{user.firstName[0]}{user.lastName[0]}</Avatar>
+		<Typography>{user.firstName} {user.lastName}</Typography>
+		<Typography>{user.email}</Typography>
+
+
+		<Stack direction="row" 
+		divider={<Divider orientation="vertical" flexItem />}
+		spacing={.5}>
+		<Mid>Userame: {user.username} </Mid> 
+		<Mid>Current Age: {user.age} </Mid> 
+		<Mid>Height: {user.currentHeight}inches</Mid>
+		<Mid>Starting Weight: {user.startingWeight}lbs</Mid>
+		</Stack>
+		
+	
+
+		<Stack direction="row">
+		<Mid>Weight Goal:  {user.targetChange}</Mid>
+		<Mid>Activity Factor: {user.activityFactor}</Mid>
+		</Stack>
 		
 
 		<Stack  direction="row" >
@@ -132,10 +149,10 @@ function Profile() {
           <MenuItem value={'Gain Weight'}>Gain Weight</MenuItem>
         </Select>
 		<FormHelperText>Edit Weight Goal</FormHelperText>
-      </FormControl>
+      	</FormControl>
 
 
-	  <FormControl sx={{ m: 1, minWidth: 120 }}>
+	  	<FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel>Activity Factor</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
@@ -151,21 +168,27 @@ function Profile() {
           <MenuItem value={'Extra Active'}>Extra Active</MenuItem>
         </Select>
 		<FormHelperText>Edit Activity Factor</FormHelperText>
-      </FormControl>
+      	</FormControl>
 
-		
     	</Stack>
+		<Button
+		variant="outlined"
+  			onClick={() => {
+				handleChange()
+  			}}>Confirm Changes
+		</Button>
 		
 		
-		<Box>
-		<h3>Weight Goal:  {user.targetChange}</h3>
-		<h3>Activity Factor: {user.activityFactor}</h3>
-		<h3>Starting Weight: {user.startingWeight}</h3>
-		<h3>Current Weight: {user.currentWeight}</h3>
-		<h3>Target Weight: {user.targetWeight}</h3>
-		<h3>Target Calories: {Math.ceil(BMR)}</h3>
-		<h3>Target Water: {water}</h3>
-		</Box>
+		
+		<Stack direction="row">
+		<Mid>Current Weight: {user.currentWeight}lbs</Mid>
+		<Mid>Target Weight: {user.targetWeight}lbs</Mid>
+		</Stack>
+		
+		
+		<Mid>Target Calories: {Math.ceil(BMR)}kcal</Mid>
+		<Mid>Target Water: {water}ml</Mid>
+
 
 
 		

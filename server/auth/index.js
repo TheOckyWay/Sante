@@ -35,7 +35,6 @@ router.get('/me', async (req, res, next) => {
 
 const getToken = async (req, res, next) => {
   try {
-    console.log('hamza gettoken')
     const token = req.headers.authorization;
     const user = await User.findByToken(token);
     req.user = user;
@@ -54,7 +53,6 @@ router.put("/profile",getToken, async (req, res, next) => {
         delete req.body[key];
       }
     }
-    console.log('/profile change route ')
     const user = await User.findByPk(userId);
     const editUser = await user.update(req.body);
 
