@@ -5,12 +5,13 @@ const db = require("./db");
 const User = require("./models/User");
 const Recipes = require("./models/recipes");
 const Tracker = require("./models/tracker");
+const recipeTracker = require("./models/recipeTracker");
 //associations could go here!
 User.hasMany(Tracker);
 Tracker.belongsTo(User);
 
-Tracker.belongsToMany(Recipes, { through: "recipe_tracker" });
-Recipes.belongsToMany(Tracker, { through: "recipe_tracker" });
+Tracker.belongsToMany(Recipes, { through: recipeTracker });
+Recipes.belongsToMany(Tracker, { through: recipeTracker });
 
 module.exports = {
   db,
@@ -18,5 +19,6 @@ module.exports = {
     User,
     Recipes,
     Tracker,
+    recipeTracker,
   },
 };

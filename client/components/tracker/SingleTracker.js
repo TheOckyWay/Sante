@@ -7,16 +7,8 @@ function SingleRecipe() {
 	const dispatch = useDispatch();
 	const { id } = useParams();
 
+
 	const tracker = useSelector((state) => state.tracker.singleTracker);
-	// const {
-	//   id: trackerId,
-	//   totalCalories,
-	//   waterIntake,
-	//   totalProtein,
-	//   totalCarbs,
-	//   totalFat,
-	//   date,
-	// } = tracker;
 
 	useEffect(() => {
 		dispatch(fetchSingleTracker(id));

@@ -32,6 +32,7 @@ function SingleRecipe() {
 
   const addToTrackerButton = async (id) => {
     const newFood = {
+      id: recipe.id,
       foodName: recipe.name,
       calories: recipe.calories,
       protein: recipe.protein,
@@ -44,7 +45,7 @@ function SingleRecipe() {
 
   useEffect(() => {
     dispatch(fetchSingleRecipe(id));
-    dispatch(fetchSingleTracker(1));
+    dispatch(fetchSingleTracker(tracker.id));
   }, []);
 
   return (

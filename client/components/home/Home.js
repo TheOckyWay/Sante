@@ -8,29 +8,35 @@ import { fetchSingleTracker } from "../tracker/trackerSlice";
 const Home = (props) => {
 	const dispatch = useDispatch();
 
-	const user = useSelector((state) => state.auth.me);
 
-	useEffect(() => {
-		dispatch(fetchSingleTracker(1));
-	}, [dispatch]);
+  const user = useSelector((state) => state.auth.me);
+  const tracker = useSelector((state) => state.tracker.singleTracker);
 
-	const tracker = useSelector((state) => state.tracker.singleTracker);
 
-	return (
-		<div>
-			{/* added this check since the tracker doesn't exist at this point for now... can remove later*/}
-			{tracker ? (
-				<div>
-					<h3>Welcome, {user.username}</h3>
-					<p>Total Calories: {tracker.totalCalories}</p>
-					<p>Total Water: {tracker.waterIntake}</p>
-					<p>Carbs: {tracker.totalCarbs}</p>
-					<p>Protein: {tracker.totalProtein}</p>
-					<p>Fat: {tracker.totalFat}</p>
-				</div>
-			) : null}
-		</div>
-	);
+  useEffect(() => {
+    dispatch(fetchSingleTracker(tracker.id));
+  }, [dispatch]);
+
+  return (
+    <div>
+      {tracker !== undefined ? (
+        <div>
+          <h3>Welcome, {user.username}</h3>
+          <p>Total Calories: {tracker.totalCalories}</p>
+          <p>Total Water: {tracker.waterIntake}</p>
+          <p>Carbs: {tracker.totalCarbs}</p>
+          <p>Protein: {tracker.totalProtein}</p>
+          <p>Fat: {tracker.totalFat}</p>
+        </div>
+      ) : (
+        <div>
+          <h3>Welcome, {user.username}</h3>
+          <p>No information to show at the moment</p>
+        </div>
+      )}
+    </div>
+  );
+
 };
 
 export default Home;

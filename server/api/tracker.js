@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const {
-  models: { Tracker, Recipes },
+  models: { Tracker, Recipes, User, recipeTracker },
 } = require("../db");
 
 const padTo2Digits = (num) => {
@@ -17,44 +17,74 @@ function formatDate(date) {
 }
 
 router.get("/", async (req, res, next) => {
-  try {
-    await Tracker.findOrCreate({
-      where: {
-        date: formatDate(new Date()),
-      },
-    });
 
-    const tracker = await Tracker.findAll({ include: [Recipes] });
-    res.json(tracker);
-  } catch (error) {
-    next(error);
+  const token = req.headers.authorization;
+  const user = await User.findByToken(token);
+  if (user) {
+    try {
+      await Tracker.findOrCreate({
+        where: {
+          date: formatDate(new Date()),
+          userId: user.id,
+        },
+      });
+
+      const tracker = await Tracker.findAll({
+        where: { userId: user.id },
+        include: [Recipes],
+      });
+
+      res.json(tracker);
+    } catch (error) {
+      next(error);
+    }
+
   }
 });
 
 router.get("/:id", async (req, res, next) => {
-  try {
-    const tracker = await Tracker.findByPk(req.params.id);
-    res.json(tracker);
-  } catch (error) {
-    next(error);
+  const token = req.headers.authorization;
+  const user = await User.findByToken(token);
+  if (user) {
+    try {
+      const tracker = await Tracker.findOne({
+        where: {
+          date: formatDate(new Date()),
+          userId: user.id,
+        },
+        include: [Recipes],
+      });
+      res.json(tracker);
+    } catch (error) {
+      next(error);
+    }
   }
 });
 
 router.put("/:id", async (req, res, next) => {
-  try {
-    const { calories, protein, carbs, fat, water } = req.body.newFood;
+  const token = req.headers.authorization;
+  const user = await User.findByToken(token);
+  if (user) {
+    try {
+      const { id, calories, protein, carbs, fat, water } = req.body.newFood;
+      const tracker = await Tracker.findByPk(req.params.id, {
+        include: { model: Recipes },
+      });
+      await recipeTracker.findOrCreate({
+        where: { trackerId: tracker.id, recipeId: id },
+      });
+      await tracker.increment({
+        totalCalories: Number(calories),
+        totalProtein: Number(protein),
+        totalCarbs: Number(carbs),
+        totalFat: Number(fat),
+        waterIntake: 0,
+      });
 
-    const tracker = await Tracker.findByPk(req.params.id);
-    await tracker.increment({
-      totalCalories: Number(calories),
-      totalProtein: Number(protein),
-      totalCarbs: Number(carbs),
-      totalFat: Number(fat),
-      waterIntake: Number(water),
-    });
-    res.json(tracker);
-  } catch (error) {
-    next(error);
+      res.json(tracker);
+    } catch (error) {
+      next(error);
+    }
   }
 });
 
