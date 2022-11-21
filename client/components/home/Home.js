@@ -6,31 +6,31 @@ import { fetchSingleTracker } from "../tracker/trackerSlice";
  * COMPONENT
  */
 const Home = (props) => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.auth.me);
+	const user = useSelector((state) => state.auth.me);
 
-  useEffect(() => {
-    dispatch(fetchSingleTracker(1));
-  }, [dispatch]);
+	useEffect(() => {
+		dispatch(fetchSingleTracker(1));
+	}, [dispatch]);
 
-  const tracker = useSelector((state) => state.tracker.singleTracker);
+	const tracker = useSelector((state) => state.tracker.singleTracker);
 
-  return (
-    <div>
-      {/* added this check since the tracker doesn't exist at this point for now... can remove later*/}
-      {tracker ? (
-        <div>
-          <h3>Welcome, {user.username}</h3>
-          <p>Total Calories: {tracker.totalCalories}</p>
-          <p>Total Water: {tracker.waterIntake}</p>
-          <p>Carbs: {tracker.totalCarbs}</p>
-          <p>Protein: {tracker.totalProtein}</p>
-          <p>Fat: {tracker.totalFat}</p>
-        </div>
-      ) : null}
-    </div>
-  );
+	return (
+		<div>
+			{/* added this check since the tracker doesn't exist at this point for now... can remove later*/}
+			{tracker ? (
+				<div>
+					<h3>Welcome, {user.username}</h3>
+					<p>Total Calories: {tracker.totalCalories}</p>
+					<p>Total Water: {tracker.waterIntake}</p>
+					<p>Carbs: {tracker.totalCarbs}</p>
+					<p>Protein: {tracker.totalProtein}</p>
+					<p>Fat: {tracker.totalFat}</p>
+				</div>
+			) : null}
+		</div>
+	);
 };
 
 export default Home;
