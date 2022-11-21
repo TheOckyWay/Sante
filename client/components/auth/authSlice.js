@@ -49,34 +49,34 @@ export const authenticate = createAsyncThunk(
 );
 
 export const editProfile = createAsyncThunk(
-	"auth/profile",
-	async ({ name, email }) => {
-		const token = window.localStorage.getItem(TOKEN);
-		try {
-			if (token) {
-				const { data } = await axios.put(
-					"/auth/profile",
-					{
-						name,
-						email,
-					},
-					{
-						headers: {
-							authorization: token,
-						},
-					}
-				);
-				return data;
-			}
-		} catch (err) {
-			if (err.response.data) {
-				return thunkAPI.rejectWithValue(err.response.data);
-			} else {
-				return "There was an issue with your request.";
-			}
-		}
-	}
-);
+  "auth/profile",
+  async ({ targetChange, activityFactor }) => {
+    const token = window.localStorage.getItem(TOKEN);
+    try {
+      if (token) {
+        const { data } = await axios.put(
+          "/auth/profile",
+          {
+            targetChange,
+            activityFactor,
+          },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        return data;
+      }
+    } catch (err) {
+      if (err.response.data) {
+        return thunkAPI.rejectWithValue(err.response.data);
+      } else {
+        return "There was an issue with your request.";
+      }
+    }
+  }
+)
 
 /*
   SLICE

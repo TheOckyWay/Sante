@@ -32,3 +32,33 @@ router.get('/me', async (req, res, next) => {
     next(ex);
   }
 });
+
+const getToken = async (req, res, next) => {
+  try {
+    const token = req.headers.authorization;
+    const user = await User.findByToken(token);
+    req.user = user;
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+router.put("/profile",getToken, async (req, res, next) => {
+  const userId = req.user.id;
+  try {
+    for (let key in req.body) {
+      if (req.body[key] === "") {
+        delete req.body[key];
+      }
+    }
+    const user = await User.findByPk(userId);
+    const editUser = await user.update(req.body);
+
+    res.json(editUser);
+  } catch (err) {
+    next(err);
+  }
+});
+
