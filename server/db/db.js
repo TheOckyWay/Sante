@@ -5,9 +5,6 @@ require("dotenv").config();
 const databaseName =
   pkg.name + (process.env.NODE_ENV === "test" ? "-test" : "");
 
-const renderDatabase =
-  "postgres://sante_enik_user:4QVCsfjkOVLjdwTxCGvqQl1lA2BEt3j9@dpg-cdtrjr02i3mrfohqdtl0-a.ohio-postgres.render.com/sante_enik";
-
 const config = {
   logging: false,
 };
@@ -25,10 +22,10 @@ if (process.env.DATABASE_URL) {
   };
 }
 
-console.log(renderDatabase);
+console.log(process.env.DATABASE_URL);
 
 const db = new Sequelize(
-  renderDatabase || `postgres://localhost:5432/${databaseName}`,
+  process.env.DATABASE_URL || `postgres://localhost:5432/${databaseName}`,
   config
 );
 module.exports = db;
