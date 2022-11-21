@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { fetchTrackers } from './trackerSlice';
-import SingleTracker from './SingleTracker';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchTrackers } from "./trackerSlice";
+import SingleTracker from "./SingleTracker";
 
 function AllTracker() {
 	const dispatch = useDispatch();

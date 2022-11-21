@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import { addToSingleTracker } from './trackerSlice';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { addToSingleTracker } from "./trackerSlice";
 import {
 	Typography,
 	TextField,
@@ -12,7 +12,7 @@ import {
 	Select,
 	InputLabel,
 	MenuItem,
-} from '@mui/material';
+} from "@mui/material";
 
 function TrackerForm(props) {
 	const dispatch = useDispatch();
@@ -20,40 +20,40 @@ function TrackerForm(props) {
 	const { id } = useParams();
 
 	const [newFood, setNewFood] = useState({
-		foodName: '',
-		calories: '',
-		protein: '',
-		carbs: '',
-		fat: '',
-		courseType: '',
-		water: '',
+		foodName: "",
+		calories: "",
+		protein: "",
+		carbs: "",
+		fat: "",
+		courseType: "",
+		water: "",
 	});
 
 	function handleAddFoodWaterTracker(e) {
 		e.preventDefault();
 		dispatch(addToSingleTracker({ id, newFood }));
 		setNewFood({
-			foodName: '',
-			calories: '',
-			protein: '',
-			carbs: '',
-			fat: '',
-			courseType: '',
-			water: '',
+			foodName: "",
+			calories: "",
+			protein: "",
+			carbs: "",
+			fat: "",
+			courseType: "",
+			water: "",
 		});
 		navigate(`/trackers/${id}`);
 	}
 
 	return (
 		<Container>
-			{props.action === 'addFood' ? (
+			{props.action === "addFood" ? (
 				<form
 					onSubmit={handleAddFoodWaterTracker}
 					style={{
-						display: 'flex',
-						textAlign: 'center',
-						flexDirection: 'column',
-						width: '100%',
+						display: "flex",
+						textAlign: "center",
+						flexDirection: "column",
+						width: "100%",
 					}}
 				>
 					<Typography variant="h3">Add Food</Typography>
@@ -69,10 +69,10 @@ function TrackerForm(props) {
 								});
 							}}
 						>
-							<MenuItem value={'Breakfast'}>Breakfast</MenuItem>
-							<MenuItem value={'Lunch'}>Lunch</MenuItem>
-							<MenuItem value={'Dinner'}>Dinner</MenuItem>
-							<MenuItem value={'Snack'}>Snack</MenuItem>
+							<MenuItem value={"Breakfast"}>Breakfast</MenuItem>
+							<MenuItem value={"Lunch"}>Lunch</MenuItem>
+							<MenuItem value={"Dinner"}>Dinner</MenuItem>
+							<MenuItem value={"Snack"}>Snack</MenuItem>
 						</Select>
 					</FormControl>
 					<TextField
@@ -137,10 +137,10 @@ function TrackerForm(props) {
 					<form
 						onSubmit={handleAddFoodWaterTracker}
 						style={{
-							display: 'flex',
-							textAlign: 'center',
-							flexDirection: 'column',
-							width: '100%',
+							display: "flex",
+							textAlign: "center",
+							flexDirection: "column",
+							width: "100%",
 						}}
 					>
 						<Typography variant="h3">Add Water</Typography>
