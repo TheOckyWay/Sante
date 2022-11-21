@@ -6,20 +6,20 @@ import { fetchSingleTracker } from "../tracker/trackerSlice";
  * COMPONENT
  */
 const Home = (props) => {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
+
 
   const user = useSelector((state) => state.auth.me);
+  const tracker = useSelector((state) => state.tracker.singleTracker);
+
 
   useEffect(() => {
-    dispatch(fetchSingleTracker(1));
+    dispatch(fetchSingleTracker(tracker.id));
   }, [dispatch]);
-
-  const tracker = useSelector((state) => state.tracker.singleTracker);
 
   return (
     <div>
-      {/* added this check since the tracker doesn't exist at this point for now... can remove later*/}
-      {tracker ? (
+      {tracker !== undefined ? (
         <div>
           <h3>Welcome, {user.username}</h3>
           <p>Total Calories: {tracker.totalCalories}</p>
@@ -28,9 +28,15 @@ const Home = (props) => {
           <p>Protein: {tracker.totalProtein}</p>
           <p>Fat: {tracker.totalFat}</p>
         </div>
-      ) : null}
+      ) : (
+        <div>
+          <h3>Welcome, {user.username}</h3>
+          <p>No information to show at the moment</p>
+        </div>
+      )}
     </div>
   );
+
 };
 
 export default Home;
