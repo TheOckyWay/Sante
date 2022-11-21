@@ -12,9 +12,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import FormHelperText from '@mui/material/FormHelperText';
 import Avatar from '@mui/material/Avatar';
-import { deepOrange } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
+import { logout } from "../../app/store";
 
 
 function Profile() {
@@ -36,6 +37,11 @@ function Profile() {
 		dispatch(fetchUser(user.id));
 	}, [dispatch]);
 
+
+	const logoutAndRedirectHome = () => {
+		dispatch(logout());
+		navigate("/login");
+	  };
 
 
 
@@ -111,7 +117,7 @@ function Profile() {
 		>
 
 	
-		<Avatar>{user.firstName[0]}{user.lastName[0]}</Avatar>
+		<Avatar sx={{ bgcolor: blue[900] }}>{user.firstName[0]}{user.lastName[0]}</Avatar>
 		<Typography>{user.firstName} {user.lastName}</Typography>
 		<Typography>{user.email}</Typography>
 
@@ -133,7 +139,7 @@ function Profile() {
 		</Stack>
 		
 
-		<Stack  direction="row" >
+		<Stack  direction="row">
 
 		<FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel>Weight Goal</InputLabel>
@@ -188,6 +194,10 @@ function Profile() {
 		
 		<Mid>Target Calories: {Math.ceil(BMR)}kcal</Mid>
 		<Mid>Target Water: {water}ml</Mid>
+
+		<Button variant="contained" color="error" onClick={logoutAndRedirectHome}>
+              Logout
+            </Button>
 
 
 
