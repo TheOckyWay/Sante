@@ -1,31 +1,52 @@
-const router = require('express').Router();
+const router = require("express").Router();
 const {
-  models: { User },
-} = require('../db');
+  models: { User, Tracker },
+} = require("../db");
 module.exports = router;
 
-router.post('/login', async (req, res, next) => {
+const padTo2Digits = (num) => {
+  return num.toString().padStart(2, 0);
+};
+
+function formatDate(date) {
+  return [
+    date.getFullYear(),
+    padTo2Digits(date.getMonth() + 1),
+    padTo2Digits(date.getDate()),
+  ].join("-");
+}
+
+router.post("/login", async (req, res, next) => {
   try {
+    const user = await User.findByToken(await User.authenticate(req.body));
+
+    await Tracker.findOrCreate({
+      where: {
+        date: formatDate(new Date()),
+        userId: user.id,
+      },
+    });
+
     res.send({ token: await User.authenticate(req.body) });
   } catch (err) {
     next(err);
   }
 });
 
-router.post('/signup', async (req, res, next) => {
+router.post("/signup", async (req, res, next) => {
   try {
     const user = await User.create(req.body);
     res.send({ token: await user.generateToken() });
   } catch (err) {
-    if (err.name === 'SequelizeUniqueConstraintError') {
-      res.status(401).send('User already exists');
+    if (err.name === "SequelizeUniqueConstraintError") {
+      res.status(401).send("User already exists");
     } else {
       next(err);
     }
   }
 });
 
-router.get('/me', async (req, res, next) => {
+router.get("/me", async (req, res, next) => {
   try {
     res.send(await User.findByToken(req.headers.authorization));
   } catch (ex) {
@@ -44,8 +65,7 @@ const getToken = async (req, res, next) => {
   }
 };
 
-
-router.put("/profile",getToken, async (req, res, next) => {
+router.put("/profile", getToken, async (req, res, next) => {
   const userId = req.user.id;
   try {
     for (let key in req.body) {
@@ -61,4 +81,3 @@ router.put("/profile",getToken, async (req, res, next) => {
     next(err);
   }
 });
-
