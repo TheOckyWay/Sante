@@ -1,19 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleTracker } from "../tracker/trackerSlice";
-import {
-	styled,
-	Box,
-	CircularProgress,
-	circularProgressClasses,
-	LinearProgress,
-	linearProgressClasses,
-} from "@mui/material";
+import { Grid, Box, Typography } from "@mui/material";
 
 /**
  * COMPONENT
  */
 const Home = (props) => {
+	// hardcoded target calories: 2,500
 
 	const dispatch = useDispatch();
 
@@ -41,10 +35,21 @@ const Home = (props) => {
 					<p>No information to show at the moment</p>
 				</div>
 			)} */}
-    
+			<Grid container spacing={2}>
+				<Grid item xs={12}>
+					<Box
+						flex
+						sx={{
+              width: 300,
+							height: 300,
+							bgcolor: "primary.main",
+							borderRadius: 15,
+						}}
+					/>
+				</Grid>
+			</Grid>
 		</div>
 	);
 };
 
 export default Home;
-
