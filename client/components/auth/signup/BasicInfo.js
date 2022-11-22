@@ -11,6 +11,7 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 function BasicInfo() {
+	// o: be consistent, in other pages you import useState from React
 	const [values, setValues] = React.useState({
 		password: "",
 		showPassword: false,

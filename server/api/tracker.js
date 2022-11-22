@@ -60,6 +60,7 @@ router.get("/:id", async (req, res, next) => {
         },
         include: [Recipes],
       });
+      // o: remove if this api route works as intended
       console.log(newTracker);
       res.json(newTracker);
     } catch (error) {

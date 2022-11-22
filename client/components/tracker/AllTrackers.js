@@ -16,6 +16,7 @@ function AllTracker() {
 	return (
 		<div>
 			<h1>Trackers</h1>
+			{/* o: you should destructure tracker */}
 			{trackers.map((tracker) => {
 				return (
 					<div key={tracker.id}>

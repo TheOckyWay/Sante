@@ -30,6 +30,7 @@ function Recipes() {
         {/* <Grid item>
           <Typography variant="h1">Recipes</Typography>
         </Grid> */}
+        {/* o: you should destructure recipe */}
         {recipes.map((recipe) => {
           return (
             <Grid item container key={recipe.id} marginTop="20px">

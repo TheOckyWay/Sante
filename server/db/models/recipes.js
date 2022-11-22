@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
 
+// o: models should never be plural
 const Recipes = db.define("recipe", {
   name: {
     type: Sequelize.STRING,

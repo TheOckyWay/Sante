@@ -10,6 +10,8 @@ const Home = (props) => {
 
   const user = useSelector((state) => state.auth.me);
   const tracker = useSelector((state) => state.tracker.singleTracker);
+
+  // o: remove if this component is working at intended
   console.log(tracker);
 
   useEffect(() => {
@@ -18,6 +20,7 @@ const Home = (props) => {
 
   return (
     <div>
+      {/* o: is there ever a point where tracker is actually undefined? ... the default value is {} */}
       {tracker !== undefined ? (
         <div>
           <h3>Welcome, {user.username}</h3>

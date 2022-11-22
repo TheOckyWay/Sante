@@ -15,6 +15,7 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:id", async (req, res, next) => {
   try {
+    // o: check for when you don't find a recipe
     const recipe = await Recipes.findByPk(req.params.id);
     res.json(recipe);
   } catch (error) {

@@ -18,6 +18,7 @@ import Divider from '@mui/material/Divider';
 import { logout } from "../../app/store";
 import { useNavigate } from "react-router-dom";
 
+// o: you should fix your indenting in this file... this is hard to read
 
 function Profile() {
 	const dispatch = useDispatch();
@@ -45,12 +46,16 @@ function Profile() {
 		navigate("/login");
 	  };
 
-
+	// o: the calculations below would be better suited in functions
 
 	//BMR calculations
 	let weight = user.currentWeight / 2.205 //lbs to kg
 	let height = user.currentHeight * 2.54 // inch to cm
+
+	// o: user.age is a property, you do not need to store its value in another
+	// 	variable
 	let Userage = user.age
+	// o: this is never used
 	let sex = user.sex // 'male' or 'female'
 
 	let BMR=0

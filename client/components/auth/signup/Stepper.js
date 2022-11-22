@@ -33,6 +33,7 @@ function StepperPage() {
 		<>
 			<Box sx={{ width: "100%" }}>
 				<Stepper activeStep={activeStep}>
+					{/* o: remove index if not being used */}
 					{steps.map((label, index) => {
 						const stepProps = {};
 						const labelProps = {};
@@ -60,7 +61,9 @@ function StepperPage() {
 				</Box>
 			</Box>
 			<div>
+				{/* o: you can replace this code with => activeStep === 0 && <BasicInfo /> */}
 				{activeStep === 0 ? <BasicInfo /> : ""}
+				{/* o: you can replace this code with => activeStep === 1 && <WeightInfo /> */}
 				{activeStep === 1 ? <WeightInfo /> : ""}
 			</div>
 		</>

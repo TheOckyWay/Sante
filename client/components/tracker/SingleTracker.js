@@ -16,6 +16,7 @@ function SingleTracker() {
 
   return (
     <div>
+      {/* o: you can use tracker && ... here */}
       {/* this check is just because of new stuff will change back to normal later */}
       {tracker ? (
         <div>

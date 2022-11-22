@@ -2,6 +2,7 @@ const router = require('express').Router()
 const { models: { User }} = require('../db')
 module.exports = router
 
+// o: do you use / need this route?
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.findAll({
@@ -13,7 +14,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-
+// o: do you use / need this route?
 router.get("/:userId", async (req, res, next) => {
   try {
     const user = await User.findByPk(req.params.userId, {
