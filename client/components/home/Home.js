@@ -6,15 +6,14 @@ import { fetchSingleTracker } from "../tracker/trackerSlice";
  * COMPONENT
  */
 const Home = (props) => {
-	const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => state.auth.me);
   const tracker = useSelector((state) => state.tracker.singleTracker);
-
+  console.log(tracker);
 
   useEffect(() => {
-    dispatch(fetchSingleTracker(tracker.id));
+    dispatch(fetchSingleTracker(1));
   }, [dispatch]);
 
   return (
@@ -36,7 +35,6 @@ const Home = (props) => {
       )}
     </div>
   );
-
 };
 
 export default Home;

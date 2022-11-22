@@ -17,7 +17,6 @@ function formatDate(date) {
 }
 
 router.get("/", async (req, res, next) => {
-
   const token = req.headers.authorization;
   const user = await User.findByToken(token);
   if (user) {
@@ -38,7 +37,6 @@ router.get("/", async (req, res, next) => {
     } catch (error) {
       next(error);
     }
-
   }
 });
 
@@ -49,12 +47,21 @@ router.get("/:id", async (req, res, next) => {
     try {
       const tracker = await Tracker.findOne({
         where: {
-          date: formatDate(new Date()),
+          id: req.params.id,
           userId: user.id,
         },
         include: [Recipes],
       });
-      res.json(tracker);
+      const newTracker = await Tracker.findOne({
+        where: {
+          date: tracker.date,
+          id: req.params.id,
+          userId: user.id,
+        },
+        include: [Recipes],
+      });
+      console.log(newTracker);
+      res.json(newTracker);
     } catch (error) {
       next(error);
     }
