@@ -12,7 +12,9 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 function BasicInfo() {
 	const [values, setValues] = React.useState({
+		username: "",
 		password: "",
+		email: "",
 		showPassword: false,
 	});
 
@@ -31,6 +33,8 @@ function BasicInfo() {
 		event.preventDefault();
 	};
 
+	console.log(values);
+
 	return (
 		<div>
 			<h1>Welcome!</h1>
@@ -44,8 +48,9 @@ function BasicInfo() {
 					margin="normal"
 					fullWidth
 					id="name"
-					label="Name"
+					label="First Name & Last Name"
 					name="name"
+					onChange={handleChange("name")}
 					// InputLabelProps={{ shrink: true }}
 				/>
 				<TextField
@@ -54,6 +59,8 @@ function BasicInfo() {
 					id="email"
 					label="Email"
 					name="email"
+					onChange={handleChange("email")}
+
 					// InputLabelProps={{ shrink: true }}
 				/>
 				<TextField
@@ -62,6 +69,7 @@ function BasicInfo() {
 					id="username"
 					label="Username"
 					name="username"
+					onChange={handleChange("username")}
 					// InputLabelProps={{ shrink: true }}
 				/>
 				<FormControl sx={{ m: 1 }} variant="outlined" fullWidth={true}>
