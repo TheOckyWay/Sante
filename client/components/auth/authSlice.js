@@ -50,7 +50,7 @@ export const authenticate = createAsyncThunk(
 
 export const editProfile = createAsyncThunk(
   "auth/profile",
-  async ({ targetChange, activityFactor }) => {
+  async ({ targetChange, activityFactor, targetCalories, age, currentWeight, targetWater,currentHeight, startingWeight }) => {
     const token = window.localStorage.getItem(TOKEN);
     try {
       if (token) {
@@ -59,6 +59,12 @@ export const editProfile = createAsyncThunk(
           {
             targetChange,
             activityFactor,
+			targetCalories,
+			age,
+			currentWeight,
+			targetWater,
+			currentHeight,
+			startingWeight
           },
           {
             headers: {
