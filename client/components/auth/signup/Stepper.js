@@ -76,7 +76,7 @@ function StepperPage() {
 			</Box>
 			<div>
 				{activeStep === 0 ? <BasicInfo /> : ""}
-				{activeStep === 1 ? <WeightInfo /> : ""}
+				{activeStep === 1 || activeStep === 2 ? <WeightInfo activeStep={activeStep} /> : ""}
 			</div>
 		</>
 	);

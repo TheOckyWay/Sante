@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import dayjs from "dayjs";
 import {
 	TextField,
 	FormControl,
@@ -15,6 +14,8 @@ import {
 	Radio,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+
+// create user and connect to backend
 
 function BasicInfo() {
 	const [values, setValues] = useState({
