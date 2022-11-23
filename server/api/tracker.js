@@ -60,7 +60,6 @@ router.get("/:id", async (req, res, next) => {
         },
         include: [Recipes],
       });
-      console.log(newTracker);
       res.json(newTracker);
     } catch (error) {
       next(error);
@@ -73,19 +72,22 @@ router.put("/:id", async (req, res, next) => {
   const user = await User.findByToken(token);
   if (user) {
     try {
-      const { id, calories, protein, carbs, fat, water } = req.body.newFood;
+      const { id, calories, protein, carbs, fat, water, foodName } =
+        req.body.newFood;
+      console.log(req.body.newFood);
       const tracker = await Tracker.findByPk(req.params.id, {
         include: { model: Recipes },
       });
+      const newRecipe = await Recipes.findOne({ where: { name: foodName } });
       await recipeTracker.findOrCreate({
-        where: { trackerId: tracker.id, recipeId: id },
+        where: { trackerId: tracker.id, recipeId: id || newRecipe.id },
       });
       await tracker.increment({
         totalCalories: Number(calories),
         totalProtein: Number(protein),
         totalCarbs: Number(carbs),
         totalFat: Number(fat),
-        waterIntake: 0,
+        waterIntake: water,
       });
 
       res.json(tracker);
