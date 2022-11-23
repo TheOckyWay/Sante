@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchTrackers = createAsyncThunk("fetchTrackers", async () => {
-
   const token = localStorage.getItem("token");
   if (token) {
     try {
@@ -28,7 +27,7 @@ export const fetchSingleTracker = createAsyncThunk(
         });
         return data;
       } catch (err) {
-        console.error(err);
+        // console.error(err);
         return err.message;
       }
     }
@@ -52,27 +51,26 @@ export const addToSingleTracker = createAsyncThunk(
       }
     }
   }
-
 );
 
 const trackersSlice = createSlice({
-	name: "trackers",
-	initialState: {
-		allTracker: [],
-		singleTracker: {},
-	},
-	reducers: {},
-	extraReducers: (builder) => {
-		builder.addCase(fetchTrackers.fulfilled, (state, action) => {
-			state.allTracker = action.payload;
-		});
-		builder.addCase(fetchSingleTracker.fulfilled, (state, action) => {
-			state.singleTracker = action.payload;
-		});
-		builder.addCase(addToSingleTracker.fulfilled, (state, action) => {
-			state.singleTracker = action.payload;
-		});
-	},
+  name: "trackers",
+  initialState: {
+    allTracker: [],
+    singleTracker: {},
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchTrackers.fulfilled, (state, action) => {
+      state.allTracker = action.payload;
+    });
+    builder.addCase(fetchSingleTracker.fulfilled, (state, action) => {
+      state.singleTracker = action.payload;
+    });
+    builder.addCase(addToSingleTracker.fulfilled, (state, action) => {
+      state.singleTracker = action.payload;
+    });
+  },
 });
 
 export default trackersSlice.reducer;
