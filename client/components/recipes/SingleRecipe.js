@@ -80,7 +80,6 @@ function SingleRecipe() {
 
   return (
     <Container>
-
       {todayTrackerId ? (
         <Grid container direction="column">
           <Grid item>
@@ -124,7 +123,6 @@ function SingleRecipe() {
                   Add to Tracker
                 </Button>
               </Box>
-
             </Box>
           </Grid>
         </Grid>

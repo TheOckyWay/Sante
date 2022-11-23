@@ -1,23 +1,22 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import { Link, useNavigate} from "react-router-dom";
-import HomeIcon from '@mui/icons-material/Home';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import RestaurantIcon from '@mui/icons-material/Restaurant';
-import PersonIcon from '@mui/icons-material/Person';
-import Button from '@mui/material/Button';
-
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import { Link, useNavigate } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import PersonIcon from "@mui/icons-material/Person";
+import Button from "@mui/material/Button";
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  
+
   const [value, setValue] = React.useState("");
   const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
-    navigate(`/${newValue}`)
+    navigate(`/${newValue}`);
     setValue(newValue);
   };
 
@@ -57,13 +56,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
-
-
-
-
-
-
- 
