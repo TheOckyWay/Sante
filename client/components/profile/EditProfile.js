@@ -54,7 +54,7 @@ const EditProfile = () => {
   const handleHeightsChange = (event) => {
 	setheights(event.target.value)
   };
-  console.log(weight)
+
         let BMR=0
         let water = 0
       let weights = user.currentWeight / 2.205 //lbs to kg
