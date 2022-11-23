@@ -36,16 +36,16 @@ const Home = (props) => {
 				</div>
 			)} */}
 			<Grid container spacing={2}>
-				<Grid item xs={12}>
+				<Grid item xs={12} flex alignItems="center" justifyContent="center">
 					<Box
-						flex
 						sx={{
-              width: 300,
+							alignContent: "center",
+							width: "100%",
 							height: 300,
 							bgcolor: "primary.main",
 							borderRadius: 15,
 						}}
-					/>
+					></Box>
 				</Grid>
 			</Grid>
 		</div>

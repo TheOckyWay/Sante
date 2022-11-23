@@ -1,7 +1,9 @@
 import React from "react";
 
 function WeightInfo() {
-	return <div>WeightInfo</div>;
+	return <div>
+		
+	</div>;
 }
 
 export default WeightInfo;

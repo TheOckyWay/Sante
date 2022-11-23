@@ -31,7 +31,22 @@ function StepperPage() {
 
 	return (
 		<>
-			<Box sx={{ width: "100%" }}>
+			<Box
+				sx={{
+					width: "100%",
+					display: "flex",
+					flexDirection: "column",
+					gap: 3,
+					overflow: "auto hidden",
+					"&::-webkit-scrollbar": { height: 10, WebkitAppearance: "none" },
+					"&::-webkit-scrollbar-thumb": {
+						borderRadius: 8,
+						border: "2px solid",
+						borderColor: "#E7EBF0",
+						backgroundColor: "rgba(0 0 0 / 0.5)",
+					},
+				}}
+			>
 				<Stepper activeStep={activeStep}>
 					{steps.map((label, index) => {
 						const stepProps = {};
