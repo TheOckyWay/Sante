@@ -5,6 +5,7 @@ import { fetchSingleRecipe } from "./recipeSlice";
 import {
   fetchSingleTracker,
   addToSingleTracker,
+  fetchTrackers,
 } from "../tracker/trackerSlice";
 import {
   Container,
@@ -36,6 +37,25 @@ function SingleRecipe() {
   } = recipe;
 
   const tracker = useSelector((state) => state.tracker.singleTracker);
+  const trackers = useSelector((state) => state.tracker.allTracker);
+
+  const padTo2Digits = (num) => {
+    return num.toString().padStart(2, 0);
+  };
+
+  function formatDate(date) {
+    return [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+    ].join("-");
+  }
+
+  const todayTracker = trackers.filter(
+    (tracker) => tracker.date === formatDate(new Date())
+  );
+
+  const todayTrackerId = todayTracker[0];
 
   const addToTrackerButton = async (id) => {
     const newFood = {
@@ -51,76 +71,66 @@ function SingleRecipe() {
   };
 
   useEffect(() => {
+    dispatch(fetchTrackers());
     dispatch(fetchSingleRecipe(id));
-    dispatch(fetchSingleTracker(tracker.id));
+    if (todayTrackerId) {
+      dispatch(fetchSingleTracker(todayTrackerId.id));
+    }
   }, []);
 
   return (
     <Container>
-      <Grid container direction="column">
-        <Grid item display="flex" flexDirection="column">
-          <Typography variant="h4" textAlign="center">
-            {name}
-          </Typography>
-          {/* button temporarily here */}
-          <Button
-            onClick={() => addToTrackerButton(tracker.id)}
-            variant="contained"
-            sx={{ width: "45", margin: "0 auto" }}
-          >
-            Add to Tracker
-          </Button>
-        </Grid>
-        <Grid
-          item
-          container
-          sx={{ width: "50vw", height: "50vh", alignSelf: "center" }}
-          xs={6}
-          sm={6}
-          md={6}
-          lg={6}
-          xl={6}
-        >
-          <Box
-            component="img"
-            src={imageUrl}
-            sx={{
-              borderRadius: "15%",
-              width: "100%",
-              height: "100%",
-              textAlign: "center",
-            }}
-          />
-        </Grid>
-        <Grid item>
-          <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap={2}>
-            <Box gridColumn="span 2" justifyContent="space-around">
+
+      {todayTrackerId ? (
+        <Grid container direction="column">
+          <Grid item>
+            <Typography variant="h4" textAlign="center">
+              {name}
+            </Typography>
+            <img
+              src={imageUrl}
+              style={{ borderRadius: "15%" }}
+              width="100%"
+              height="100%"
+            />
+          </Grid>
+          <Grid item>
+            <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap={2}>
               <Box
-                variant="paper"
+                gridColumn="span 2"
                 display="flex"
-                direction="row"
                 justifyContent="space-around"
-                marginTop="20px"
               >
-                <Typography variant="h6">
+                <Typography variant="h5">
                   Cooking Time: {cookTime} Minutes
                 </Typography>
-                <Typography variant="h6">Calories: {calories}</Typography>
+                <Typography variant="h5">Calories: {calories}</Typography>
               </Box>
+              <Box
+                gridColumn="span 2"
+                textAlign="center"
+                flexDirection="column"
+              >
+                <Typography variant="h5">Diet: {diet}</Typography>
+                <Typography variant="h5">Protein: {protein}</Typography>
+                <Typography variant="h5">Carbohydrates: {carbs}</Typography>
+                <Typography variant="h5">Fat: {fat}</Typography>
+                <Typography variant="h5">Course Type: {courseType}</Typography>
+                <Typography variant="h5">Cuisine: {cuisine}</Typography>
+                <Button
+                  onClick={() => addToTrackerButton(tracker.id)}
+                  variant="contained"
+                >
+                  Add to Tracker
+                </Button>
+              </Box>
+
             </Box>
-            <Box gridColumn="span 2" textAlign="center" flexDirection="column">
-              <Card variant="outlined">
-                <Typography variant="h6">Diet: {diet}</Typography>
-                <Typography variant="h6">Protein: {protein}</Typography>
-                <Typography variant="h6">Carbohydrates: {carbs}</Typography>
-                <Typography variant="h6">Fats: {fat}</Typography>
-                <Typography variant="h6">Course Type: {courseType}</Typography>
-                <Typography variant="h6">Cuisine: {cuisine}</Typography>
-              </Card>
-            </Box>
-          </Box>
+          </Grid>
         </Grid>
-      </Grid>
+      ) : (
+        <h1>Something</h1>
+      )}
     </Container>
   );
 }
