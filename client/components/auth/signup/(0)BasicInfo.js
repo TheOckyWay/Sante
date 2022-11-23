@@ -16,6 +16,8 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 // create user and connect to backend
+// username and password close together, make everything like that
+// try to not make them full width - too big
 
 function BasicInfo() {
 	const [values, setValues] = useState({

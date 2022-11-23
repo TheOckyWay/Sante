@@ -7,8 +7,10 @@ import {
 	Button,
 	Typography,
 } from "@mui/material";
-import BasicInfo from "./BasicInfo";
-import WeightInfo from "./WeightInfo";
+import BasicInfo from "./(0)BasicInfo";
+import WeightInfo from "./(1)WeightInfo";
+import Exercise from "./(3)Exercise";
+import TargetMacros from "./(4)TargetMacros";
 
 function StepperPage() {
 	const [activeStep, setActiveStep] = useState(0);
@@ -76,7 +78,13 @@ function StepperPage() {
 			</Box>
 			<div>
 				{activeStep === 0 ? <BasicInfo /> : ""}
-				{activeStep === 1 || activeStep === 2 ? <WeightInfo activeStep={activeStep} /> : ""}
+				{activeStep === 1 || activeStep === 2 ? (
+					<WeightInfo activeStep={activeStep} />
+				) : (
+					""
+				)}
+				{activeStep === 3 ? <Exercise /> : ""}
+				{activeStep === 4 ? <TargetMacros /> : ""}
 			</div>
 		</>
 	);

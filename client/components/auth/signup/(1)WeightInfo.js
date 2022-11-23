@@ -8,8 +8,8 @@ import {
 	FormControl,
 	InputAdornment,
 } from "@mui/material";
-import LoseWeight from "./WeightLossOptions/LoseWeight";
-import GainWeight from "./WeightLossOptions/GainWeight";
+import LoseWeight from "./(2)WeightLossOptions/LoseWeight";
+import GainWeight from "./(2)WeightLossOptions/GainWeight";
 
 // update the user created in basinInfo component
 // User.update({
