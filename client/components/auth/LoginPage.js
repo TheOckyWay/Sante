@@ -11,6 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { authenticate } from "../../app/store";
 
+
 // InputLabelProps={{ shrink: true }} used to make text appear on top
 // 	- If the code above is not present, the text inside is directly on the edge of the outline
 
