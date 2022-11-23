@@ -7,7 +7,15 @@ import {
   addToSingleTracker,
   fetchTrackers,
 } from "../tracker/trackerSlice";
-import { Container, Typography, Grid, Card, Button, Box } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Grid,
+  Card,
+  Button,
+  Box,
+  CardContent,
+} from "@mui/material";
 
 function SingleRecipe() {
   const dispatch = useDispatch();
@@ -28,7 +36,6 @@ function SingleRecipe() {
     cuisine,
   } = recipe;
 
-  // need to add this functionality later
   const tracker = useSelector((state) => state.tracker.singleTracker);
   const trackers = useSelector((state) => state.tracker.allTracker);
 
@@ -73,6 +80,7 @@ function SingleRecipe() {
 
   return (
     <Container>
+
       {todayTrackerId ? (
         <Grid container direction="column">
           <Grid item>
@@ -116,6 +124,7 @@ function SingleRecipe() {
                   Add to Tracker
                 </Button>
               </Box>
+
             </Box>
           </Grid>
         </Grid>

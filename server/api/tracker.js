@@ -88,8 +88,8 @@ router.put("/:id", async (req, res, next) => {
         totalCarbs: Number(carbs),
         totalFat: Number(fat),
         waterIntake: water,
-      });
 
+      });
       res.json(tracker);
     } catch (error) {
       next(error);

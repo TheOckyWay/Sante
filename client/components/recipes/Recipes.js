@@ -16,14 +16,13 @@ function Recipes() {
 
   const recipes = useSelector((state) => state.recipes.allRecipes);
 
-
   useEffect(() => {
     dispatch(fetchRecipes());
   }, []);
 
   return (
     <Container>
-      <Typography variant="h1" textAlign="center">
+      <Typography variant="h4" textAlign="center">
         Recipes
       </Typography>
       <Grid container>
@@ -32,36 +31,53 @@ function Recipes() {
         </Grid> */}
         {recipes.map((recipe) => {
           return (
-            <Grid item container key={recipe.id} marginTop="20px">
-              <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                <BreakpointedImg
-                  style={{ borderRadius: "15%" }}
-                  src={recipe.imageUrl}
-                  width="100%"
-                  height="100%"
-                />
+            <Card
+              key={recipe.id}
+              sx={{ m: 2 }}
+              variant="outlined"
+              borderradius="15%"
+            >
+              <Grid item container key={recipe.id} marginTop="20px">
+                <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <BreakpointedImg
+                    style={{ borderRadius: "15%" }}
+                    src={recipe.imageUrl}
+                    width="100%"
+                    height="100%"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={6}
+                  sm={6}
+                  md={6}
+                  lg={6}
+                  xl={6}
+                  textAlign="center"
+                >
+                  <Link to={`/recipes/${recipe.id}`}>
+                    <h2>{recipe.name}</h2>
+                  </Link>
+                  <Typography variant="h5">
+                    Cooking Time: {recipe.cookTime} Minutes
+                  </Typography>
+                  <Typography variant="h5">
+                    Calories: {recipe.calories}
+                  </Typography>
+                  <Typography variant="h5">Diet: {recipe.diet}</Typography>
+                  <Typography variant="h5">
+                    Protein: {recipe.protein}
+                  </Typography>
+                  <Typography variant="h5">
+                    Carbohydrates: {recipe.carbs}
+                  </Typography>
+                  <Typography variant="h5">Fat: {recipe.fat}</Typography>
+                  <Typography variant="h5">
+                    Course Type: {recipe.courseType}
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid item xs={6} sm={6} md={6} lg={6} xl={6} textAlign="center">
-                <Link to={`/recipes/${recipe.id}`}>
-                  <h2>{recipe.name}</h2>
-                </Link>
-                <Typography variant="h5">
-                  Cooking Time: {recipe.cookTime} Minutes
-                </Typography>
-                <Typography variant="h5">
-                  Calories: {recipe.calories}
-                </Typography>
-                <Typography variant="h5">Diet: {recipe.diet}</Typography>
-                <Typography variant="h5">Protein: {recipe.protein}</Typography>
-                <Typography variant="h5">
-                  Carbohydrates: {recipe.carbs}
-                </Typography>
-                <Typography variant="h5">Fat: {recipe.fat}</Typography>
-                <Typography variant="h5">
-                  Course Type: {recipe.courseType}
-                </Typography>
-              </Grid>
-            </Grid>
+            </Card>
           );
         })}
       </Grid>
