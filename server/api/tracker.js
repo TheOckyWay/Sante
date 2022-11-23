@@ -60,7 +60,6 @@ router.get("/:id", async (req, res, next) => {
         },
         include: [Recipes],
       });
-      console.log(newTracker);
       res.json(newTracker);
     } catch (error) {
       next(error);
@@ -85,9 +84,8 @@ router.put("/:id", async (req, res, next) => {
         totalProtein: Number(protein),
         totalCarbs: Number(carbs),
         totalFat: Number(fat),
-        waterIntake: 0,
+        waterIntake: Number(water),
       });
-
       res.json(tracker);
     } catch (error) {
       next(error);
