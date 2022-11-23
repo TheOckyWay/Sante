@@ -21,20 +21,11 @@ const Home = (props) => {
 
   useEffect(() =>{
     dispatch(fetchTrackers())
-
-    if (trackers.length){
-      dispatch(fetchSingleTracker(tracker.id))
-    }
    }, []);
-
-  
-   
-  
-
-  const {totalCalories, waterIntake, totalCarbs, totalProtein, totalFat, date} = useSelector((state) => state.tracker.singleTracker) 
 
     
 if (trackers.length && tracker){
+  const {totalCalories, waterIntake, totalCarbs, totalProtein, totalFat, date} = tracker
   return (
     <div>
     <Stack direction="column"
