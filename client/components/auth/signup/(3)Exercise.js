@@ -6,6 +6,7 @@ import {
 	RadioGroup,
 	FormControlLabel,
 	Radio,
+	Link,
 } from "@mui/material";
 
 function Exercise() {
@@ -64,6 +65,11 @@ function Exercise() {
 					</FormControl>
 				</Grid>
 				<Grid item xs={4} />
+				<Grid item>
+					<Link href="/login" variant="body2">
+						{"Have an account? Log In"}
+					</Link>
+				</Grid>
 			</Grid>
 		</div>
 	);

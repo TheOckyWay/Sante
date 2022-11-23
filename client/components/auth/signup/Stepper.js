@@ -56,7 +56,7 @@ function StepperPage() {
 
 						return (
 							<Step key={label} {...stepProps}>
-								<StepLabel {...labelProps}>{label}</StepLabel>
+								<StepLabel {...labelProps} />
 							</Step>
 						);
 					})}
