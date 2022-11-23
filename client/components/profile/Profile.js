@@ -194,7 +194,7 @@ function Profile() {
 		</Stack>
 		
 		
-		<Mid>Target Calories: {Math.ceil(BMR)}kcal</Mid>
+		<Mid>Target Calories: {Math.ceil(BMR)}cal</Mid>
 		<Mid>Target Water: {water}ml</Mid>
 
 		<Button variant="contained" color="error" onClick={logoutAndRedirectHome}>
