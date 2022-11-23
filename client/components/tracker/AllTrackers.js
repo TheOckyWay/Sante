@@ -24,17 +24,21 @@ function AllTracker() {
 
   return (
     <Container>
-      <Typography variant="h4" textAlign="center">
+      <Typography variant="h4" textAlign="center" color="#000">
         Trackers
       </Typography>
       <Stack textAlign="center">
         {trackers.map((tracker) => {
           return (
-            <Card key={tracker.id} variant="outlined" sx={{ m: 2 }}>
+            <Card
+              key={tracker.id}
+              variant="outlined"
+              sx={{ m: 2, bgcolor: "#f5f5f5", border: "1px solid #f5f5f5" }}
+            >
               <Link to={`/trackers/${tracker.id}`}>
-                <h2>{`${tracker.date}`}</h2>
+                <h2 className="linkColor">{`${tracker.date}`}</h2>
               </Link>
-              <Typography variant="h5">
+              <Typography variant="h5" color="#000">
                 Total Daily Calories: {tracker.totalCalories}
               </Typography>
             </Card>

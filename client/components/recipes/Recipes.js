@@ -15,6 +15,7 @@ function Recipes() {
   }));
 
   const recipes = useSelector((state) => state.recipes.allRecipes);
+  const updatedRecipes = recipes.filter((recipe) => recipe.name.length > 1);
 
   useEffect(() => {
     dispatch(fetchRecipes());
@@ -22,18 +23,18 @@ function Recipes() {
 
   return (
     <Container>
-      <Typography variant="h4" textAlign="center">
+      <Typography variant="h4" textAlign="center" color="#000">
         Recipes
       </Typography>
       <Grid container>
         {/* <Grid item>
           <Typography variant="h1">Recipes</Typography>
         </Grid> */}
-        {recipes.map((recipe) => {
+        {updatedRecipes.map((recipe) => {
           return (
             <Card
               key={recipe.id}
-              sx={{ m: 2 }}
+              sx={{ m: 2, bgcolor: "#f5f5f5", border: "1px solid #f5f5f5" }}
               variant="outlined"
               borderradius="15%"
             >
@@ -53,26 +54,31 @@ function Recipes() {
                   md={6}
                   lg={6}
                   xl={6}
-                  textAlign="center"
+                  textAlign="left"
+                  paddingLeft={10}
                 >
                   <Link to={`/recipes/${recipe.id}`}>
-                    <h2>{recipe.name}</h2>
+                    <h2 className="linkColor">{recipe.name}</h2>
                   </Link>
-                  <Typography variant="h5">
+                  <Typography variant="h5" color="#000">
                     Cooking Time: {recipe.cookTime} Minutes
                   </Typography>
-                  <Typography variant="h5">
+                  <Typography variant="h5" color="#000">
                     Calories: {recipe.calories}
                   </Typography>
-                  <Typography variant="h5">Diet: {recipe.diet}</Typography>
-                  <Typography variant="h5">
+                  <Typography variant="h5" color="#000">
+                    Diet: {recipe.diet}
+                  </Typography>
+                  <Typography variant="h5" color="#000">
                     Protein: {recipe.protein}
                   </Typography>
-                  <Typography variant="h5">
+                  <Typography variant="h5" color="#000">
                     Carbohydrates: {recipe.carbs}
                   </Typography>
-                  <Typography variant="h5">Fat: {recipe.fat}</Typography>
-                  <Typography variant="h5">
+                  <Typography variant="h5" color="#000">
+                    Fat: {recipe.fat}
+                  </Typography>
+                  <Typography variant="h5" color="#000">
                     Course Type: {recipe.courseType}
                   </Typography>
                 </Grid>

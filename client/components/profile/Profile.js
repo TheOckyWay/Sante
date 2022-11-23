@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Stack, Typography } from '@mui/material';
-import { fetchUser } from './profileSlice';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Stack, Typography } from "@mui/material";
+import { fetchUser } from "./profileSlice";
 import { editProfile, me } from "../auth/authSlice";
+
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
@@ -17,12 +18,13 @@ import Avatar from '@mui/material/Avatar';
 import { blue } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
+
 import { logout } from "../../app/store";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-
 function Profile() {
+
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const user = useSelector((state) => state.auth.me);
@@ -178,6 +180,7 @@ function Profile() {
 		</Stack>
 		</div>
 	);
+
 }
 
 export default Profile;

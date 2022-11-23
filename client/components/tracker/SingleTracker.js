@@ -21,6 +21,15 @@ function SingleTracker() {
 
   const tracker = useSelector((state) => state.tracker.singleTracker);
 
+  const {
+    totalCalories,
+    totalCarbs,
+    totalFat,
+    totalProtein,
+    date,
+    waterIntake,
+  } = tracker;
+
   useEffect(() => {
     dispatch(fetchSingleTracker(id));
   }, []);
@@ -31,21 +40,27 @@ function SingleTracker() {
         <Grid container>
           <Grid item container>
             <Grid item container textAlign="center" direction="column">
-              <Card variant="outlined" sx={{ m: 2 }}>
-                <Typography variant="h5">Tracker ID: {tracker.id}</Typography>
-                <Typography variant="h5">Date: {tracker.date}</Typography>
-                <Typography variant="h5">
-                  Daily Calories: {tracker.totalCalories}
+              <Card
+                variant="outlined"
+                sx={{ m: 2, bgcolor: "#f5f5f5", border: "1px solid #f5f5f5" }}
+              >
+                <Typography variant="h5" color="#000">
+                  Date: {date}
                 </Typography>
-                <Typography variant="h5">
-                  Protein: {tracker.totalProtein}
+                <Typography variant="h5" color="#000">
+                  Daily Calories: {totalCalories}
                 </Typography>
-                <Typography variant="h5">
-                  Carbs: {tracker.totalCarbs}
+                <Typography variant="h5" color="#000">
+                  Protein: {totalProtein}
                 </Typography>
-                <Typography variant="h5">Fat: {tracker.totalFat}</Typography>
-                <Typography variant="h5">
-                  Daily Calories: {tracker.totalCalories}
+                <Typography variant="h5" color="#000">
+                  Carbs: {totalCarbs}
+                </Typography>
+                <Typography variant="h5" color="#000">
+                  Fat: {totalFat}
+                </Typography>
+                <Typography variant="h5" color="#000">
+                  Water: {waterIntake}
                 </Typography>
               </Card>
             </Grid>
