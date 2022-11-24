@@ -22,51 +22,35 @@ const Navbar = () => {
 
   return (
     <div>
-      {isLoggedIn ? (
-        <BottomNavigation
-          sx={{
-            bgcolor: "#f5f5f5",
-            width: "100%",
-            position: "fixed",
-            bottom: "0",
-            left: "0",
-            marginTop: "30px",
-            border: 2,
-            borderColor: "#c5c6d0",
-          }}
-          value={value}
-          onChange={handleChange}
-        >
-          <BottomNavigationAction
-            label="Home"
-            value="home"
-            icon={<HomeIcon />}
-            sx={{ color: "#4361ee" }}
-          />
-          <BottomNavigationAction
-            label="Tracker"
-            value="trackers"
-            icon={<FormatListBulletedIcon />}
-            sx={{ color: "#4361ee" }}
-          />
-          <BottomNavigationAction
-            label="Recipes"
-            value="recipes"
-            icon={<RestaurantIcon />}
-            sx={{ color: "#4361ee" }}
-          />
-          <BottomNavigationAction
-            label="Profile"
-            value="profile"
-            icon={<PersonIcon />}
-            sx={{ color: "#4361ee" }}
-          />
-        </BottomNavigation>
-      ) : (
-        <div>
-          <h1></h1>
-        </div>
-      )}
+      
+        {isLoggedIn ? (
+     <BottomNavigation sx={{ width: '100%', position: 'fixed', bottom: '0',left: '0' ,marginTop: '30px' }} value={value} onChange={handleChange}>
+     <BottomNavigationAction
+        label="Home"
+        value="home"
+        icon={<HomeIcon />}
+      />
+      <BottomNavigationAction
+        label="Tracker"
+        value="trackers"
+        icon={<FormatListBulletedIcon />}
+      />
+      <BottomNavigationAction
+        label="Recipes"
+        value="recipes"
+        icon={<RestaurantIcon />}
+      />
+      <BottomNavigationAction
+        label="Profile"
+        value="profile"
+        icon={<PersonIcon />}
+      />
+          </BottomNavigation>
+        ) : (
+          <div>
+          </div>
+        )}
+      
     </div>
   );
 };

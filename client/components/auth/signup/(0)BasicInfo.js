@@ -12,6 +12,8 @@ import {
 	FormLabel,
 	RadioGroup,
 	Radio,
+	Link,
+	Typography,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
@@ -48,7 +50,9 @@ function BasicInfo() {
 
 	return (
 		<div margin="auto">
-			<h1>Welcome!</h1>
+			<Typography alignItems="center" variant="h3">
+				Welcome!
+			</Typography>
 			<Box
 				sx={{
 					width: "auto",
@@ -119,7 +123,7 @@ function BasicInfo() {
 						</FormControl>
 					</Grid>
 
-					<Grid item xs={2}>
+					<Grid item xs={4}>
 						<TextField
 							margin="normal"
 							id="age"
@@ -128,11 +132,10 @@ function BasicInfo() {
 							// InputLabelProps={{ shrink: true }}
 						/>
 					</Grid>
-					<Grid item xs={10} />
+					<Grid item xs />
 
-					<Grid item xs={2} />
-					<Grid item xs={8}>
-						<FormControl>
+					<Grid item xs={12}>
+						<FormControl justifyContent="center">
 							<FormLabel id="gender-radio-buttons-group">Sex</FormLabel>
 							<RadioGroup
 								aria-labelledby="gender-radio-buttons-group"
@@ -142,19 +145,11 @@ function BasicInfo() {
 								onChange={handleSexChange}
 							>
 								<FormControlLabel
-									sx={{
-										marginLeft: 8,
-										marginRight: 8,
-									}}
 									value="female"
 									control={<Radio />}
 									label="Female"
 								/>
 								<FormControlLabel
-									sx={{
-										marginLeft: 8,
-										marginRight: 8,
-									}}
 									value="male"
 									control={<Radio />}
 									label="Male"
@@ -162,7 +157,11 @@ function BasicInfo() {
 							</RadioGroup>
 						</FormControl>
 					</Grid>
-					<Grid item sx={2} />
+					<Grid item>
+						<Link href="/login" variant="body2">
+							{"Have an account? Log In"}
+						</Link>
+					</Grid>
 				</Grid>
 			</Box>
 		</div>

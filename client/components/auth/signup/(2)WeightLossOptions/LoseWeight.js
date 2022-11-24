@@ -6,6 +6,7 @@ import {
 	RadioGroup,
 	FormControlLabel,
 	Radio,
+	Link,
 } from "@mui/material";
 
 function LoseWeight() {
@@ -59,6 +60,11 @@ function LoseWeight() {
 					</FormControl>
 				</Grid>
 				<Grid item xs={5} />
+				<Grid item>
+					<Link href="/login" variant="body2">
+						{"Have an account? Log In"}
+					</Link>
+				</Grid>
 			</Grid>
 		</div>
 	);

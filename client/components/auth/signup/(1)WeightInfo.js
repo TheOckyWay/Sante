@@ -7,6 +7,7 @@ import {
 	OutlinedInput,
 	FormControl,
 	InputAdornment,
+	Link,
 } from "@mui/material";
 import LoseWeight from "./(2)WeightLossOptions/LoseWeight";
 import GainWeight from "./(2)WeightLossOptions/GainWeight";
@@ -101,6 +102,11 @@ function WeightInfo({ activeStep }) {
 						</Box>
 					</Grid>
 					<Grid item xs={4} />
+					<Grid item>
+						<Link href="/login" variant="body2">
+							{"Have an account? Log In"}
+						</Link>
+					</Grid>
 				</Grid>
 			</div>
 		);

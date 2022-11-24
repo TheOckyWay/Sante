@@ -6,6 +6,7 @@ import {
 	FormControl,
 	OutlinedInput,
 	InputAdornment,
+	Link,
 } from "@mui/material";
 
 function TargetMacros() {
@@ -34,7 +35,7 @@ function TargetMacros() {
 				<Grid item xs={4}>
 					<Box
 						sx={{
-							backgroundColor: "primary.dark",
+							border: "2px solid",
 							borderRadius: 4,
 							height: 75,
 							width: 500,
@@ -85,7 +86,7 @@ function TargetMacros() {
 
 				<Grid item xs={4} />
 				<Grid item xs={4}>
-					<FormControl sx={{ marginLeft: 5,  width: "15ch" }} variant="outlined">
+					<FormControl sx={{ width: "15ch" }} variant="outlined">
 						<Typography variant="subtitle1">Target Fat:</Typography>
 						<OutlinedInput
 							id="outlined-adornment-weight"
@@ -114,6 +115,11 @@ function TargetMacros() {
 							}}
 						/>
 					</FormControl>
+					<Grid item>
+						<Link href="/login" variant="body2">
+							{"Have an account? Log In"}
+						</Link>
+					</Grid>
 				</Grid>
 				<Grid item xs={4} />
 			</Grid>
