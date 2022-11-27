@@ -20,6 +20,7 @@ function SingleTracker() {
   const { id } = useParams();
 
   const tracker = useSelector((state) => state.tracker.singleTracker);
+  console.log(tracker);
 
   const {
     totalCalories,

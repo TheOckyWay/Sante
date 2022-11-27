@@ -87,8 +87,7 @@ router.put("/:id", async (req, res, next) => {
         totalProtein: Number(protein),
         totalCarbs: Number(carbs),
         totalFat: Number(fat),
-        waterIntake: water,
-
+        waterIntake: Number(water) || 0,
       });
       res.json(tracker);
     } catch (error) {
