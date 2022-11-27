@@ -30,7 +30,7 @@ const Recipes = db.define("recipe", {
     type: Sequelize.STRING,
   },
   imageUrl: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     defaultValue:
       "https://www.pngkey.com/png/detail/233-2332677_image-500580-placeholder-transparent.png",
   },
