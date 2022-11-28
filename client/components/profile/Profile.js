@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Stack, Typography } from "@mui/material";
 import { fetchUser } from "./profileSlice";
 import { editProfile, me } from "../auth/authSlice";
-
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
@@ -79,6 +78,8 @@ function Profile() {
 		}else if(Userage>19 && user.sex === 'male'){
 			water = 3700
 		}
+
+		return Math.ceil(BMR)
 	}
 	useEffect(() => {
 		dispatch(fetchUser(user.id));
@@ -105,8 +106,8 @@ function Profile() {
 		...theme.typography.button,
 		backgroundColor: theme.palette.background.paper,
 		padding: theme.spacing(1),
-		background: 'linear-gradient(to right, rgba(161,196,253,0.45), rgba(194,233,251,0.45))',
-		boxShadow: '0 3px 5px 2px rgba(48,207,208,0.5)',
+		// background: 'linear-gradient(to right, rgba(161,196,253,0.45), rgba(194,233,251,0.45))',
+		// boxShadow: '0 3px 5px 2px rgba(5,0,253,0.48)',
 		width: '50%',
 		height: '50',
 		textAlign: 'center',
@@ -119,44 +120,132 @@ function Profile() {
 		direction="column"
 		justifyContent="space-evenly"
 		alignItems="center"
-		spacing={3}
+		spacing={2.5}
 		>
-
+		<Stack>
 		<Stack justifyContent="space-evenly" direction="row" spacing={1} divider={<Divider orientation="vertical" flexItem/>}>
 		<Avatar sx={{ bgcolor: blue[900] }}>{user.firstName[0]}{user.lastName[0]}</Avatar>
-		
-		
 		</Stack>
+		<Stack alignItems="center">
 		<Typography>{user.firstName} {user.lastName}</Typography>
 		<Typography>{user.email}</Typography>
+		</Stack>
+		</Stack>
 		
-		<Stack direction="row" 
-		divider={<Divider orientation="vertical" flexItem />}
-		spacing={.5}>
+		
+		<Stack direction="column" spacing={5}>
+		<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={.5}>
+		<TextField
+          label="Username"
+          defaultValue={user.username}
+		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
+        />
 
-		
-		<Mid>Userame: {user.username} </Mid> 
-		<Mid>Current Age: {user.age} </Mid> 
-		<Mid>Height: {user.currentHeight}inches</Mid>
-		<Mid>Starting Weight: {user.startingWeight}lbs</Mid>
+		<TextField
+          label="Age"
+          defaultValue={user.age}
+		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
+        />
 		</Stack>
-		
-	
 
-		<Stack direction="row">
-		<Mid>Weight Goal:  {user.targetChange}</Mid>
-		<Mid>Activity Factor: {user.activityFactor}</Mid>
+		<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={.5}>
+			<TextField
+          label="Current Height"
+          defaultValue={user.currentHeight + 'inches'}
+		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
+        />
+
+		<TextField
+          label="Starting Weight"
+          defaultValue={user.startingWeight + 'lbs'}
+		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
+        />
+		</Stack>
+
+		<Stack direction="row" spacing={.5} divider={<Divider orientation="vertical" flexItem/>}>
+
+		<TextField
+          label="Weight Goal"
+          defaultValue={user.targetChange}
+		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
+        />
+
+		<TextField
+          label="Activity Level"
+          defaultValue={user.activityFactor}
+		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
+        />
 		</Stack>
 	
-		
-		<Stack direction="row">
-		<Mid>Current Weight: {user.currentWeight}lbs</Mid>
-		<Mid>Target Weight: {user.targetWeight}lbs</Mid>
+		<Stack direction="row"  spacing={.5} divider={<Divider orientation="vertical" flexItem/>}>
+		<TextField
+          label="Current Weight"
+          defaultValue={user.currentWeight + 'lbs'}
+		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
+        />
+
+		<TextField
+          label="Target Weight"
+          defaultValue={user.targetWeight + 'lbs'}
+		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
+        />
 		</Stack>
 		
-		
-		<Mid>Target Calories: {user.targetCalories}cal</Mid>
-		<Mid>Target Water: {user.targetWater}ml</Mid>
+		<Stack direction="row"  spacing={.5} divider={<Divider orientation="vertical" flexItem/>}>
+		<TextField
+          label="Target Calories"
+          defaultValue={user.targetCalories? user.targetCalories + 'cal' : bmrAndWaterCalc() + 'cal'}
+		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
+        />
+
+		<TextField
+          label="Target Water"
+          defaultValue={user.targetWater + 'ml'}
+		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
+        />
+		</Stack>
+
+		</Stack>
 
 	<Stack direction='row'>
 		<Button variant="contained" color="error" onClick={logoutAndRedirectHome}>
@@ -165,12 +254,7 @@ function Profile() {
 
 		<Button variant="contained" color="success" onClick={editprofile}>
               Edit Profile
-        </Button>
-
-
-		
-		
-		
+        </Button>		
 	</Stack>
 
 
