@@ -1,27 +1,22 @@
 import React, { useState } from "react";
-import {
-	Box,
-	Stepper,
-	Step,
-	StepLabel,
-	Button,
-	Typography,
-} from "@mui/material";
+import { Box, Stepper, Step, StepLabel, Button } from "@mui/material";
 import BasicInfo from "./(0)BasicInfo";
 import WeightInfo from "./(1)WeightInfo";
 import Exercise from "./(3)Exercise";
 import TargetMacros from "./(4)TargetMacros";
+import SignUp from "./SignUp";
 
 function StepperPage() {
 	const [activeStep, setActiveStep] = useState(0);
 
-	const handleNext = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep + 1);
-	};
+	// const handleNext = () => {
+	// 	setActiveStep((prevActiveStep) => prevActiveStep + 1);
 
-	const handleBack = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep - 1);
-	};
+	// };
+
+	// const handleBack = () => {
+	// 	setActiveStep((prevActiveStep) => prevActiveStep - 1);
+	// };
 
 	const steps = [
 		"Basic Info",
@@ -32,10 +27,11 @@ function StepperPage() {
 	];
 
 	return (
-		<>
+		<div id="stepper">
 			<Box
 				sx={{
 					width: "100%",
+					mb: 3,
 					display: "flex",
 					flexDirection: "column",
 					gap: 3,
@@ -61,7 +57,7 @@ function StepperPage() {
 						);
 					})}
 				</Stepper>
-				<Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+				{/* <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
 					<Button
 						color="inherit"
 						disabled={activeStep === 0}
@@ -74,19 +70,17 @@ function StepperPage() {
 					<Button onClick={handleNext}>
 						{activeStep === steps.length - 1 ? "Finish" : "Next"}
 					</Button>
-				</Box>
+				</Box> */}
 			</Box>
-			<div>
-				{activeStep === 0 ? <BasicInfo /> : ""}
-				{activeStep === 1 || activeStep === 2 ? (
-					<WeightInfo activeStep={activeStep} />
-				) : (
-					""
-				)}
-				{activeStep === 3 ? <Exercise /> : ""}
-				{activeStep === 4 ? <TargetMacros /> : ""}
-			</div>
-		</>
+			<SignUp />
+			{/* <div>
+				{activeStep === 0 && <BasicInfo />}
+				{activeStep === 1 && <WeightInfo activeStep={activeStep} />}
+				{activeStep === 2 && <WeightInfo activeStep={activeStep} />}
+				{activeStep === 3 && <Exercise />}
+				{activeStep === 4 && <TargetMacros />}
+			</div> */}
+		</div>
 	);
 }
 

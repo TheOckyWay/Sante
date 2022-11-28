@@ -10,49 +10,48 @@ import PersonIcon from "@mui/icons-material/Person";
 import Button from "@mui/material/Button";
 
 const Navbar = () => {
-  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+	const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
-  const [value, setValue] = React.useState("");
-  const navigate = useNavigate();
+	const [value, setValue] = React.useState("");
+	const navigate = useNavigate();
 
-  const handleChange = (event, newValue) => {
-    navigate(`/${newValue}`);
-    setValue(newValue);
-  };
+	const handleChange = (event, newValue) => {
+		navigate(`/${newValue}`);
+		setValue(newValue);
+	};
 
-  return (
-    <div>
-      
-        {isLoggedIn ? (
-     <BottomNavigation sx={{ width: '100%', position: 'fixed', bottom: '0',left: '0' ,marginTop: '30px' }} value={value} onChange={handleChange}>
-     <BottomNavigationAction
-        label="Home"
-        value="home"
-        icon={<HomeIcon />}
-      />
-      <BottomNavigationAction
-        label="Tracker"
-        value="trackers"
-        icon={<FormatListBulletedIcon />}
-      />
-      <BottomNavigationAction
-        label="Recipes"
-        value="recipes"
-        icon={<RestaurantIcon />}
-      />
-      <BottomNavigationAction
-        label="Profile"
-        value="profile"
-        icon={<PersonIcon />}
-      />
-          </BottomNavigation>
-        ) : (
-          <div>
-          </div>
-        )}
-      
-    </div>
-  );
+	return (
+		<div>
+			<BottomNavigation
+				sx={{
+					width: "100%",
+					position: "fixed",
+					bottom: "0",
+					left: "0",
+					marginTop: "30px",
+				}}
+				value={value}
+				onChange={handleChange}
+			>
+				<BottomNavigationAction label="Home" value="home" icon={<HomeIcon />} />
+				<BottomNavigationAction
+					label="Tracker"
+					value="trackers"
+					icon={<FormatListBulletedIcon />}
+				/>
+				<BottomNavigationAction
+					label="Recipes"
+					value="recipes"
+					icon={<RestaurantIcon />}
+				/>
+				<BottomNavigationAction
+					label="Profile"
+					value="profile"
+					icon={<PersonIcon />}
+				/>
+			</BottomNavigation>
+		</div>
+	);
 };
 
 export default Navbar;

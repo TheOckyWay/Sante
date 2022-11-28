@@ -50,15 +50,23 @@ function BasicInfo() {
 
 	return (
 		<div margin="auto">
-			<Typography alignItems="center" variant="h3">
-				Welcome!
-			</Typography>
+			<Box
+				sx={{
+					width: "auto",
+					display: "flex",
+					justifyContent: "center",
+					alignItems: "center",
+				}}
+			>
+				<Typography variant="h3">Welcome!</Typography>
+			</Box>
+
 			<Box
 				sx={{
 					width: "auto",
 				}}
 			>
-				<Grid container spacing={2}>
+				<Grid container spacing={1}>
 					<Grid item xs={12}>
 						<TextField
 							margin="normal"
@@ -66,7 +74,6 @@ function BasicInfo() {
 							id="name"
 							label="Name"
 							name="name"
-							// InputLabelProps={{ shrink: true }}
 						/>
 					</Grid>
 
@@ -77,27 +84,28 @@ function BasicInfo() {
 							id="email"
 							label="Email"
 							name="email"
-							// InputLabelProps={{ shrink: true }}
 						/>
 					</Grid>
 
-					<Grid item xs={12}>
+					<Grid
+						item
+						xs={12}
+						sx={{
+							mb: 1,
+							pb: 1,
+						}}
+					>
 						<TextField
 							margin="normal"
 							fullWidth
 							id="username"
 							label="Username"
 							name="username"
-							// InputLabelProps={{ shrink: true }}
 						/>
 					</Grid>
 
 					<Grid item xs={12}>
-						<FormControl
-							// sx={{ m: 1 }}
-							variant="outlined"
-							fullWidth={true}
-						>
+						<FormControl variant="outlined" fullWidth={true}>
 							<InputLabel htmlFor="outlined-adornment-password">
 								Password
 							</InputLabel>
@@ -124,13 +132,7 @@ function BasicInfo() {
 					</Grid>
 
 					<Grid item xs={4}>
-						<TextField
-							margin="normal"
-							id="age"
-							label="Age"
-							name="age"
-							// InputLabelProps={{ shrink: true }}
-						/>
+						<TextField margin="normal" id="age" label="Age" name="age" />
 					</Grid>
 					<Grid item xs />
 

@@ -34,3 +34,7 @@ form div {
 .linkColor {
   color: #0d47a1;
 }
+
+#entire-app {
+  padding-bottom: 5em;
+}
