@@ -9,8 +9,7 @@ import {
 	Link,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { authenticate } from "../../app/store";
-
+import { authenticateLogin } from "../../app/store";
 
 // InputLabelProps={{ shrink: true }} used to make text appear on top
 // 	- If the code above is not present, the text inside is directly on the edge of the outline
@@ -36,7 +35,7 @@ function LoginPage(props) {
 
 	const handleSubmit = (evt) => {
 		evt.preventDefault();
-		dispatch(authenticate({ username, password, method: props.name }));
+		dispatch(authenticateLogin({ username, password, method: props.name }));
 	};
 
 	return (

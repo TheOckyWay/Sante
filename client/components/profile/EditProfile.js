@@ -109,7 +109,8 @@ const EditProfile = () => {
     navigate('/profile')
   };
   return (
-<div>
+<Stack spacing={1}>
+    <Typography variant='h3'  > Edit Profile: </Typography>
 
     <FormControl sx={{ width: '100%' }} variant="outlined">
           <OutlinedInput
@@ -155,7 +156,6 @@ const EditProfile = () => {
 
     <FormControl sx={{ width: '100%' }} variant="outlined">
           <OutlinedInput
-            id="outlined-adornment-weight"
             value={heights}
             onChange={handleHeightsChange}
             endAdornment={<InputAdornment position="end">Inches</InputAdornment>}
@@ -167,13 +167,15 @@ const EditProfile = () => {
           <FormHelperText id="outlined-weight-helper-text"> Current Height</FormHelperText>
     </FormControl>
 
-    <Stack  direction="row" sx={{marginTop: 1, minWidth: 120 }}>
-    <FormControl sx={{ minWidth: 120 }}>
-    <InputLabel>Weight Goal</InputLabel>
+
+    <Stack  direction="row" spacing={.5}>
+    <FormControl sx={{ width: '100%'}}>
+    {/* <InputLabel>Weight Goal</InputLabel> */}
     <Select
       value={weightGoal}
-      label="Weight Goal"
       onChange={handleWeightGoalChange}
+      displayEmpty
+      inputProps={{ 'aria-label': 'Without label' }}
     >
       <MenuItem value={'Maintain Weight'}>Maintain Weight</MenuItem>
       <MenuItem value={'Lose Weight'}>Lose Weight</MenuItem>
@@ -182,14 +184,17 @@ const EditProfile = () => {
     <FormHelperText>Edit Weight Goal</FormHelperText>
       </FormControl>
 
-      <FormControl sx={{minWidth: 120 }}>
-    <InputLabel>Activity Factor</InputLabel>
+
+
+
+
+      <FormControl sx={{width: '100%' }}>
+    {/* <InputLabel>Activity Factor</InputLabel> */}
     <Select
-      labelId="demo-simple-select-helper-label"
-      id="demo-simple-select-helper"
       value={activity}
-      label="Activity Factor"
       onChange={handleActivityChange}
+      displayEmpty
+      inputProps={{ 'aria-label': 'Without label' }}
     >
       <MenuItem value={'Sedentary'}>Sedentary</MenuItem>
       <MenuItem value={'Lightly Active'}>Lightly Active</MenuItem>
@@ -204,12 +209,13 @@ const EditProfile = () => {
     
   
     <Button
+    sx={{ bottom: '0' }}
     variant="outlined"
           onClick={() => {
             handleChange()
           }}>Confirm Changes
     </Button>
-    </div>
+    </Stack>
   )
 }
 

@@ -16,10 +16,12 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { authenticate } from "../authSlice";
+import { authenticateSignup } from "../authSlice";
+import { useNavigate } from "react-router-dom";
 
 function SignUp({ name }) {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const steps = [
 		"Basic Info",
@@ -40,8 +42,6 @@ function SignUp({ name }) {
 
 	const [activeStep, setActiveStep] = useState(0);
 
-	console.log(values);
-
 	const handleChange = (prop) => (event) => {
 		setValues({ ...values, [prop]: event.target.value });
 	};
@@ -59,11 +59,12 @@ function SignUp({ name }) {
 
 	const handleSubmit = (evt) => {
 		evt.preventDefault();
-		dispatch(authenticate({ values, name }));
+		dispatch(authenticateSignup({ values, method: name }));
+		navigate("/signup/basic_info");
 	};
 
 	return (
-		<>
+		<div id="signup">
 			{/* Stepper */}
 			<div id="stepper">
 				<Box
@@ -97,6 +98,7 @@ function SignUp({ name }) {
 					</Stepper>
 				</Box>
 			</div>
+
 			<div margin="auto">
 				<Box
 					sx={{
@@ -201,7 +203,7 @@ function SignUp({ name }) {
 					<Grid item xs />
 				</Grid>
 			</div>
-		</>
+		</div>
 	);
 }
 
