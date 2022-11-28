@@ -6,9 +6,55 @@ const {
 } = require("../server/db");
 require("dotenv").config();
 
+const axios = require("axios");
+
+const key = "86333c5632071e4f7a6b2654cda85219";
+
 async function seed() {
   await db.sync({ force: true });
   console.log("db synced!");
+
+  const breakfast = await axios.get(
+    `https://api.edamam.com/api/recipes/v2?type=public&app_id=4164eec7&app_key=${key}&mealType=Breakfast&dishType=Main%20course&dishType=Salad&dishType=Sandwiches&dishType=Side%20dish&dishType=Soup&random=true&field=uri&field=label&field=image&field=yield&field=calories&field=totalTime&field=cuisineType&field=mealType&field=totalNutrients`
+  );
+
+  const lunch = await axios.get(
+    "https://api.edamam.com/api/recipes/v2?type=public&app_id=4164eec7&app_key=86333c5632071e4f7a6b2654cda85219&mealType=Lunch&dishType=Main%20course&dishType=Salad&dishType=Sandwiches&dishType=Side%20dish&dishType=Soup&random=true&field=uri&field=label&field=image&field=yield&field=calories&field=totalTime&field=cuisineType&field=mealType&field=totalNutrients"
+  );
+
+  const dinner = await axios.get(
+    "https://api.edamam.com/api/recipes/v2?type=public&app_id=4164eec7&app_key=86333c5632071e4f7a6b2654cda85219&mealType=Dinner&dishType=Main%20course&dishType=Salad&dishType=Sandwiches&dishType=Side%20dish&dishType=Soup&random=true&field=uri&field=label&field=image&field=yield&field=calories&field=totalTime&field=cuisineType&field=mealType&field=totalNutrients"
+  );
+
+  await axios.all([breakfast, lunch, dinner]).then(
+    await axios.spread(function (res1, res2, res3) {
+      let recipes = [
+        ...res1.data.hits.splice(0, 10),
+        ...res2.data.hits.splice(0, 10),
+        ...res3.data.hits.splice(0, 10),
+      ];
+
+      recipes.map(async (recipe) => {
+        await Recipes.create({
+          name: recipe.recipe.label,
+          calories: Math.floor(recipe.recipe.calories / recipe.recipe.yield),
+          protein: Math.floor(
+            recipe.recipe.totalNutrients.PROCNT.quantity / recipe.recipe.yield
+          ),
+          fat: Math.floor(
+            recipe.recipe.totalNutrients.FAT.quantity / recipe.recipe.yield
+          ),
+          carbs: Math.floor(
+            recipe.recipe.totalNutrients.CHOCDF.quantity / recipe.recipe.yield
+          ),
+          courseType: recipe.recipe.mealType[0],
+          cuisine: recipe.recipe.cuisineType[0],
+          cookTime: recipe.recipe.totalTime,
+          imageUrl: recipe.recipe.image,
+        });
+      });
+    })
+  );
 
   const users = await Promise.all([
     User.create({
@@ -66,7 +112,7 @@ async function seed() {
       username: "Andrew",
       password: "123",
       firstName: "Andrew",
-      lastName: "Espinal",
+      lastName: "Ozoria",
       location: "Queens, NY",
       email: "andrew@fs.com",
       age: 25,
@@ -78,180 +124,6 @@ async function seed() {
       targetWater: 4000,
       activityFactor: "Lightly Active",
       targetChange: "Lose Weight",
-    }),
-  ]);
-
-  // const trackers = await Promise.all([
-  //   Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
-  //   Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
-  //   Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
-  //   Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, }),
-  //   Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, })
-
-  // ]);
-
-  // const trackers = await Promise.all([
-  //   Tracker.create({ date: "2022-11-20" }),
-  //   Tracker.create({ date: "2022-11-19" }),
-  //   Tracker.create({ date: "2022-11-18" }),
-  //   Tracker.create({ date: "2022-11-17" }),
-  //   Tracker.create({ date: "2022-11-16" }),
-  //   Tracker.create({ date: "2022-11-20" }),
-  //   Tracker.create({ date: "2022-11-19" }),
-  //   Tracker.create({ date: "2022-11-18" }),
-  //   Tracker.create({ date: "2022-11-20" }),
-  //   Tracker.create({ date: "2022-11-19" }),
-  //   Tracker.create({ date: "2022-11-18" }),
-  //   Tracker.create({ date: "2022-11-17" }),
-  //   Tracker.create({ date: "2022-11-20" }),
-  //   Tracker.create({ date: "2022-11-19" }),
-  // ]);
-
-  // trackers[0].setUser(users[0]);
-  // trackers[1].setUser(users[0]);
-  // trackers[2].setUser(users[0]);
-  // trackers[3].setUser(users[0]);
-  // trackers[4].setUser(users[0]);
-  // trackers[5].setUser(users[1]);
-  // trackers[6].setUser(users[1]);
-  // trackers[7].setUser(users[1]);
-  // trackers[8].setUser(users[1]);
-  // trackers[9].setUser(users[2]);
-  // trackers[10].setUser(users[2]);
-  // trackers[11].setUser(users[2]);
-  // trackers[12].setUser(users[3]);
-  // trackers[13].setUser(users[3]);
-
-  await Promise.all([
-    Recipes.create({
-      name: "Cheese Pizza",
-      calories: 300,
-      protein: 50,
-      carbs: 100,
-      fat: 5,
-      cuisine: "Italian",
-      diet: "Vegetarian",
-      courseType: "Lunch",
-      cookTime: 120,
-      imageUrl:
-        "https://images.pexels.com/photos/3644/pizza-restaurant-dinner-lunch.jpg",
-    }),
-    Recipes.create({
-      name: "French Fries",
-      calories: 150,
-      protein: 4,
-      carbs: 100,
-      fat: 5,
-      courseType: "Side",
-      cuisine: "French",
-      diet: "Vegan",
-      cookTime: 120,
-      imageUrl:
-        "https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    }),
-    Recipes.create({
-      name: "Bacon Egg and Cheese",
-      calories: 600,
-      protein: 20,
-      carbs: 100,
-      fat: 5,
-      courseType: "Lunch",
-      cuisine: "American",
-      diet: "N/A",
-      cookTime: 120,
-      imageUrl:
-        "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i25A5vG7jGEg/v0/-1x-1.jpg/",
-    }),
-    Recipes.create({
-      name: "Escargot",
-      calories: 600,
-      protein: 20,
-      carbs: 100,
-      fat: 5,
-      courseType: "Dinner",
-      cuisine: "French",
-      diet: "N/A",
-      cookTime: 120,
-      imageUrl:
-        "https://images.pexels.com/photos/5388683/pexels-photo-5388683.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    }),
-    Recipes.create({
-      name: "Beignet",
-      calories: 600,
-      protein: 20,
-      carbs: 100,
-      fat: 5,
-      courseType: "Appetizer",
-      cuisine: "French",
-      diet: "N/A",
-      cookTime: 120,
-      imageUrl:
-        "https://images.pexels.com/photos/13988842/pexels-photo-13988842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    }),
-    Recipes.create({
-      name: "Sushi",
-      calories: 600,
-      protein: 20,
-      carbs: 100,
-      fat: 5,
-      courseType: "Lunch",
-      cuisine: "Japanese",
-      diet: "Pescatarian",
-      cookTime: 120,
-      imageUrl:
-        "https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    }),
-    Recipes.create({
-      name: "Mangu",
-      calories: 600,
-      protein: 20,
-      carbs: 100,
-      fat: 5,
-      courseType: "Breakfast",
-      cuisine: "Dominican",
-      diet: "N/A",
-      cookTime: 120,
-      imageUrl:
-        "https://www.dominicancooking.com/wp-content/uploads/dominican-mangu-recipe-DSC6702.jpg",
-    }),
-    Recipes.create({
-      name: "Samosa",
-      calories: 600,
-      protein: 20,
-      carbs: 100,
-      fat: 5,
-      courseType: "Entree",
-      cuisine: "Indian",
-      diet: "N/A",
-      cookTime: 120,
-      imageUrl:
-        "https://images.pexels.com/photos/13354489/pexels-photo-13354489.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    }),
-    Recipes.create({
-      name: "Tacos",
-      calories: 600,
-      protein: 20,
-      carbs: 100,
-      fat: 5,
-      courseType: "Lunch",
-      cuisine: "Mexican",
-      diet: "N/A",
-      cookTime: 120,
-      imageUrl:
-        "https://images.pexels.com/photos/2087748/pexels-photo-2087748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    }),
-    Recipes.create({
-      name: "Poutine",
-      calories: 600,
-      protein: 20,
-      carbs: 100,
-      fat: 5,
-      courseType: "Main",
-      cuisine: "Canadian",
-      diet: "N/A",
-      cookTime: 120,
-      imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Poutine.JPG/1024px-Poutine.JPG",
     }),
   ]);
 
