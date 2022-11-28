@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { fetchSingleRecipe } from "./recipeSlice";
 import {
   fetchSingleTracker,
@@ -15,10 +15,12 @@ import {
   Button,
   Box,
   CardContent,
+  CircularProgress,
 } from "@mui/material";
 
 function SingleRecipe() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -81,53 +83,80 @@ function SingleRecipe() {
   return (
     <Container>
       {todayTrackerId ? (
-        <Grid container direction="column">
-          <Grid item>
-            <Typography variant="h4" textAlign="center">
+        <Grid container direction="column" marginBottom="20px">
+          <Grid item display="flex" flexDirection="column">
+            <Typography variant="h5" textAlign="center">
               {name}
             </Typography>
-            <img
+            <Button
+              onClick={() => {
+                addToTrackerButton(tracker.id);
+                // navigate(`/trackers/`);
+              }}
+              variant="contained"
+              sx={{ width: "45", margin: "0 auto" }}
+            >
+              Add to Tracker
+            </Button>
+          </Grid>
+          <Grid
+            item
+            container
+            sx={{ width: "50vw", height: "50vh", alignSelf: "center" }}
+            xs={6}
+            sm={6}
+            md={6}
+            lg={6}
+            xl={6}
+          >
+            <Box
+              component="img"
               src={imageUrl}
-              style={{ borderRadius: "15%" }}
-              width="100%"
-              height="100%"
+              sx={{
+                borderRadius: "15%",
+                width: "100%",
+                height: "100%",
+                textAlign: "center",
+              }}
             />
           </Grid>
           <Grid item>
             <Box display="grid" gridTemplateColumns="repeat(2, 1fr)" gap={2}>
-              <Box
-                gridColumn="span 2"
-                display="flex"
-                justifyContent="space-around"
-              >
-                <Typography variant="h5">
-                  Cooking Time: {cookTime} Minutes
-                </Typography>
-                <Typography variant="h5">Calories: {calories}</Typography>
+              <Box gridColumn="span 2" justifyContent="space-around">
+                <Card
+                  sx={{
+                    display: "flex",
+                    justifyContent: "space-around",
+                    marginTop: "20px",
+                  }}
+                >
+                  <Typography variant="h6">
+                    Cooking Time: {cookTime} Minutes
+                  </Typography>
+                  <Typography variant="h6">Calories: {calories}</Typography>
+                </Card>
               </Box>
               <Box
                 gridColumn="span 2"
                 textAlign="center"
                 flexDirection="column"
               >
-                <Typography variant="h5">Diet: {diet}</Typography>
-                <Typography variant="h5">Protein: {protein}</Typography>
-                <Typography variant="h5">Carbohydrates: {carbs}</Typography>
-                <Typography variant="h5">Fat: {fat}</Typography>
-                <Typography variant="h5">Course Type: {courseType}</Typography>
-                <Typography variant="h5">Cuisine: {cuisine}</Typography>
-                <Button
-                  onClick={() => addToTrackerButton(tracker.id)}
-                  variant="contained"
-                >
-                  Add to Tracker
-                </Button>
+                <Card variant="outlined">
+                  <Typography variant="h6">Diet: {diet}</Typography>
+                  <Typography variant="h6">Protein: {protein}</Typography>
+                  <Typography variant="h6">Carbohydrates: {carbs}</Typography>
+                  <Typography variant="h6">Fats: {fat}</Typography>
+                  <Typography variant="h6">
+                    Course Type: {courseType}
+                  </Typography>
+                  <Typography variant="h6">Cuisine: {cuisine}</Typography>
+                </Card>
               </Box>
             </Box>
           </Grid>
         </Grid>
       ) : (
-        <h1>Something</h1>
+        <CircularProgress />
       )}
     </Container>
   );
