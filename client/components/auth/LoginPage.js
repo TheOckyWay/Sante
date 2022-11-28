@@ -11,6 +11,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { authenticate } from "../../app/store";
 
+
 // InputLabelProps={{ shrink: true }} used to make text appear on top
 // 	- If the code above is not present, the text inside is directly on the edge of the outline
 
@@ -64,7 +65,7 @@ function LoginPage(props) {
 						name="username"
 						error={error ? true : false}
 						autoFocus
-						// InputLabelProps={{ shrink: true }}
+						InputLabelProps={{ shrink: true }}
 						onInput={(e) => setUsername(e.target.value)}
 					/>
 					<TextField
@@ -76,7 +77,7 @@ function LoginPage(props) {
 						type="password"
 						id="password"
 						error={error ? true : false}
-						// InputLabelProps={{ shrink: true }}
+						InputLabelProps={{ shrink: true }}
 						onInput={(e) => setPassword(e.target.value)}
 					/>
 					<Button

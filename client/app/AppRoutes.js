@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import AuthForm from "../components/auth/AuthForm";
 import Home from "../components/home/Home";
 import Profile from "../components/profile/Profile";
+import EditProfile from "../components/profile/EditProfile";
 import Recipes from "../components/recipes/Recipes";
 import SingleRecipe from "../components/recipes/SingleRecipe";
 import AllTracker from "../components/tracker/AllTrackers";
@@ -42,6 +43,7 @@ const AppRoutes = () => {
 						element={<TrackerForm action={"addWater"} />}
 					/>
 					<Route path="/profile" element={<Profile />} />
+					<Route path="/editprofile" element={<EditProfile />} />
 				</Routes>
 			) : (
 				<Routes>

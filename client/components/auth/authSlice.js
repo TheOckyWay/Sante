@@ -33,9 +33,16 @@ export const me = createAsyncThunk("auth/me", async () => {
 
 export const authenticate = createAsyncThunk(
 	"auth/authenticate",
-	async ({ username, password, method }, thunkAPI) => {
+	async ({ values, name }, thunkAPI) => {
 		try {
-			const res = await axios.post(`/auth/${method}`, { username, password });
+			const { firstName, lastName, email, password } = values;
+			const res = await axios.post(`/auth/${name}`, {
+				email,
+				password,
+				username,
+				firstName,
+				lastName,
+			});
 			window.localStorage.setItem(TOKEN, res.data.token);
 			thunkAPI.dispatch(me());
 		} catch (err) {
@@ -49,34 +56,49 @@ export const authenticate = createAsyncThunk(
 );
 
 export const editProfile = createAsyncThunk(
-  "auth/profile",
-  async ({ targetChange, activityFactor }) => {
-    const token = window.localStorage.getItem(TOKEN);
-    try {
-      if (token) {
-        const { data } = await axios.put(
-          "/auth/profile",
-          {
-            targetChange,
-            activityFactor,
-          },
-          {
-            headers: {
-              authorization: token,
-            },
-          }
-        );
-        return data;
-      }
-    } catch (err) {
-      if (err.response.data) {
-        return thunkAPI.rejectWithValue(err.response.data);
-      } else {
-        return "There was an issue with your request.";
-      }
-    }
-  }
-)
+	"auth/profile",
+	async ({
+		targetChange,
+		activityFactor,
+		targetCalories,
+		age,
+		currentWeight,
+		targetWater,
+		currentHeight,
+		startingWeight,
+	}) => {
+		const token = window.localStorage.getItem(TOKEN);
+		try {
+			if (token) {
+				const { data } = await axios.put(
+					"/auth/profile",
+					{
+						targetChange,
+						activityFactor,
+						targetCalories,
+						age,
+						currentWeight,
+						targetWater,
+						currentHeight,
+						startingWeight,
+					},
+					{
+						headers: {
+							authorization: token,
+						},
+					}
+				);
+				return data;
+			}
+		} catch (err) {
+			if (err.response.data) {
+				return thunkAPI.rejectWithValue(err.response.data);
+			} else {
+				return "There was an issue with your request.";
+			}
+		}
+	}
+);
 
 /*
   SLICE

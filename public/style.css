@@ -1,5 +1,6 @@
 body {
   font-family: sans-serif;
+  background-color: #f5f5f5;
 }
 
 a {
@@ -18,4 +19,22 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+.fontColor {
+  color: "#f5f5f5";
+}
+
+.hrStyle {
+  background-color: #c5c6d0;
+  height: 2px;
+  border: none;
+}
+
+.linkColor {
+  color: #0d47a1;
+}
+
+#entire-app {
+  padding-bottom: 5em;
 }

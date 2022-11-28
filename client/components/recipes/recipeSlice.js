@@ -16,6 +16,12 @@ export const fetchSingleRecipe = createAsyncThunk(
   }
 );
 
+export const addRecipe = createAsyncThunk("addRecipe", async (incomingData) => {
+  const { data } = await axios.post("/api/recipes", incomingData);
+  console.log(incomingData);
+  return data;
+});
+
 const recipesSlice = createSlice({
   name: "recipes",
   initialState,
@@ -26,6 +32,9 @@ const recipesSlice = createSlice({
     });
     builder.addCase(fetchSingleRecipe.fulfilled, (state, action) => {
       state.singleRecipes = action.payload;
+    });
+    builder.addCase(addRecipe.fulfilled, (state, action) => {
+      state.allRecipes.push(action.payload);
     });
   },
 });

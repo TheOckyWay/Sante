@@ -2,7 +2,7 @@
 
 const {
   db,
-  models: { User, Recipes },
+  models: { User, Recipes, Tracker },
 } = require("../server/db");
 require("dotenv").config();
 
@@ -89,6 +89,38 @@ async function seed() {
   //   Tracker.create({ userId: 1, recipeId: [1,2,3], totalCalories: 2200, waterIntake: 1500, totalCarbs: 130, totalProtein: 200, totalFat: 56, date: 12122021, })
 
   // ]);
+
+  // const trackers = await Promise.all([
+  //   Tracker.create({ date: "2022-11-20" }),
+  //   Tracker.create({ date: "2022-11-19" }),
+  //   Tracker.create({ date: "2022-11-18" }),
+  //   Tracker.create({ date: "2022-11-17" }),
+  //   Tracker.create({ date: "2022-11-16" }),
+  //   Tracker.create({ date: "2022-11-20" }),
+  //   Tracker.create({ date: "2022-11-19" }),
+  //   Tracker.create({ date: "2022-11-18" }),
+  //   Tracker.create({ date: "2022-11-20" }),
+  //   Tracker.create({ date: "2022-11-19" }),
+  //   Tracker.create({ date: "2022-11-18" }),
+  //   Tracker.create({ date: "2022-11-17" }),
+  //   Tracker.create({ date: "2022-11-20" }),
+  //   Tracker.create({ date: "2022-11-19" }),
+  // ]);
+
+  // trackers[0].setUser(users[0]);
+  // trackers[1].setUser(users[0]);
+  // trackers[2].setUser(users[0]);
+  // trackers[3].setUser(users[0]);
+  // trackers[4].setUser(users[0]);
+  // trackers[5].setUser(users[1]);
+  // trackers[6].setUser(users[1]);
+  // trackers[7].setUser(users[1]);
+  // trackers[8].setUser(users[1]);
+  // trackers[9].setUser(users[2]);
+  // trackers[10].setUser(users[2]);
+  // trackers[11].setUser(users[2]);
+  // trackers[12].setUser(users[3]);
+  // trackers[13].setUser(users[3]);
 
   await Promise.all([
     Recipes.create({
