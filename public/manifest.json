@@ -3,11 +3,13 @@
   "name": "Sante",
   "icons": [
     {
-      "src": "/images/temp-logo-cap.png",
+      "src": "/images/Sante-Logo.png",
       "type": "image/png",
-      "sizes": "1024x1024"
+      "sizes": "750x750",
+      "purpose": "any"
     }
   ],
+  "lang": "en-US",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
