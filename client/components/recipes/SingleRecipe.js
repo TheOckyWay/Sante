@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchSingleRecipe } from "./recipeSlice";
@@ -16,11 +16,21 @@ import {
   Box,
   CardContent,
   CircularProgress,
+  Dialog,
+  DialogTitle,
 } from "@mui/material";
 
 function SingleRecipe() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const { id } = useParams();
 
@@ -88,16 +98,21 @@ function SingleRecipe() {
             <Typography variant="h5" textAlign="center">
               {name}
             </Typography>
-            <Button
-              onClick={() => {
-                addToTrackerButton(tracker.id);
-                // navigate(`/trackers/`);
-              }}
-              variant="contained"
-              sx={{ width: "45", margin: "0 auto" }}
-            >
-              Add to Tracker
-            </Button>
+            <Dialog open={open} onClose={handleClose}>
+              <DialogTitle>
+                {name} was successfully added to today's tracker!
+              </DialogTitle>
+              <Box display="flex" justifyContent="space-around">
+                <Button onClick={handleClose}>X</Button>
+                <Button
+                  onClick={() => {
+                    navigate(`/trackers/`);
+                  }}
+                >
+                  Go to your Trackers
+                </Button>
+              </Box>
+            </Dialog>
           </Grid>
           <Grid
             item
@@ -142,7 +157,6 @@ function SingleRecipe() {
                 flexDirection="column"
               >
                 <Card variant="outlined">
-                  <Typography variant="h6">Diet: {diet}</Typography>
                   <Typography variant="h6">Protein: {protein}</Typography>
                   <Typography variant="h6">Carbohydrates: {carbs}</Typography>
                   <Typography variant="h6">Fats: {fat}</Typography>
@@ -151,6 +165,16 @@ function SingleRecipe() {
                   </Typography>
                   <Typography variant="h6">Cuisine: {cuisine}</Typography>
                 </Card>
+                <Button
+                  onClick={() => {
+                    addToTrackerButton(tracker.id);
+                    handleClickOpen();
+                  }}
+                  variant="contained"
+                  sx={{ width: "45", margin: "0 auto" }}
+                >
+                  Add to Tracker
+                </Button>
               </Box>
             </Box>
           </Grid>
