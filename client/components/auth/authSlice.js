@@ -31,17 +31,37 @@ export const me = createAsyncThunk("auth/me", async () => {
 	}
 });
 
-export const authenticate = createAsyncThunk(
+export const authenticateLogin = createAsyncThunk(
 	"auth/authenticate",
-	async ({ values, name }, thunkAPI) => {
+	async ({ username, password, method }, thunkAPI) => {
 		try {
-			const { firstName, lastName, email, password } = values;
-			const res = await axios.post(`/auth/${name}`, {
-				email,
-				password,
+			const res = await axios.post(`/auth/${method}`, {
 				username,
+				password,
+			});
+			window.localStorage.setItem(TOKEN, res.data.token);
+			thunkAPI.dispatch(me());
+		} catch (err) {
+			if (err.response.data) {
+				return thunkAPI.rejectWithValue(err.response.data);
+			} else {
+				return "There was an issue with your request.";
+			}
+		}
+	}
+);
+
+export const authenticateSignup = createAsyncThunk(
+	"auth/authenticate",
+	async ({ values, method }, thunkAPI) => {
+		try {
+			const { username, password, firstName, lastName, email } = values;
+			const res = await axios.post(`/auth/${method}`, {
+				username,
+				password,
 				firstName,
 				lastName,
+				email,
 			});
 			window.localStorage.setItem(TOKEN, res.data.token);
 			thunkAPI.dispatch(me());
@@ -123,7 +143,7 @@ export const authSlice = createSlice({
 		builder.addCase(me.rejected, (state, action) => {
 			state.error = action.error;
 		});
-		builder.addCase(authenticate.rejected, (state, action) => {
+		builder.addCase(authenticateLogin.rejected, (state, action) => {
 			state.error = action.payload;
 		});
 		builder.addCase(editProfile.fulfilled, (state, action) => {

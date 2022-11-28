@@ -8,11 +8,11 @@ import { blue } from "@mui/material/colors";
  * COMPONENT
  */
 const Home = (props) => {
-	const [progressCal, setProgressCal] = React.useState(0);
-	const [progressPro, setProgressPro] = React.useState(0);
-	const [progressCarb, setProgressCarb] = React.useState(0);
-	const [progressFat, setProgressFat] = React.useState(0);
-	const [progressWater, setProgressWater] = React.useState(0);
+	const [progressCal, setProgressCal] = useState(0);
+	const [progressPro, setProgressPro] = useState(0);
+	const [progressCarb, setProgressCarb] = useState(0);
+	const [progressFat, setProgressFat] = useState(0);
+	const [progressWater, setProgressWater] = useState(0);
 
 	const dispatch = useDispatch();
 
