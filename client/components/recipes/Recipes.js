@@ -26,15 +26,12 @@ function Recipes() {
       <Typography variant="h4" textAlign="center" color="#000">
         Recipes
       </Typography>
-      <Grid container>
-        {/* <Grid item>
-          <Typography variant="h1">Recipes</Typography>
-        </Grid> */}
+      <Grid container sx={{ height: "100%" }}>
         {updatedRecipes.map((recipe) => {
           return (
             <Card
               key={recipe.id}
-              sx={{ m: 2, bgcolor: "#f5f5f5", border: "1px solid #f5f5f5" }}
+              sx={{ m: 2, width: "100%" }}
               variant="outlined"
               borderradius="15%"
             >
@@ -54,8 +51,9 @@ function Recipes() {
                   md={6}
                   lg={6}
                   xl={6}
-                  textAlign="left"
+                  textAlign="center"
                   paddingLeft={10}
+                  sx={{ p: 1 }}
                 >
                   <Link to={`/recipes/${recipe.id}`}>
                     <h2 className="linkColor">{recipe.name}</h2>
