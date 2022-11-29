@@ -21,9 +21,16 @@ const Home = (props) => {
 
 	const dispatch = useDispatch();
 
-	const user = useSelector((state) => state.auth.me);
-	const trackers = useSelector((state) => state.tracker.allTracker);
-	let tracker = trackers[trackers.length - 1];
+  const user = useSelector((state) => state.auth.me);
+  const trackers = useSelector((state) => state.tracker.allTracker);
+  
+
+  let sortArray =  [...trackers]
+  sortArray.sort((a,b)=>{
+    return a.id-b.id
+  })
+  let tracker = sortArray[sortArray.length-1];
+
 
 	useEffect(() => {
 		dispatch(fetchTrackers());
