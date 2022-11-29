@@ -48,3 +48,18 @@ form div {
 #entire-app {
   padding-bottom: 5em;
 }
+
+.progress {
+  background-color: #d8d8d8;
+  border-radius: 20px;
+  height: 30px;
+  width: 300px;
+}
+
+.progress-done {
+  background-color: orange;
+  border-radius: 20px;
+  display: flex;
+  height: 100%;
+  width: 200px;
+}
