@@ -22,10 +22,7 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     // storing all of our pages requests
     caches.match(event.request).then(() => {
-      return fetch(event.request).catch(() =>
-        // this means there is no internet connection
-        caches.match("offline.html")
-      );
+      return fetch(event.request).catch(() => caches.match("offline.html"));
     })
   );
 });
