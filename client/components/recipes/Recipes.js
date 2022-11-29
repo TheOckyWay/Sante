@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchRecipes } from "./recipeSlice";
 import { Container, Typography, Grid, Card, Box, styled } from "@mui/material";
+import { Stack} from "@mui/material";
+import Chip from '@mui/material/Chip';
+import { minHeight } from "@mui/system";
+
 
 function Recipes() {
   const dispatch = useDispatch();
@@ -22,63 +26,54 @@ function Recipes() {
   }, []);
 
   return (
-    <Container>
-      <Typography variant="h4" textAlign="center" color="rgb(156 163 175)">
+    <Stack direction='column' sx={{justifyContent:"center"}}>
+      <Typography variant="h4" textAlign="center" color="rgb(156 163 175)" sx={{p:1,m:1}}>
         Recipes
       </Typography>
-      <Grid container sx={{ height: "100%" }}>
+      <Stack direction='column' spacing={2} sx={{ height: "100%", alignItems: 'center' }}>
         {updatedRecipes.map((recipe) => {
           return (
-            <Card
+            <Stack direction='column'
               key={recipe.id}
               sx={{
-                m: 2,
-                width: "100%",
+                mt: 2,
                 border: "solid #313131",
                 bgcolor: "#242424",
                 boxShadow: "6",
+                alignItems: 'center',
+                minWidth: '50%',
+                minHeight: '50%'
               }}
               variant="outlined"
               borderradius="15%"
             >
-              <Grid item container key={recipe.id} marginTop="20px">
-                <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                  <BreakpointedImg
-                    style={{ borderRadius: "15%" }}
-                    src={recipe.imageUrl}
-                    width="100%"
-                    height="100%"
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={6}
-                  sm={6}
-                  md={6}
-                  lg={6}
-                  xl={6}
-                  textAlign="center"
-                  paddingLeft={10}
-                  sx={{ p: 1 }}
-                >
-                  <Link to={`/recipes/${recipe.id}`}>
+              <Stack  sx={{textAlign: 'center', maxWidth: '50%'  }}>
+              <Link to={`/recipes/${recipe.id}`} >
                     <h2 className="linkColor">{recipe.name}</h2>
                   </Link>
+              </Stack>
 
-                  <Typography variant="h5" color="rgb(156 163 175)">
-                    Calories: {recipe.calories}
-                  </Typography>
+              <Stack direction='column' sx={{alignItems: 'center' , p:1,m:1 }} >
+                <Stack direction='row'>
+                  <BreakpointedImg
+                    style={{ borderRadius: "15%", width: '50%', height:'100%',p:1,m:1}}
+                    src={recipe.imageUrl}
+                  
+                  />
 
-                  <Typography variant="h5" color="rgb(156 163 175)">
-                    Course Type: {recipe.courseType}
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Card>
+                <Stack direction='column' spacing={5} sx={{m:1}}>
+                <Chip label={`Calories: ${recipe.calories}`} color="warning"/>
+                <Chip label={`Course Type: ${recipe.courseType}`} color="error"/>
+                </Stack>
+                </Stack>
+                
+
+              </Stack>
+            </Stack>
           );
         })}
-      </Grid>
-    </Container>
+      </Stack>
+    </Stack>
   );
 }
 
