@@ -19,6 +19,7 @@ import {
   Dialog,
   DialogTitle,
 } from "@mui/material";
+import { Stack } from "@mui/system";
 
 function SingleRecipe() {
   const dispatch = useDispatch();
@@ -95,7 +96,11 @@ function SingleRecipe() {
       {todayTrackerId ? (
         <Grid container direction="column" marginBottom="20px">
           <Grid item display="flex" flexDirection="column">
-            <Typography variant="h5" textAlign="center">
+            <Typography
+              variant="h5"
+              textAlign="center"
+              color="rgb(156 163 175)"
+            >
               {name}
             </Typography>
             <Dialog open={open} onClose={handleClose}>
@@ -143,12 +148,17 @@ function SingleRecipe() {
                     display: "flex",
                     justifyContent: "space-around",
                     marginTop: "20px",
+                    bgcolor: "#242424",
+                    border: "solid #313131",
+                    boxShadow: "6",
                   }}
                 >
-                  <Typography variant="h6">
+                  <Typography variant="h6" color="rgb(156 163 175)">
                     Cooking Time: {cookTime} Minutes
                   </Typography>
-                  <Typography variant="h6">Calories: {calories}</Typography>
+                  <Typography variant="h6" color="rgb(156 163 175)">
+                    Calories: {calories}
+                  </Typography>
                 </Card>
               </Box>
               <Box
@@ -156,25 +166,42 @@ function SingleRecipe() {
                 textAlign="center"
                 flexDirection="column"
               >
-                <Card variant="outlined">
-                  <Typography variant="h6">Protein: {protein}</Typography>
-                  <Typography variant="h6">Carbohydrates: {carbs}</Typography>
-                  <Typography variant="h6">Fats: {fat}</Typography>
-                  <Typography variant="h6">
+                <Card
+                  variant="outlined"
+                  sx={{
+                    bgcolor: "#242424",
+                    border: "solid #313131",
+                    boxShadow: "6",
+                  }}
+                >
+                  <Typography variant="h6" color="rgb(156 163 175)">
+                    Protein: {protein}
+                  </Typography>
+                  <Typography variant="h6" color="rgb(156 163 175)">
+                    Carbohydrates: {carbs}
+                  </Typography>
+                  <Typography variant="h6" color="rgb(156 163 175)">
+                    Fats: {fat}
+                  </Typography>
+                  <Typography variant="h6" color="rgb(156 163 175)">
                     Course Type: {courseType}
                   </Typography>
-                  <Typography variant="h6">Cuisine: {cuisine}</Typography>
+                  <Typography variant="h6" color="rgb(156 163 175)">
+                    Cuisine: {cuisine}
+                  </Typography>
                 </Card>
-                <Button
-                  onClick={() => {
-                    addToTrackerButton(tracker.id);
-                    handleClickOpen();
-                  }}
-                  variant="contained"
-                  sx={{ width: "45", margin: "0 auto" }}
-                >
-                  Add to Tracker
-                </Button>
+                <Stack sx={{ width: "100%", pb: 5 }}>
+                  <Button
+                    onClick={() => {
+                      addToTrackerButton(tracker.id);
+                      handleClickOpen();
+                    }}
+                    variant="contained"
+                    sx={{ width: "45" }}
+                  >
+                    Add to Tracker
+                  </Button>
+                </Stack>
               </Box>
             </Box>
           </Grid>
