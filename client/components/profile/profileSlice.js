@@ -6,17 +6,17 @@ export const fetchUser = createAsyncThunk("fetchUser", async (userId) => {
 	return data;
 });
 
-
-
 const profileSlice = createSlice({
 	name: "profile",
 	initialState: {},
 	reducers: {},
-	extraReducers(builder){
-		builder.addCase(fetchUser.fulfilled),
-			(state, action) => {
-				return action.payload;
-			};
+	extraReducers(builder) {
+		builder.addCase(fetchUser.fulfilled, (state, action) => {
+			return action.payload;
+		});
+		builder.addCase(createNewUser.fulfilled, (state, action) => {
+			return action.payload;
+		});
 	},
 });
 

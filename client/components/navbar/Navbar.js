@@ -10,15 +10,15 @@ import PersonIcon from "@mui/icons-material/Person";
 import Button from "@mui/material/Button";
 
 const Navbar = () => {
-  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+	const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
-  const [value, setValue] = React.useState("");
-  const navigate = useNavigate();
+	const [value, setValue] = React.useState("");
+	const navigate = useNavigate();
 
-  const handleChange = (event, newValue) => {
-    navigate(`/${newValue}`);
-    setValue(newValue);
-  };
+	const handleChange = (event, newValue) => {
+		navigate(`/${newValue}`);
+		setValue(newValue);
+	};
 
   return (
     <div>
