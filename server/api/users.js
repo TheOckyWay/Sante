@@ -29,10 +29,11 @@ router.get("/:userId", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
 	try {
+		console.log("before server");
 		const newUser = await User.create(req.body);
 		res.json(newUser);
+		console.log("after server");
 	} catch (error) {
 		next(error);
 	}
 });
-

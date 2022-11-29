@@ -67,7 +67,10 @@ export const authenticateSignup = createAsyncThunk(
 				targetWeight,
 				targetChange,
 				activityStatus,
+				targetWater,
 			} = values;
+
+			console.log("before in signup");
 
 			const res = await axios.post(`/auth/${method}`, {
 				username,
@@ -83,6 +86,8 @@ export const authenticateSignup = createAsyncThunk(
 				activityStatus,
 				targetWater,
 			});
+
+			console.log("after signup");
 			window.localStorage.setItem(TOKEN, res.data.token);
 			thunkAPI.dispatch(me());
 		} catch (err) {
@@ -160,6 +165,12 @@ export const authSlice = createSlice({
 		builder.addCase(me.fulfilled, (state, action) => {
 			state.me = action.payload;
 		});
+		// builder.addCase(authenticateLogin.fulfilled, (state, action) => {
+		// 	state.me = action.payload;
+		// });
+		// builder.addCase(authenticateSignup.fulfilled, (state, action) => {
+		// 	state.me = action.payload;
+		// });
 		builder.addCase(me.rejected, (state, action) => {
 			state.error = action.error;
 		});
