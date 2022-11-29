@@ -147,11 +147,13 @@ function Profile() {
                 "& .MuiOutlinedInput-root": {
                   "& > fieldset": {
                     borderColor: "rgba(247, 171, 10, 50)",
+                    boxShadow: "6",
                   },
                 },
                 "& .MuiOutlinedInput-root.Mui-focused": {
                   "& > fieldset": {
                     borderColor: "rgba(247, 171, 10, 50)",
+                    boxShadow: "6",
                   },
                 },
               }}
@@ -173,11 +175,13 @@ function Profile() {
                 "& .MuiOutlinedInput-root": {
                   "& > fieldset": {
                     borderColor: "rgba(247, 171, 10, 50)",
+                    boxShadow: "6",
                   },
                 },
                 "& .MuiOutlinedInput-root.Mui-focused": {
                   "& > fieldset": {
                     borderColor: "rgba(247, 171, 10, 50)",
+                    boxShadow: "6",
                   },
                 },
               }}
