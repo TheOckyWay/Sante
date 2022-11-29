@@ -6,6 +6,7 @@ import {
 	fetchTrackers,
 } from "../components/tracker/trackerSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { padding } from "@mui/system";
 
 const App = () => {
 	return (
@@ -17,11 +18,17 @@ const App = () => {
 					alignItems: "center",
 				}}
 			>
-				<h1 style={{ border: "solid #000", padding: "5px", color: "#000" }}>
+				<h1
+					style={{
+						border: " 1px solid rgba(247, 171, 10, 50)",
+						padding: "10px",
+						color: "rgba(247, 171, 10, 50)",
+					}}
+				>
 					Santé
 				</h1>
 			</div>
-			<hr className="hrStyle" />
+			<hr className="hrStyle" style={{ backgroundColor: "black" }} />
 			<AppRoutes />
 			<Navbar />
 		</div>

@@ -81,6 +81,21 @@ function SingleTracker() {
                 </Button>
               </Link>
             </Grid>
+            <Grid item>
+              {tracker.recipes ? (
+                tracker.recipes.map((recipe) => {
+                  return (
+                    <div key={recipe.id}>
+                      <h2>{recipe.name}</h2>
+                      <h3>{recipe.calories}</h3>
+                      <hr />
+                    </div>
+                  );
+                })
+              ) : (
+                <div></div>
+              )}
+            </Grid>
           </Grid>
         </Grid>
       ) : null}

@@ -14,141 +14,158 @@ const Home = (props) => {
 	const [progressFat, setProgressFat] = useState(0);
 	const [progressWater, setProgressWater] = useState(0);
 
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-	const user = useSelector((state) => state.auth.me);
-	const trackers = useSelector((state) => state.tracker.allTracker);
-	let tracker = trackers[trackers.length - 1];
+  const user = useSelector((state) => state.auth.me);
+  const trackers = useSelector((state) => state.tracker.allTracker);
+  let tracker = trackers[trackers.length - 1];
 
-	useEffect(() => {
-		dispatch(fetchTrackers());
-	}, []);
+  useEffect(() => {
+    dispatch(fetchTrackers());
+  }, []);
 
-	if (trackers.length && tracker) {
-		const {
-			totalCalories,
-			waterIntake,
-			totalCarbs,
-			totalProtein,
-			totalFat,
-			date,
-		} = tracker;
+  if (trackers.length && tracker) {
+    const {
+      totalCalories,
+      waterIntake,
+      totalCarbs,
+      totalProtein,
+      totalFat,
+      date,
+    } = tracker;
 
-		return (
-			<div>
-				<Stack
-					direction="column"
-					justifyContent="space-evenly"
-					alignItems="center"
-					spacing={3}
-				>
-					<Stack
-						direction="row"
-						justifyContent="space-evenly"
-						alignItems="center"
-						spacing={1}
-					>
-						<Avatar sx={{ bgcolor: blue[900] }}>
-							{user.firstName[0]}
-							{user.lastName[0]}
-						</Avatar>
-						<Typography variant="h4">Welcome {user.username}!</Typography>
-					</Stack>
+    return (
+      <div>
+        <Stack
+          direction="column"
+          justifyContent="space-evenly"
+          alignItems="center"
+          spacing={3}
+        >
+          <Stack
+            direction="row"
+            justifyContent="space-evenly"
+            alignItems="center"
+            spacing={1}
+          >
+            <Avatar sx={{ bgcolor: blue[900] }}>
+              {user.firstName[0]}
+              {user.lastName[0]}
+            </Avatar>
+            <Typography variant="h4" sx={{ color: "rgb(156 163 175)" }}>
+              Welcome {user.username}!
+            </Typography>
+          </Stack>
 
-					<Typography float="left" variant="h5">
-						Calories for Today ({date}):
-					</Typography>
+          <Typography
+            float="left"
+            variant="h5"
+            sx={{ color: "rgb(156 163 175)" }}
+          >
+            Calories for Today ({date}):
+          </Typography>
 
-					<Stack
-						direction="row"
-						border="1px solid grey"
-						borderRadius={5}
-						width="75%"
-						spacing={2}
-					>
-						<div
-							direction="column"
-							justifycontent="flex-end"
-							alignitems="flex-end"
-						>
-							<Typography
-								width="25%"
-								sx={{
-									m: 1,
-									p: 1,
-								}}
-							>
-								Calories: {totalCalories}
-							</Typography>
+          <Stack
+            direction="row"
+            border="1px solid #313131"
+            borderRadius={5}
+            width="75%"
+            spacing={2}
+            boxShadow="6"
+          >
+            <div
+              direction="column"
+              justifycontent="flex-end"
+              alignitems="flex-end"
+            >
+              <Typography
+                width="25%"
+                sx={{
+                  m: 1,
+                  p: 1,
+                  color: "rgb(156 163 175)",
+                }}
+              >
+                Calories: {totalCalories}
+              </Typography>
 
-							{/* <Box sx={{ width: "50%" }}>
+              {/* <Box sx={{ width: "50%" }}>
 								<LinearProgress variant="determinate" value={25} />
 							</Box> */}
 
-							<Typography
-								width="25%"
-								sx={{
-									m: 1,
-									p: 1,
-								}}
-							>
-								Protein: {totalProtein}
-							</Typography>
-							{/* <Box sx={{ width: 500, paddingLeft: 10 }}>
+              <Typography
+                width="25%"
+                sx={{
+                  m: 1,
+                  p: 1,
+                  color: "rgb(156 163 175)",
+                }}
+              >
+                Protein: {totalProtein}
+              </Typography>
+              {/* <Box sx={{ width: 500, paddingLeft: 10 }}>
 								<LinearProgress variant="determinate" value={5} />
 							</Box> */}
 
-							<Typography
-								width="25%"
-								sx={{
-									m: 1,
-									p: 1,
-								}}
-							>
-								Carbs: {totalCarbs}
-							</Typography>
-							{/* <Box sx={{ width: 500, paddingLeft: 10 }}>
+              <Typography
+                width="25%"
+                sx={{
+                  m: 1,
+                  p: 1,
+                  color: "rgb(156 163 175)",
+                }}
+              >
+                Carbs: {totalCarbs}
+              </Typography>
+              {/* <Box sx={{ width: 500, paddingLeft: 10 }}>
 								<LinearProgress variant="determinate" value={50} />
 							</Box> */}
 
-							<Typography
-								width="25%"
-								sx={{
-									m: 1,
-									p: 1,
-								}}
-							>
-								Fats: {totalFat}
-							</Typography>
-							{/* <Box sx={{ width: 500, paddingLeft: 10 }}>
+              <Typography
+                width="25%"
+                sx={{
+                  m: 1,
+                  p: 1,
+                  color: "rgb(156 163 175)",
+                }}
+              >
+                Fats: {totalFat}
+              </Typography>
+              {/* <Box sx={{ width: 500, paddingLeft: 10 }}>
 								<LinearProgress variant="determinate" value={47} />
 							</Box> */}
-						</div>
-					</Stack>
-					<Stack direction="row" border="1px solid grey" width="75%">
-						<div
-							direction="column"
-							justifycontent="flex-end"
-							alignitems="flex-end"
-						>
-							<Typography
-								width="25%"
-								sx={{
-									m: 1,
-									p: 1,
-								}}
-							>
-								Water: {waterIntake}
-							</Typography>
-							{/* <Box sx={{ width: 500, paddingLeft: 10 }}>
+            </div>
+          </Stack>
+          <Stack
+            direction="row"
+            border="1px solid #313131"
+            width="75%"
+            boxShadow="6"
+          >
+            <div
+              direction="column"
+              justifycontent="flex-end"
+              alignitems="flex-end"
+            >
+              <Typography
+                width="25%"
+                sx={{
+                  m: 1,
+                  p: 1,
+                  color: "rgb(156 163 175)",
+                }}
+              >
+                Water: {waterIntake}
+              </Typography>
+              {/* <Box sx={{ width: 500, paddingLeft: 10 }}>
 								<LinearProgress variant="determinate" value={85} />
 							</Box> */}
-						</div>
-					</Stack>
-				</Stack>
-			</div>
-		);
-	}
+            </div>
+          </Stack>
+        </Stack>
+      </div>
+    );
+  }
 };
 
 export default Home;

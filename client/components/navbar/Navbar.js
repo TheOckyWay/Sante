@@ -20,38 +20,39 @@ const Navbar = () => {
 		setValue(newValue);
 	};
 
-	return (
-		<div>
-			<BottomNavigation
-				sx={{
-					width: "100%",
-					position: "fixed",
-					bottom: "0",
-					left: "0",
-					marginTop: "30px",
-				}}
-				value={value}
-				onChange={handleChange}
-			>
-				<BottomNavigationAction label="Home" value="home" icon={<HomeIcon />} />
-				<BottomNavigationAction
-					label="Tracker"
-					value="trackers"
-					icon={<FormatListBulletedIcon />}
-				/>
-				<BottomNavigationAction
-					label="Recipes"
-					value="recipes"
-					icon={<RestaurantIcon />}
-				/>
-				<BottomNavigationAction
-					label="Profile"
-					value="profile"
-					icon={<PersonIcon />}
-				/>
-			</BottomNavigation>
-		</div>
-	);
+  return (
+    <div>
+      
+        {isLoggedIn ? (
+     <BottomNavigation sx={{ width: '100%', position: 'fixed', bottom: '0',left: '0' ,marginTop: '30px', backgroundColor: '#F7AB0A' }} value={value} onChange={handleChange}>
+     <BottomNavigationAction
+        label="Home"
+        value="home"
+        icon={<HomeIcon />}
+      />
+      <BottomNavigationAction
+        label="Tracker"
+        value="trackers"
+        icon={<FormatListBulletedIcon />}
+      />
+      <BottomNavigationAction
+        label="Recipes"
+        value="recipes"
+        icon={<RestaurantIcon />}
+      />
+      <BottomNavigationAction
+        label="Profile"
+        value="profile"
+        icon={<PersonIcon />}
+      />
+          </BottomNavigation>
+        ) : (
+          <div>
+          </div>
+        )}
+      
+    </div>
+  );
 };
 
 export default Navbar;
