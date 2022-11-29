@@ -18,11 +18,17 @@ const App = () => {
           alignItems: "center",
         }}
       >
-        <h1 style={{ border: " 1px solid rgba(247, 171, 10, 50)", padding: "10px", color: "rgba(247, 171, 10, 50)", }}>
+        <h1
+          style={{
+            border: " 1px solid rgba(247, 171, 10, 50)",
+            padding: "10px",
+            color: "rgba(247, 171, 10, 50)",
+          }}
+        >
           Santé
         </h1>
       </div>
-      <hr className="hrStyle"  style={{ backgroundColor: 'black', }}/>
+      <hr className="hrStyle" style={{ backgroundColor: "black" }} />
       <AppRoutes />
       <Navbar />
     </div>
