@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleTracker, fetchTrackers } from "../tracker/trackerSlice";
 import { Stack, Typography, Avatar, Box, Grid, Divider } from "@mui/material";
 import { blue } from "@mui/material/colors";
+import ProgressBar from "./ProgressBar";
 
 /**
  * COMPONENT
@@ -13,11 +14,7 @@ import { blue } from "@mui/material/colors";
 // Total Fat for the day is 30% or less of total calories -> A gram of fat is equal to 9 calories so divide the number by 9 to get total fat
 
 const Home = (props) => {
-	const [progressCal, setProgressCal] = useState(0);
-	const [progressPro, setProgressPro] = useState(0);
-	const [progressCarb, setProgressCarb] = useState(0);
-	const [progressFat, setProgressFat] = useState(0);
-	const [progressWater, setProgressWater] = useState(0);
+	let protein, carbs, fat;
 
 	const dispatch = useDispatch();
 
@@ -31,6 +28,12 @@ const Home = (props) => {
   })
   let tracker = sortArray[sortArray.length-1];
 
+
+	const calculateMacros = () => {
+		protein = user.startingWeight * 0.36;
+		carbs = user.targetCalories * 0.6 * 4;
+		fat = user.targetCalories * 0.25 * 9;
+	};
 
 	useEffect(() => {
 		dispatch(fetchTrackers());
@@ -50,29 +53,51 @@ const Home = (props) => {
 			<div>
 				<Box
 					sx={{
+						width: "100%",
 						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
 					}}
-					direction="row"
-					justifyContent="space-evenly"
-					alignItems="center"
-					spacing={1}
 				>
-					<Avatar sx={{ bgcolor: blue[900] }}>
-						{user.firstName[0]}
-						{user.lastName[0]}
-					</Avatar>
-					<Typography variant="h4" sx={{ color: "rgb(156 163 175)" }}>
-						Welcome {user.username}!
-					</Typography>
+					<Box
+						sx={{
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							width: "75%",
+						}}
+					>
+						<Grid
+							container
+							spacing={2}
+							display="flex"
+							direction="column"
+							alignItems="center"
+							justifyContent="center"
+						>
+							<Grid item xs={12}>
+								<Avatar sx={{ bgcolor: blue[900] }}>
+									{user.firstName[0]}
+									{user.lastName[0]}
+								</Avatar>
+							</Grid>
+							<Grid item xs={12}>
+								<Typography variant="h4" sx={{ color: "rgb(156 163 175)" }}>
+									Welcome {user.username}!
+								</Typography>
+							</Grid>
+							<Grid item xs={12}>
+								<Typography
+									float="left"
+									variant="subtitle1"
+									sx={{ color: "rgb(156 163 175)" }}
+								>
+									Calories for Today ({date}):
+								</Typography>
+							</Grid>
+						</Grid>
+					</Box>
 				</Box>
-
-				<Typography
-					float="left"
-					variant="h5"
-					sx={{ color: "rgb(156 163 175)" }}
-				>
-					Calories for Today ({date}):
-				</Typography>
 
 				<Box
 					sx={{
@@ -80,6 +105,11 @@ const Home = (props) => {
 						borderRadius: 5,
 						width: "75%",
 						boxShadow: "6",
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+						ml: 10,
+						mt: 5,
 					}}
 				>
 					<Grid container spacing={2}>
@@ -95,6 +125,7 @@ const Home = (props) => {
 							>
 								Calories Remaining: {user.targetCalories - totalCalories}
 							</Typography>
+							<ProgressBar />
 						</Grid>
 
 						<Grid item xs={6}>
@@ -103,33 +134,39 @@ const Home = (props) => {
 								sx={{
 									m: 1,
 									p: 1,
+									ml: 10,
 									color: "rgb(156 163 175)",
 								}}
 							>
-								Protein: {totalProtein}
+								Protein:
 							</Typography>
+							<ProgressBar />
 
 							<Typography
 								width="25%"
 								sx={{
 									m: 1,
 									p: 1,
+									ml: 10,
 									color: "rgb(156 163 175)",
 								}}
 							>
-								Carbs: {totalCarbs}
+								Carbs:
 							</Typography>
+							<ProgressBar />
 
 							<Typography
 								width="25%"
 								sx={{
 									m: 1,
 									p: 1,
+									ml: 10,
 									color: "rgb(156 163 175)",
 								}}
 							>
-								Fats: {totalFat}
+								Fats:
 							</Typography>
+							<ProgressBar />
 						</Grid>
 					</Grid>
 				</Box>

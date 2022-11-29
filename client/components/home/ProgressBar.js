@@ -1,17 +1,27 @@
 import React from "react";
 
-function ProgressBar({ done }) {
+function ProgressBar() {
 	return (
-		<div class="progress">
+		<div
+			className="progress"
+			style={{
+				backgroundColor: "#d8d8d8",
+				borderRadius: 20,
+				height: 30,
+				width: 200,
+				marginLeft: 1,
+			}}
+		>
 			<div
-				class="progress-done"
+				className="progress-done"
 				style={{
 					opacity: 1,
-					width: `${done}%`,
+					backgroundColor: "orange",
+					borderRadius: 20,
+					height: "100%",
+					width: 60,
 				}}
-			>
-				{done}%
-			</div>
+			></div>
 		</div>
 	);
 }
