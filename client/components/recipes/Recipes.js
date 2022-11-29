@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { fetchRecipes } from "./recipeSlice";
 import { Container, Typography, Grid, Card, Box, styled } from "@mui/material";
 
-
 function Recipes() {
   const dispatch = useDispatch();
   const BreakpointedImg = styled("img")(({ theme }) => ({
@@ -24,7 +23,7 @@ function Recipes() {
 
   return (
     <Container>
-      <Typography variant="h4" textAlign="center" color="#000">
+      <Typography variant="h4" textAlign="center" color="rgb(156 163 175)">
         Recipes
       </Typography>
       <Grid container sx={{ height: "100%" }}>
@@ -32,7 +31,13 @@ function Recipes() {
           return (
             <Card
               key={recipe.id}
-              sx={{ m: 2, width: "100%" }}
+              sx={{
+                m: 2,
+                width: "100%",
+                border: "solid #313131",
+                bgcolor: "#242424",
+                boxShadow: "6",
+              }}
               variant="outlined"
               borderradius="15%"
             >
@@ -59,25 +64,12 @@ function Recipes() {
                   <Link to={`/recipes/${recipe.id}`}>
                     <h2 className="linkColor">{recipe.name}</h2>
                   </Link>
-                  <Typography variant="h5" color="#000">
-                    Cooking Time: {recipe.cookTime} Minutes
-                  </Typography>
-                  <Typography variant="h5" color="#000">
+
+                  <Typography variant="h5" color="rgb(156 163 175)">
                     Calories: {recipe.calories}
                   </Typography>
-                  <Typography variant="h5" color="#000">
-                    Diet: {recipe.diet}
-                  </Typography>
-                  <Typography variant="h5" color="#000">
-                    Protein: {recipe.protein}
-                  </Typography>
-                  <Typography variant="h5" color="#000">
-                    Carbohydrates: {recipe.carbs}
-                  </Typography>
-                  <Typography variant="h5" color="#000">
-                    Fat: {recipe.fat}
-                  </Typography>
-                  <Typography variant="h5" color="#000">
+
+                  <Typography variant="h5" color="rgb(156 163 175)">
                     Course Type: {recipe.courseType}
                   </Typography>
                 </Grid>
