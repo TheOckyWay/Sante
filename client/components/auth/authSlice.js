@@ -55,13 +55,33 @@ export const authenticateSignup = createAsyncThunk(
 	"auth/authenticate",
 	async ({ values, method }, thunkAPI) => {
 		try {
-			const { username, password, firstName, lastName, email } = values;
+			const {
+				username,
+				password,
+				firstName,
+				lastName,
+				email,
+				age,
+				sex,
+				startingWeight,
+				targetWeight,
+				targetChange,
+				activityStatus,
+			} = values;
+
 			const res = await axios.post(`/auth/${method}`, {
 				username,
 				password,
 				firstName,
 				lastName,
 				email,
+				age,
+				sex,
+				startingWeight,
+				targetWeight,
+				targetChange,
+				activityStatus,
+				targetWater,
 			});
 			window.localStorage.setItem(TOKEN, res.data.token);
 			thunkAPI.dispatch(me());

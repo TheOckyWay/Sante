@@ -7,6 +7,11 @@ import { blue } from "@mui/material/colors";
 /**
  * COMPONENT
  */
+
+// Total Protein for the day is 0.36 grams of protein per pound of bodyweight
+// Total Carbs for the day is 45% to 65% of total calories -> A carb is equal to 4 calories so divide the number by 4 to get total carbs
+// Total Fat for the day is 30% or less of total calories -> A gram of fat is equal to 9 calories so divide the number by 9 to get total fat
+
 const Home = (props) => {
 	const [progressCal, setProgressCal] = useState(0);
 	const [progressPro, setProgressPro] = useState(0);

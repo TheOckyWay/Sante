@@ -33,31 +33,31 @@ function Exercise() {
 						<RadioGroup
 							aria-labelledby="activity-radio-buttons-group"
 							name="activity-radio-buttons-group"
-							value={exercise}
-							onChange={handleChange}
+							value={value.exercise}
+							onChange={handleChange("exercise")}
 						>
 							<FormControlLabel
-								value="sedentary"
+								value="Sedentary"
 								control={<Radio />}
 								label="Sedentary (little or no exercise)"
 							/>
 							<FormControlLabel
-								value="lightlyActive"
+								value="Lightly Active"
 								control={<Radio />}
 								label="Lighly Active (1-2 times per week)"
 							/>
 							<FormControlLabel
-								value="moderatelyActive"
+								value="Moderately Active"
 								control={<Radio />}
 								label="Moderately Active (3-5 times per week)"
 							/>
 							<FormControlLabel
-								value="veryActive"
+								value="Very Active"
 								control={<Radio />}
 								label="Very Active (6-7 times per week)"
 							/>
 							<FormControlLabel
-								value="ExtraActive"
+								value="Extra Active"
 								control={<Radio />}
 								label="Extra Active (Athelete)"
 							/>

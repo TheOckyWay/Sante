@@ -4,6 +4,8 @@ import {
 	TextField,
 	Typography,
 	FormControl,
+	FormLabel,
+	FormControlLabel,
 	InputLabel,
 	OutlinedInput,
 	IconButton,
@@ -12,6 +14,9 @@ import {
 	Stepper,
 	Step,
 	StepLabel,
+	Link,
+	Radio,
+	RadioGroup,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import React, { useState } from "react";
@@ -37,6 +42,13 @@ function SignUp({ name }) {
 		username: "",
 		email: "",
 		password: "",
+		age: 0,
+		sex: "",
+		startingWeight: 0,
+		targetWeight: 0,
+		targetChange: "",
+		activityStatus: "",
+		targetWater: 0,
 		showPassword: false,
 	});
 
@@ -59,6 +71,13 @@ function SignUp({ name }) {
 
 	const handleSubmit = (evt) => {
 		evt.preventDefault();
+		if (values.startingWeight - values.targetWeight < 0) {
+			values.targetChange = "Lose Weight";
+		} else if (values.startingWeight - values.targetWeight > 0) {
+			values.targetChange = "Gain Muscle";
+		} else {
+			values.targetChange = "Maintain";
+		}
 		dispatch(authenticateSignup({ values, method: name }));
 		navigate("/signup/basic_info");
 	};
@@ -99,6 +118,7 @@ function SignUp({ name }) {
 				</Box>
 			</div>
 
+			{/* Basic Info */}
 			<div margin="auto">
 				<Box
 					sx={{
@@ -182,26 +202,199 @@ function SignUp({ name }) {
 						</FormControl>
 					</Grid>
 
-					<Grid item xs />
-					<Grid item xs={8}>
-						<Box
-							component="form"
-							onSubmit={handleSubmit}
-							noValidate
-							sx={{ mt: 1 }}
-						>
-							<Button
-								type="submit"
-								fullWidth
-								variant="contained"
-								sx={{ mx: 2, mt: 1, mb: 1 }}
-							>
-								Next
-							</Button>
-						</Box>
+					<Grid item xs={4}>
+						<TextField
+							margin="normal"
+							id="age"
+							label="Age"
+							name="age"
+							onChange={handleChange("age")}
+						/>
 					</Grid>
 					<Grid item xs />
+
+					<Grid item xs={12}>
+						<FormControl justifyContent="center">
+							<FormLabel id="gender-radio-buttons-group">Sex</FormLabel>
+							<RadioGroup
+								aria-labelledby="gender-radio-buttons-group"
+								row
+								name="gender-radio-buttons-group"
+								value={values.sex}
+								onChange={handleChange("sex")}
+							>
+								<FormControlLabel
+									value="female"
+									control={<Radio />}
+									label="Female"
+								/>
+								<FormControlLabel
+									value="male"
+									control={<Radio />}
+									label="Male"
+								/>
+							</RadioGroup>
+						</FormControl>
+					</Grid>
+
+					<Grid item xs />
 				</Grid>
+			</div>
+
+			{/* WeightInfo */}
+			<div>
+				<Grid marginTop={3} container spacing={2}>
+					<Grid item xs={6}>
+						<Typography variant="subtitle2">
+							What is your current weight?
+						</Typography>
+					</Grid>
+					<Grid item xs={6} />
+
+					<Grid item xs={4}>
+						<Box display="flex">
+							<FormControl sx={{ m: 1, width: "15ch" }} variant="outlined">
+								<OutlinedInput
+									id="outlined-adornment-weight"
+									value={values.startingWeight}
+									onChange={handleChange("startingWeight")}
+									endAdornment={
+										<InputAdornment position="end">lbs</InputAdornment>
+									}
+									aria-describedby="outlined-weight-helper-text"
+									inputProps={{
+										"aria-label": "weight",
+									}}
+								/>
+							</FormControl>
+						</Box>
+					</Grid>
+					<Grid item xs={8} />
+
+					<Grid item xs={6}>
+						<Typography variant="subtitle2">
+							What is your target weight?
+						</Typography>
+					</Grid>
+					<Grid item xs={6} />
+
+					<Grid item xs={4}>
+						<Box display="flex">
+							<FormControl sx={{ m: 1, width: "15ch" }} variant="outlined">
+								<OutlinedInput
+									id="outlined-adornment-weight"
+									value={values.targetWeight}
+									onChange={handleChange("targetWeight")}
+									endAdornment={
+										<InputAdornment position="end">lbs</InputAdornment>
+									}
+									aria-describedby="outlined-weight-helper-text"
+									inputProps={{
+										"aria-label": "weight",
+									}}
+								/>
+							</FormControl>
+						</Box>
+					</Grid>
+					<Grid item xs={8} />
+				</Grid>
+
+				<div>
+					<Grid marginTop={3} container spacing={2}>
+						<Grid item xs={8}>
+							<Typography variant="subtitle2">
+								How much do you exercise daily?
+							</Typography>
+						</Grid>
+						<Grid item xs={4} />
+
+						<Grid item xs={12}>
+							<FormControl>
+								<RadioGroup
+									aria-labelledby="activity-radio-buttons-group"
+									name="activity-radio-buttons-group"
+									value={values.activityStatus}
+									onChange={handleChange("activityStatus")}
+								>
+									<FormControlLabel
+										value="Sedentary"
+										control={<Radio />}
+										label="Sedentary (little or no exercise)"
+									/>
+									<FormControlLabel
+										value="Lightly Active"
+										control={<Radio />}
+										label="Lighly Active (1-2 times per week)"
+									/>
+									<FormControlLabel
+										value="Moderately Active"
+										control={<Radio />}
+										label="Moderately Active (3-5 times per week)"
+									/>
+									<FormControlLabel
+										value="Very Active"
+										control={<Radio />}
+										label="Very Active (6-7 times per week)"
+									/>
+									<FormControlLabel
+										value="Extra Active"
+										control={<Radio />}
+										label="Extra Active (Athelete)"
+									/>
+								</RadioGroup>
+							</FormControl>
+						</Grid>
+
+						<Grid marginTop={3} item xs={12}>
+							<FormControl sx={{ width: "15ch" }} variant="outlined">
+								<Typography variant="subtitle2">Target Water:</Typography>
+								<OutlinedInput
+									id="outlined-adornment-weight"
+									value={values.targetWater}
+									onChange={handleChange("targetWater")}
+									endAdornment={
+										<InputAdornment position="end">ml</InputAdornment>
+									}
+									inputProps={{
+										"aria-label": "weight",
+									}}
+								/>
+							</FormControl>
+						</Grid>
+
+						<Grid item xs={6}>
+							<Box
+								component="form"
+								onSubmit={handleSubmit}
+								noValidate
+								sx={{ mt: 1 }}
+							>
+								<Button
+									type="submit"
+									fullWidth
+									variant="contained"
+									sx={{ mt: 1, mb: 1 }}
+								>
+									Next
+								</Button>
+							</Box>
+						</Grid>
+						<Grid item xs={6}>
+							<Box
+								sx={{
+									mt: 3,
+									display: "flex",
+									justifyContent: "center",
+									alignItems: "center",
+								}}
+							>
+								<Link href="/login" variant="body2">
+									{"Have an account? Log In"}
+								</Link>
+							</Box>
+						</Grid>
+					</Grid>
+				</div>
 			</div>
 		</div>
 	);
