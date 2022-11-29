@@ -240,7 +240,7 @@ function SingleRecipe() {
                   }}
                 >
                  <Typography variant="h6" color="rgb(156 163 175)">
-                    Course Type: <span className="yellowcolor">{courseType[0].toUpperCase() + courseType.slice(1)}</span>
+                    Course Type: <span className="yellowcolor">{courseType ? courseType[0].toUpperCase() + courseType.slice(1): 'not available'}</span>
                   </Typography>
                   </Card>
 
@@ -255,7 +255,7 @@ function SingleRecipe() {
                   }}
                 >
                     <Typography variant="h6" color="rgb(156 163 175)">
-                    Cuisine:  <span className="yellowcolor">{cuisine[0].toUpperCase() + cuisine.slice(1)}</span>
+                    Cuisine:  <span className="yellowcolor">{cuisine ? cuisine[0].toUpperCase() + cuisine.slice(1): 'not available'}</span>
                   </Typography>
                   </Card>
 
