@@ -58,11 +58,34 @@ function TrackerForm(props) {
             width: "100%",
           }}
         >
-          <Typography variant="h3">Add Food</Typography>
-          <FormControl>
-            <InputLabel>Course Type</InputLabel>
+          <Typography variant="h3" color="rgb(156 163 175)">
+            Add Food
+          </Typography>
+          <FormControl
+            sx={{
+              width: "100%",
+              input: { color: "rgb(156 163 175)" },
+              "& .MuiFormLabel-root": {
+                color: "rgba(247, 171, 10, 50)",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": {
+                  borderColor: "rgba(247, 171, 10, 50)",
+                  boxShadow: "6",
+                },
+              },
+              "& .MuiOutlinedInput-root.Mui-focused": {
+                "& > fieldset": {
+                  borderColor: "rgba(247, 171, 10, 50)",
+                  boxShadow: "6",
+                },
+              },
+            }}
+            variant="outlined"
+          >
+            <InputLabel shrink={true}>Course Type</InputLabel>
             <Select
-              label="Course Type"
+              label="  Course Type"
               value={newFood.courseType}
               onChange={(e) => {
                 setNewFood({
@@ -76,89 +99,122 @@ function TrackerForm(props) {
               <MenuItem value={"Dinner"}>Dinner</MenuItem>
               <MenuItem value={"Snack"}>Snack</MenuItem>
             </Select>
+
+            <TextField
+              label="Food Name"
+              InputLabelProps={{ shrink: true }}
+              value={newFood.foodName}
+              name="tracker-form-name"
+              onChange={(e) => {
+                setNewFood({
+                  ...newFood,
+                  foodName: e.target.value,
+                });
+              }}
+            />
+
+            <TextField
+              label="Calories"
+              InputLabelProps={{ shrink: true }}
+              value={newFood.calories}
+              name="tracker-form-calories"
+              onChange={(e) => {
+                setNewFood({
+                  ...newFood,
+                  calories: e.target.value,
+                });
+              }}
+            />
+
+            <TextField
+              label="Protein"
+              InputLabelProps={{ shrink: true }}
+              value={newFood.protein}
+              name="tracker-form-protein"
+              onChange={(e) => {
+                setNewFood({
+                  ...newFood,
+                  protein: e.target.value,
+                });
+              }}
+            />
+            <TextField
+              label="Carbs"
+              InputLabelProps={{ shrink: true }}
+              value={newFood.carbs}
+              name="tracker-form-carbs"
+              onChange={(e) => {
+                setNewFood({
+                  ...newFood,
+                  carbs: e.target.value,
+                });
+              }}
+            />
+            <TextField
+              label="Fat"
+              InputLabelProps={{ shrink: true }}
+              value={newFood.fat}
+              name="tracker-form-fat"
+              onChange={(e) => {
+                setNewFood({
+                  ...newFood,
+                  fat: e.target.value,
+                });
+              }}
+            />
           </FormControl>
-          <TextField
-            label="Food Name"
-            value={newFood.foodName}
-            name="tracker-form-name"
-            onChange={(e) => {
-              setNewFood({
-                ...newFood,
-                foodName: e.target.value,
-              });
-            }}
-          />
-          <TextField
-            label="Calories"
-            value={newFood.calories}
-            name="tracker-form-calories"
-            onChange={(e) => {
-              setNewFood({
-                ...newFood,
-                calories: e.target.value,
-              });
-            }}
-          />
-          <TextField
-            label="Protein"
-            value={newFood.protein}
-            name="tracker-form-protein"
-            onChange={(e) => {
-              setNewFood({
-                ...newFood,
-                protein: e.target.value,
-              });
-            }}
-          />
-          <TextField
-            label="Carbs"
-            value={newFood.carbs}
-            name="tracker-form-carbs"
-            onChange={(e) => {
-              setNewFood({
-                ...newFood,
-                carbs: e.target.value,
-              });
-            }}
-          />
-          <TextField
-            label="Fat"
-            value={newFood.fat}
-            name="tracker-form-fat"
-            onChange={(e) => {
-              setNewFood({
-                ...newFood,
-                fat: e.target.value,
-              });
-            }}
-          />
           <Button type="submit">Add Food to Tracker</Button>
         </form>
       ) : (
         <div>
-          <form
-            onSubmit={handleAddFoodWaterTracker}
-            style={{
-              display: "flex",
-              textAlign: "center",
-              flexDirection: "column",
+          <FormControl
+            sx={{
               width: "100%",
+              input: { color: "rgb(156 163 175)" },
+              "& .MuiFormLabel-root": {
+                color: "rgba(247, 171, 10, 50)",
+              },
+              "& .MuiOutlinedInput-root": {
+                "& > fieldset": {
+                  borderColor: "rgba(247, 171, 10, 50)",
+                  boxShadow: "6",
+                },
+              },
+              "& .MuiOutlinedInput-root.Mui-focused": {
+                "& > fieldset": {
+                  borderColor: "rgba(247, 171, 10, 50)",
+                  boxShadow: "6",
+                },
+              },
             }}
+            variant="outlined"
           >
-            <Typography variant="h3">Add Water</Typography>
-            <TextField
-              label="Water Consumed (milliliters)"
-              name="tracker-form-water"
-              InputLabelProps={{ shrink: true }}
-              onChange={(e) => {
-                setNewFood({
-                  ...newFood,
-                  water: e.target.value,
-                });
+            <form
+              onSubmit={handleAddFoodWaterTracker}
+              style={{
+                display: "flex",
+                textAlign: "center",
+                flexDirection: "column",
+                width: "100%",
               }}
-            />
-            <Button type="submit">Add Water to Tracker</Button>
-          </form>
+            >
+              <Typography variant="h3" color="rgb(156 163 175)">
+                Add Water
+              </Typography>
+              <TextField
+                label="Water Consumed (milliliters)"
+                name="tracker-form-water"
+                InputLabelProps={{ shrink: true }}
+                onChange={(e) => {
+                  setNewFood({
+                    ...newFood,
+                    water: e.target.value,
+                  });
+                }}
+              />
+              <Button type="submit">Add Water to Tracker</Button>
+            </form>
+          </FormControl>
         </div>
       )}
     </Container>
