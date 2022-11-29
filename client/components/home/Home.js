@@ -4,6 +4,8 @@ import { fetchSingleTracker, fetchTrackers } from "../tracker/trackerSlice";
 import { Stack, Typography, Avatar, Box, Grid, Divider } from "@mui/material";
 import { blue } from "@mui/material/colors";
 import ProgressBar from "./ProgressBar";
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 /**
  * COMPONENT
@@ -39,6 +41,57 @@ const Home = (props) => {
 		dispatch(fetchTrackers());
 	}, []);
 
+  let BMR = 0;
+	let water = 0;
+	function bmrAndWaterCalc() {
+		let weight = user.currentWeight / 2.205; //lbs to kg
+		let height = user.currentHeight * 2.54; // inch to cm
+		let Userage = user.age;
+		let sex = user.sex; // 'male' or 'female'
+
+		if (user.sex === "male") {
+			BMR = 66.5 + 13.75 * weight + 5.003 * height - 6.75 * Userage;
+		} else if (user.sex === "female") {
+			BMR = 655.1 + 9.563 * weight + 1.85 * height - 4.676 * Userage;
+		}
+
+		if (user.targetChange === "Maintain") {
+			BMR = weight * 15;
+		} else if (user.targetChange === "Lose Weight") {
+			BMR = weight * 12;
+		} else if (user.targetChange === "Gain Weight") {
+			BMR = weight * 18;
+		}
+
+		if (user.activityFactor === "Lightly Active") {
+			BMR = BMR * 1.375;
+		} else if (user.activityFactor === "Sedentary") {
+			BMR = BMR * 1.2;
+		} else if (user.activityFactor === "Moderately Active") {
+			BMR = BMR * 1.55;
+		} else if (user.activityFactor === "Very Active") {
+			BMR = BMR * 1.725;
+		} else if (user.activityFactor === "Extra Active") {
+			BMR = BMR * 1.9;
+		}
+
+		//target water calc
+
+		if (Userage < 8) {
+			water = 1700;
+		} else if (Userage > 8 && Userage < 18 && user.sex === "female") {
+			water = 2300;
+		} else if (Userage > 19 && user.sex === "female") {
+			water = 2700;
+		} else if (Userage > 8 && Userage < 18 && user.sex === "male") {
+			water = 3300;
+		} else if (Userage > 19 && user.sex === "male") {
+			water = 3700;
+		}
+
+		return Math.ceil(BMR);
+	}
+
 	if (trackers.length && tracker) {
 		const {
 			totalCalories,
@@ -48,6 +101,45 @@ const Home = (props) => {
 			totalFat,
 			date,
 		} = tracker;
+
+    let percentagecalories= (totalCalories/bmrAndWaterCalc())*100
+    console.log(totalCalories, user.targetCalories, BMR)
+
+
+
+    function CircularProgressWithLabel(props) {
+      return (
+        <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+          <CircularProgress variant="determinate" {...props} />
+          <Box
+            sx={{
+              top: 0,
+              left: 0,
+              bottom: 0,
+              right: 0,
+              position: 'absolute',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <Typography variant="caption" component="div" color="rgb(156 163 175)">
+              {`${Math.round(props.value)}%`}
+            </Typography>
+          </Box>
+        </Box>
+      );
+    }
+
+
+
+
+
+
+
+
+
+
 
 		return (
 			<div>
@@ -189,9 +281,17 @@ const Home = (props) => {
 						Water: {waterIntake}
 					</Typography>
 				</Box>
+
+
+
+
+        <CircularProgressWithLabel value={percentagecalories}  size='10rem' sx={{color: '#f7ab0a'}}/>
+
 			</div>
 		);
 	}
 };
 
 export default Home;
+
+
