@@ -63,6 +63,7 @@ function SignUp({ name }) {
 		} else {
 			values.targetChange = "Maintain";
 		}
+		console.log(values.targetChange);
 		dispatch(authenticateSignup({ values, method: name }));
 	};
 
