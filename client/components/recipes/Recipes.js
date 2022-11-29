@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { fetchRecipes } from "./recipeSlice";
 import { Container, Typography, Grid, Card, Box, styled } from "@mui/material";
 
+
 function Recipes() {
   const dispatch = useDispatch();
   const BreakpointedImg = styled("img")(({ theme }) => ({

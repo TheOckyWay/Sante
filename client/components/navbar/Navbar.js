@@ -24,7 +24,7 @@ const Navbar = () => {
     <div>
       
         {isLoggedIn ? (
-     <BottomNavigation sx={{ width: '100%', position: 'fixed', bottom: '0',left: '0' ,marginTop: '30px' }} value={value} onChange={handleChange}>
+     <BottomNavigation sx={{ width: '100%', position: 'fixed', bottom: '0',left: '0' ,marginTop: '30px', backgroundColor: '#F7AB0A' }} value={value} onChange={handleChange}>
      <BottomNavigationAction
         label="Home"
         value="home"

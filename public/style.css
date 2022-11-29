@@ -1,6 +1,6 @@
 body {
-  font-family: sans-serif;
-  background-color: #f5f5f5;
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #242424;
 }
 
 a {
@@ -32,6 +32,13 @@ form div {
 }
 
 .linkColor {
-  color: #0d47a1;
+  color: rgb(156 163 175);
+}
+
+.textcolor{
+  color: rgb(156 163 175);
+}
+.yellowcolor{
+  color: #F7AB0A
 }
 

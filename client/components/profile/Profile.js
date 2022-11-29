@@ -124,18 +124,29 @@ function Profile() {
 		>
 		<Stack>
 		<Stack justifyContent="space-evenly" direction="row" spacing={1} divider={<Divider orientation="vertical" flexItem/>}>
-		<Avatar sx={{ bgcolor: blue[900] }}>{user.firstName[0]}{user.lastName[0]}</Avatar>
+		<Avatar sx={{ bgcolor: 'rgb(156 163 175)'}}>{user.firstName[0]}{user.lastName[0]}</Avatar>
 		</Stack>
 		<Stack alignItems="center">
-		<Typography>{user.firstName} {user.lastName}</Typography>
-		<Typography>{user.email}</Typography>
+		<Typography color= 'rgb(156 163 175)'>{user.firstName} {user.lastName}</Typography>
+		<Typography color='rgb(156 163 175)'>{user.email}</Typography>
 		</Stack>
 		</Stack>
 		
 		
 		<Stack direction="column" spacing={5}>
-		<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={.5}>
+		<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={.5} >
 		<TextField
+		sx={{ input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}
           label="Username"
           defaultValue={user.username}
 		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
@@ -146,6 +157,17 @@ function Profile() {
         />
 
 		<TextField
+		sx={{ input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}
           label="Age"
           defaultValue={user.age}
 		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
@@ -156,8 +178,20 @@ function Profile() {
         />
 		</Stack>
 
-		<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={.5}>
+		<Stack style={{  }} direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={.5}>
 			<TextField
+			color="primary"
+			sx={{ input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+				color: 'rgba(247, 171, 10, 50)'
+			},"& .MuiOutlinedInput-root": {
+				"& > fieldset": {
+				  borderColor: "rgba(247, 171, 10, 50)",
+				},
+			  },  "& .MuiOutlinedInput-root.Mui-focused": {
+				"& > fieldset": {
+		  borderColor: "rgba(247, 171, 10, 50)"
+				}
+			  } }}
           label="Current Height"
           defaultValue={user.currentHeight + 'inches'}
 		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
@@ -168,6 +202,17 @@ function Profile() {
         />
 
 		<TextField
+		sx={{ input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}
           label="Starting Weight"
           defaultValue={user.startingWeight + 'lbs'}
 		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
@@ -181,6 +226,17 @@ function Profile() {
 		<Stack direction="row" spacing={.5} divider={<Divider orientation="vertical" flexItem/>}>
 
 		<TextField
+		sx={{ input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}
           label="Weight Goal"
           defaultValue={user.targetChange}
 		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
@@ -191,6 +247,17 @@ function Profile() {
         />
 
 		<TextField
+		sx={{ input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}
           label="Activity Level"
           defaultValue={user.activityFactor}
 		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
@@ -203,6 +270,17 @@ function Profile() {
 	
 		<Stack direction="row"  spacing={.5} divider={<Divider orientation="vertical" flexItem/>}>
 		<TextField
+		sx={{ input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}
           label="Current Weight"
           defaultValue={user.currentWeight + 'lbs'}
 		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
@@ -213,6 +291,17 @@ function Profile() {
         />
 
 		<TextField
+		sx={{ input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}
           label="Target Weight"
           defaultValue={user.targetWeight + 'lbs'}
 		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
@@ -225,6 +314,17 @@ function Profile() {
 		
 		<Stack direction="row"  spacing={.5} divider={<Divider orientation="vertical" flexItem/>}>
 		<TextField
+		sx={{ input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}
           label="Target Calories"
           defaultValue={user.targetCalories? user.targetCalories + 'cal' : bmrAndWaterCalc() + 'cal'}
 		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
@@ -235,6 +335,17 @@ function Profile() {
         />
 
 		<TextField
+		sx={{ input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}
           label="Target Water"
           defaultValue={user.targetWater + 'ml'}
 		  inputProps={{min: 0, style: { textAlign: 'center' }}} 
@@ -247,12 +358,12 @@ function Profile() {
 
 		</Stack>
 
-	<Stack direction='row'>
-		<Button variant="contained" color="error" onClick={logoutAndRedirectHome}>
+	<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={.5} >
+		<Button variant="outlined" color="error" onClick={logoutAndRedirectHome} sx={{ width: '100%', color: '#F7AB0A', border: '1px solid rgb(156 163 175)'}}>
               Logout
         </Button>
 
-		<Button variant="contained" color="success" onClick={editprofile}>
+		<Button variant="outlined"  onClick={editprofile} sx={{ width: '100%', color: '#F7AB0A', border: '1px solid rgb(156 163 175)'}}>
               Edit Profile
         </Button>		
 	</Stack>
