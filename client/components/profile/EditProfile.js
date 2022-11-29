@@ -113,6 +113,7 @@ const EditProfile = () => {
     <Typography variant='h3'  > Edit Profile: </Typography>
 
     <FormControl sx={{ width: '100%' }} variant="outlined">
+      
           <OutlinedInput
             id="outlined-adornment-weight"
             value={startingWeight}
@@ -209,7 +210,7 @@ const EditProfile = () => {
     
   
     <Button
-    sx={{ bottom: '0' }}
+    sx={{ }}
     variant="outlined"
           onClick={() => {
             handleChange()
