@@ -11,9 +11,6 @@ import {
 	IconButton,
 	InputAdornment,
 	Button,
-	Stepper,
-	Step,
-	StepLabel,
 	Link,
 	Radio,
 	RadioGroup,
@@ -22,19 +19,9 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authenticateSignup } from "../authSlice";
-import { useNavigate } from "react-router-dom";
 
 function SignUp({ name }) {
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
-	const steps = [
-		"Basic Info",
-		"Weight",
-		"Weight Goal",
-		"Exercise",
-		"Target Macros",
-	];
 
 	const [values, setValues] = useState({
 		firstName: "",
@@ -51,8 +38,6 @@ function SignUp({ name }) {
 		targetWater: 0,
 		showPassword: false,
 	});
-
-	const [activeStep, setActiveStep] = useState(0);
 
 	const handleChange = (prop) => (event) => {
 		setValues({ ...values, [prop]: event.target.value });
@@ -83,40 +68,6 @@ function SignUp({ name }) {
 
 	return (
 		<div id="signup">
-			{/* Stepper */}
-			<div id="stepper">
-				<Box
-					sx={{
-						width: "100%",
-						mb: 3,
-						display: "flex",
-						flexDirection: "column",
-						gap: 3,
-						overflow: "auto hidden",
-						"&::-webkit-scrollbar": { height: 10, WebkitAppearance: "none" },
-						"&::-webkit-scrollbar-thumb": {
-							borderRadius: 8,
-							border: "2px solid",
-							borderColor: "#E7EBF0",
-							backgroundColor: "rgba(0 0 0 / 0.5)",
-						},
-					}}
-				>
-					<Stepper activeStep={activeStep}>
-						{steps.map((label, index) => {
-							const stepProps = {};
-							const labelProps = {};
-
-							return (
-								<Step key={label} {...stepProps}>
-									<StepLabel {...labelProps} />
-								</Step>
-							);
-						})}
-					</Stepper>
-				</Box>
-			</div>
-
 			{/* Basic Info */}
 			<div margin="auto">
 				<Box
@@ -127,11 +78,30 @@ function SignUp({ name }) {
 						alignItems: "center",
 					}}
 				>
-					<Typography variant="h3">Welcome!</Typography>
+					<Typography color="rgba(247, 171, 10, 50)" variant="h3">
+						Welcome!
+					</Typography>
 				</Box>
 				<Grid container spacing={1}>
 					<Grid item xs={12}>
 						<TextField
+							color="primary"
+							sx={{
+								input: { color: "rgb(156 163 175)" },
+								"& .MuiFormLabel-root": {
+									color: "rgba(247, 171, 10, 50)",
+								},
+								"& .MuiOutlinedInput-root": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+								"& .MuiOutlinedInput-root.Mui-focused": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+							}}
 							margin="normal"
 							fullWidth
 							id="firstName"
@@ -143,6 +113,23 @@ function SignUp({ name }) {
 
 					<Grid item xs={12}>
 						<TextField
+							color="primary"
+							sx={{
+								input: { color: "rgb(156 163 175)" },
+								"& .MuiFormLabel-root": {
+									color: "rgba(247, 171, 10, 50)",
+								},
+								"& .MuiOutlinedInput-root": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+								"& .MuiOutlinedInput-root.Mui-focused": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+							}}
 							margin="normal"
 							fullWidth
 							id="lastName"
@@ -154,6 +141,23 @@ function SignUp({ name }) {
 
 					<Grid item xs={12}>
 						<TextField
+							color="primary"
+							sx={{
+								input: { color: "rgb(156 163 175)" },
+								"& .MuiFormLabel-root": {
+									color: "rgba(247, 171, 10, 50)",
+								},
+								"& .MuiOutlinedInput-root": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+								"& .MuiOutlinedInput-root.Mui-focused": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+							}}
 							margin="normal"
 							fullWidth
 							id="username"
@@ -165,6 +169,23 @@ function SignUp({ name }) {
 
 					<Grid item xs={12}>
 						<TextField
+							color="primary"
+							sx={{
+								input: { color: "rgb(156 163 175)" },
+								"& .MuiFormLabel-root": {
+									color: "rgba(247, 171, 10, 50)",
+								},
+								"& .MuiOutlinedInput-root": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+								"& .MuiOutlinedInput-root.Mui-focused": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+							}}
 							margin="normal"
 							fullWidth
 							id="email"
@@ -175,7 +196,28 @@ function SignUp({ name }) {
 					</Grid>
 
 					<Grid item xs={12}>
-						<FormControl variant="outlined" fullWidth={true}>
+						<FormControl
+							variant="outlined"
+							fullWidth={true}
+							sx={{
+								input: { color: "rgb(156 163 175)" },
+								"& .MuiFormLabel-root": {
+									color: "rgba(247, 171, 10, 50)",
+								},
+								"& .MuiOutlinedInput-root": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+										boxShadow: "6",
+									},
+								},
+								"& .MuiOutlinedInput-root.Mui-focused": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+										boxShadow: "6",
+									},
+								},
+							}}
+						>
 							<InputLabel htmlFor="outlined-adornment-password">
 								Password
 							</InputLabel>
@@ -191,6 +233,9 @@ function SignUp({ name }) {
 											onClick={handleClickShowPassword}
 											onMouseDown={handleMouseDownPassword}
 											edge="end"
+											sx={{
+												color: "rgba(247, 171, 10, 50)",
+											}}
 										>
 											{values.showPassword ? <VisibilityOff /> : <Visibility />}
 										</IconButton>
@@ -203,6 +248,23 @@ function SignUp({ name }) {
 
 					<Grid item xs={4}>
 						<TextField
+							color="primary"
+							sx={{
+								input: { color: "rgb(156 163 175)" },
+								"& .MuiFormLabel-root": {
+									color: "rgba(247, 171, 10, 50)",
+								},
+								"& .MuiOutlinedInput-root": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+								"& .MuiOutlinedInput-root.Mui-focused": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+							}}
 							margin="normal"
 							id="age"
 							label="Age"
@@ -213,7 +275,27 @@ function SignUp({ name }) {
 					<Grid item xs />
 
 					<Grid item xs={12}>
-						<FormControl justifyContent="center">
+						<FormControl
+							justifyContent="center"
+							sx={{
+								input: { color: "rgb(156 163 175)" },
+								"& .MuiFormLabel-root": {
+									color: "rgba(247, 171, 10, 50)",
+								},
+								"& .MuiOutlinedInput-root": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+										boxShadow: "6",
+									},
+								},
+								"& .MuiOutlinedInput-root.Mui-focused": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+										boxShadow: "6",
+									},
+								},
+							}}
+						>
 							<FormLabel id="gender-radio-buttons-group">Sex</FormLabel>
 							<RadioGroup
 								aria-labelledby="gender-radio-buttons-group"
@@ -223,13 +305,37 @@ function SignUp({ name }) {
 								onChange={handleChange("sex")}
 							>
 								<FormControlLabel
+									sx={{
+										color: "rgba(247, 171, 10, 50)",
+									}}
 									value="female"
-									control={<Radio />}
+									control={
+										<Radio
+											sx={{
+												color: "rgba(247, 171, 10, 50)",
+												"&.Mui-checked": {
+													color: "rgba(247, 171, 10, 50)",
+												},
+											}}
+										/>
+									}
 									label="Female"
 								/>
 								<FormControlLabel
+									sx={{
+										color: "rgba(247, 171, 10, 50)",
+									}}
 									value="male"
-									control={<Radio />}
+									control={
+										<Radio
+											sx={{
+												color: "rgba(247, 171, 10, 50)",
+												"&.Mui-checked": {
+													color: "rgba(247, 171, 10, 50)",
+												},
+											}}
+										/>
+									}
 									label="Male"
 								/>
 							</RadioGroup>
@@ -244,7 +350,7 @@ function SignUp({ name }) {
 			<div>
 				<Grid marginTop={3} container spacing={2}>
 					<Grid item xs={6}>
-						<Typography variant="subtitle2">
+						<Typography color="rgba(247, 171, 10, 50)" variant="subtitle2">
 							What is your current weight?
 						</Typography>
 					</Grid>
@@ -252,13 +358,39 @@ function SignUp({ name }) {
 
 					<Grid item xs={4}>
 						<Box display="flex">
-							<FormControl sx={{ m: 1, width: "15ch" }} variant="outlined">
+							<FormControl
+								sx={{
+									m: 1,
+									width: "15ch",
+									input: { color: "rgb(156 163 175)" },
+									"& .MuiFormLabel-root": {
+										color: "rgba(247, 171, 10, 50)",
+									},
+									"& .MuiOutlinedInput-root": {
+										"& > fieldset": {
+											borderColor: "rgba(247, 171, 10, 50)",
+											boxShadow: "6",
+										},
+									},
+									"& .MuiOutlinedInput-root.Mui-focused": {
+										"& > fieldset": {
+											borderColor: "rgba(247, 171, 10, 50)",
+											boxShadow: "6",
+										},
+									},
+								}}
+								variant="outlined"
+							>
 								<OutlinedInput
 									id="outlined-adornment-weight"
 									value={values.startingWeight}
 									onChange={handleChange("startingWeight")}
 									endAdornment={
-										<InputAdornment position="end">lbs</InputAdornment>
+										<InputAdornment position="end">
+											<Typography sx={{ color: "rgba(247, 171, 10, 50)" }}>
+												lbs
+											</Typography>
+										</InputAdornment>
 									}
 									aria-describedby="outlined-weight-helper-text"
 									inputProps={{
@@ -271,7 +403,7 @@ function SignUp({ name }) {
 					<Grid item xs={8} />
 
 					<Grid item xs={6}>
-						<Typography variant="subtitle2">
+						<Typography color="rgba(247, 171, 10, 50)" variant="subtitle2">
 							What is your target weight?
 						</Typography>
 					</Grid>
@@ -279,13 +411,42 @@ function SignUp({ name }) {
 
 					<Grid item xs={4}>
 						<Box display="flex">
-							<FormControl sx={{ m: 1, width: "15ch" }} variant="outlined">
+							<FormControl
+								sx={{
+									m: 1,
+									width: "15ch",
+									input: { color: "rgb(156 163 175)" },
+									"& .MuiFormLabel-root": {
+										color: "rgba(247, 171, 10, 50)",
+									},
+									"& .MuiOutlinedInput-root": {
+										"& > fieldset": {
+											borderColor: "rgba(247, 171, 10, 50)",
+											boxShadow: "6",
+										},
+									},
+									"& .MuiOutlinedInput-root.Mui-focused": {
+										"& > fieldset": {
+											borderColor: "rgba(247, 171, 10, 50)",
+											boxShadow: "6",
+										},
+									},
+								}}
+								variant="outlined"
+							>
 								<OutlinedInput
 									id="outlined-adornment-weight"
 									value={values.targetWeight}
 									onChange={handleChange("targetWeight")}
 									endAdornment={
-										<InputAdornment position="end">lbs</InputAdornment>
+										<InputAdornment
+											color="rgba(247, 171, 10, 50)"
+											position="end"
+										>
+											<Typography sx={{ color: "rgba(247, 171, 10, 50)" }}>
+												lbs
+											</Typography>
+										</InputAdornment>
 									}
 									aria-describedby="outlined-weight-helper-text"
 									inputProps={{
@@ -301,7 +462,7 @@ function SignUp({ name }) {
 				<div>
 					<Grid marginTop={3} container spacing={2}>
 						<Grid item xs={8}>
-							<Typography variant="subtitle2">
+							<Typography color="rgba(247, 171, 10, 50)" variant="subtitle2">
 								How much do you exercise daily?
 							</Typography>
 						</Grid>
@@ -316,28 +477,88 @@ function SignUp({ name }) {
 									onChange={handleChange("activityStatus")}
 								>
 									<FormControlLabel
+										sx={{
+											color: "rgba(247, 171, 10, 50)",
+										}}
 										value="Sedentary"
-										control={<Radio />}
+										control={
+											<Radio
+												sx={{
+													color: "rgba(247, 171, 10, 50)",
+													"&.Mui-checked": {
+														color: "rgba(247, 171, 10, 50)",
+													},
+												}}
+											/>
+										}
 										label="Sedentary (little or no exercise)"
 									/>
 									<FormControlLabel
 										value="Lightly Active"
-										control={<Radio />}
+										sx={{
+											color: "rgba(247, 171, 10, 50)",
+										}}
+										control={
+											<Radio
+												sx={{
+													color: "rgba(247, 171, 10, 50)",
+													"&.Mui-checked": {
+														color: "rgba(247, 171, 10, 50)",
+													},
+												}}
+											/>
+										}
 										label="Lighly Active (1-2 times per week)"
 									/>
 									<FormControlLabel
 										value="Moderately Active"
-										control={<Radio />}
+										sx={{
+											color: "rgba(247, 171, 10, 50)",
+										}}
+										control={
+											<Radio
+												sx={{
+													color: "rgba(247, 171, 10, 50)",
+													"&.Mui-checked": {
+														color: "rgba(247, 171, 10, 50)",
+													},
+												}}
+											/>
+										}
 										label="Moderately Active (3-5 times per week)"
 									/>
 									<FormControlLabel
 										value="Very Active"
-										control={<Radio />}
+										sx={{
+											color: "rgba(247, 171, 10, 50)",
+										}}
+										control={
+											<Radio
+												sx={{
+													color: "rgba(247, 171, 10, 50)",
+													"&.Mui-checked": {
+														color: "rgba(247, 171, 10, 50)",
+													},
+												}}
+											/>
+										}
 										label="Very Active (6-7 times per week)"
 									/>
 									<FormControlLabel
 										value="Extra Active"
-										control={<Radio />}
+										sx={{
+											color: "rgba(247, 171, 10, 50)",
+										}}
+										control={
+											<Radio
+												sx={{
+													color: "rgba(247, 171, 10, 50)",
+													"&.Mui-checked": {
+														color: "rgba(247, 171, 10, 50)",
+													},
+												}}
+											/>
+										}
 										label="Extra Active (Athelete)"
 									/>
 								</RadioGroup>
@@ -345,14 +566,39 @@ function SignUp({ name }) {
 						</Grid>
 
 						<Grid marginTop={3} item xs={12}>
-							<FormControl sx={{ width: "15ch" }} variant="outlined">
-								<Typography variant="subtitle2">Target Water:</Typography>
+							<FormControl
+								sx={{
+									width: "15ch",
+									input: { color: "rgb(156 163 175)" },
+									"& .MuiFormLabel-root": {
+										color: "rgba(247, 171, 10, 50)",
+									},
+									"& .MuiOutlinedInput-root": {
+										"& > fieldset": {
+											borderColor: "rgba(247, 171, 10, 50)",
+										},
+									},
+									"& .MuiOutlinedInput-root.Mui-focused": {
+										"& > fieldset": {
+											borderColor: "rgba(247, 171, 10, 50)",
+										},
+									},
+								}}
+								variant="outlined"
+							>
+								<Typography color="rgba(247, 171, 10, 50)" variant="subtitle2">
+									Target Water:
+								</Typography>
 								<OutlinedInput
 									id="outlined-adornment-weight"
 									value={values.targetWater}
 									onChange={handleChange("targetWater")}
 									endAdornment={
-										<InputAdornment position="end">ml</InputAdornment>
+										<InputAdornment position="end">
+											<Typography sx={{ color: "rgba(247, 171, 10, 50)" }}>
+												ml
+											</Typography>
+										</InputAdornment>
 									}
 									inputProps={{
 										"aria-label": "weight",
