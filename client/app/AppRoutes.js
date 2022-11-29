@@ -11,7 +11,6 @@ import AllTracker from "../components/tracker/AllTrackers";
 import SingleTracker from "../components/tracker/SingleTracker";
 import TrackerForm from "../components/tracker/TrackerForm";
 import { me } from "./store";
-import Example from "../components/auth/signup/Example";
 
 /**
  * COMPONENT
@@ -45,7 +44,6 @@ const AppRoutes = () => {
 					/>
 					<Route path="/profile" element={<Profile />} />
 					<Route path="/editprofile" element={<EditProfile />} />
-					<Route path="/signup/basic_info" element={<Example />} />
 				</Routes>
 			) : (
 				<Routes>

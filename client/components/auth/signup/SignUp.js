@@ -79,7 +79,6 @@ function SignUp({ name }) {
 			values.targetChange = "Maintain";
 		}
 		dispatch(authenticateSignup({ values, method: name }));
-		navigate("/signup/basic_info");
 	};
 
 	return (
