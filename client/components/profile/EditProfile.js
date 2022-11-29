@@ -110,92 +110,152 @@ const EditProfile = () => {
   };
   return (
 <Stack spacing={1}>
-    <Typography variant='h3'  > Edit Profile: </Typography>
+    <Typography variant='h3' color='rgb(156 163 175)' > Edit Profile: </Typography>
 
-    <FormControl sx={{ width: '100%' }} variant="outlined">
+    <FormControl sx={{ width: '100%', input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }} variant="outlined">
       
           <OutlinedInput
             id="outlined-adornment-weight"
             value={startingWeight}
             onChange={handleStartingWeightChange}
-            endAdornment={<InputAdornment position="end">lbs</InputAdornment>}
+            endAdornment={<InputAdornment position="end"><Typography sx={{color: 'rgba(247, 171, 10, 50)'}} >lbs</Typography></InputAdornment>}
             aria-describedby="outlined-weight-helper-text"
             inputProps={{
               'aria-label': 'weight',
             }}
           />
-          <FormHelperText id="outlined-weight-helper-text"> Starting Weight</FormHelperText>
+          <FormHelperText sx={{color: 'rgba(247, 171, 10, 50)'}} > Starting Weight</FormHelperText>
     </FormControl>
 
-    <FormControl sx={{ width: '100%' }} variant="outlined">
+    <FormControl sx={{ width: '100%', input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}  variant="outlined">
           <OutlinedInput
             id="outlined-adornment-weight"
             value={weight}
             onChange={handleWeightChange}
-            endAdornment={<InputAdornment position="end">lbs</InputAdornment>}
+            endAdornment={<InputAdornment position="end"><Typography sx={{color: 'rgba(247, 171, 10, 50)'}} >lbs</Typography></InputAdornment>}
             aria-describedby="outlined-weight-helper-text"
             inputProps={{
               'aria-label': 'weight',
             }}
           />
-          <FormHelperText id="outlined-weight-helper-text"> Current Weight</FormHelperText>
+          <FormHelperText sx={{color: 'rgba(247, 171, 10, 50)'}}> Current Weight</FormHelperText>
     </FormControl>
 
-    <FormControl sx={{ width: '100%' }} variant="outlined">
+    <FormControl sx={{ width: '100%', input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}  variant="outlined">
           <OutlinedInput
             id="outlined-adornment-weight"
             value={age}
             onChange={handleAgeChange}
-            endAdornment={<InputAdornment position="end">Years</InputAdornment>}
+            endAdornment={<InputAdornment position="end"><Typography sx={{color: 'rgba(247, 171, 10, 50)'}} >Years</Typography></InputAdornment>}
             aria-describedby="outlined-weight-helper-text"
             inputProps={{
               'aria-label': 'weight',
             }}
           />
-          <FormHelperText id="outlined-weight-helper-text">Current Age</FormHelperText>
+          <FormHelperText sx={{color: 'rgba(247, 171, 10, 50)'}}>Current Age</FormHelperText>
     </FormControl>
 
-    <FormControl sx={{ width: '100%' }} variant="outlined">
+    <FormControl sx={{ width: '100%', input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }}  variant="outlined">
           <OutlinedInput
             value={heights}
             onChange={handleHeightsChange}
-            endAdornment={<InputAdornment position="end">Inches</InputAdornment>}
+            endAdornment={<InputAdornment position="end"><Typography sx={{color: 'rgba(247, 171, 10, 50)'}} >Inches</Typography></InputAdornment>}
             aria-describedby="outlined-weight-helper-text"
             inputProps={{
               'aria-label': 'weight',
             }}
           />
-          <FormHelperText id="outlined-weight-helper-text"> Current Height</FormHelperText>
+          <FormHelperText sx={{color: 'rgba(247, 171, 10, 50)'}}> Current Height</FormHelperText>
     </FormControl>
 
 
     <Stack  direction="row" spacing={.5}>
-    <FormControl sx={{ width: '100%'}}>
+    <FormControl sx={{ width: '100%', input: { color: 'rgb(156 163 175)' },  "& .MuiSelectLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }} >
     {/* <InputLabel>Weight Goal</InputLabel> */}
     <Select
       value={weightGoal}
       onChange={handleWeightGoalChange}
       displayEmpty
-      inputProps={{ 'aria-label': 'Without label' }}
+      inputProps={{ 'aria-label': 'Without label', }}
     >
       <MenuItem value={'Maintain Weight'}>Maintain Weight</MenuItem>
       <MenuItem value={'Lose Weight'}>Lose Weight</MenuItem>
       <MenuItem value={'Gain Weight'}>Gain Weight</MenuItem>
     </Select>
-    <FormHelperText>Edit Weight Goal</FormHelperText>
+    <FormHelperText sx={{color: 'rgba(247, 171, 10, 50)'}}>Edit Weight Goal</FormHelperText>
       </FormControl>
 
 
 
 
 
-      <FormControl sx={{width: '100%' }}>
+      <FormControl sx={{ width: '100%', input: { color: 'rgb(156 163 175)' },  "& .MuiFormLabel-root": {
+			color: 'rgba(247, 171, 10, 50)'
+		},"& .MuiOutlinedInput-root": {
+			"& > fieldset": {
+			  borderColor: "rgba(247, 171, 10, 50)",
+			},
+		  },  "& .MuiOutlinedInput-root.Mui-focused": {
+			"& > fieldset": {
+	  borderColor: "rgba(247, 171, 10, 50)"
+			}
+		  } }} >
     {/* <InputLabel>Activity Factor</InputLabel> */}
     <Select
       value={activity}
       onChange={handleActivityChange}
       displayEmpty
-      inputProps={{ 'aria-label': 'Without label' }}
+      inputProps={{ 'aria-label': 'Without label', color:'rgba(247, 171, 10, 50)' }}
     >
       <MenuItem value={'Sedentary'}>Sedentary</MenuItem>
       <MenuItem value={'Lightly Active'}>Lightly Active</MenuItem>
@@ -203,14 +263,14 @@ const EditProfile = () => {
       <MenuItem value={'Very Active'}>Very Active</MenuItem>
       <MenuItem value={'Extra Active'}>Extra Active</MenuItem>
     </Select>
-    <FormHelperText>Edit Activity Factor</FormHelperText>
+    <FormHelperText sx={{color: 'rgba(247, 171, 10, 50)'}}>Edit Activity Factor</FormHelperText>
       </FormControl>
 
     </Stack>
     
   
     <Button
-    sx={{ }}
+    sx={{ border: '1px solid rgba(247, 171, 10, 50)', color: 'rgba(247, 171, 10, 50)'}}
     variant="outlined"
           onClick={() => {
             handleChange()

@@ -124,7 +124,7 @@ function Profile() {
 		>
 		<Stack>
 		<Stack justifyContent="space-evenly" direction="row" spacing={1} divider={<Divider orientation="vertical" flexItem/>}>
-		<Avatar sx={{ bgcolor: blue[900] }}>{user.firstName[0]}{user.lastName[0]}</Avatar>
+		<Avatar sx={{ bgcolor: 'rgb(156 163 175)'}}>{user.firstName[0]}{user.lastName[0]}</Avatar>
 		</Stack>
 		<Stack alignItems="center">
 		<Typography color= 'rgb(156 163 175)'>{user.firstName} {user.lastName}</Typography>
@@ -359,11 +359,11 @@ function Profile() {
 		</Stack>
 
 	<Stack direction="row" divider={<Divider orientation="vertical" flexItem />} spacing={.5} >
-		<Button variant="contained" color="error" onClick={logoutAndRedirectHome} sx={{ width: '100%', color: '#F7AB0A'}}>
+		<Button variant="outlined" color="error" onClick={logoutAndRedirectHome} sx={{ width: '100%', color: '#F7AB0A', border: '1px solid rgb(156 163 175)'}}>
               Logout
         </Button>
 
-		<Button variant="contained"  onClick={editprofile} sx={{ width: '100%', color: '#F7AB0A'}}>
+		<Button variant="outlined"  onClick={editprofile} sx={{ width: '100%', color: '#F7AB0A', border: '1px solid rgb(156 163 175)'}}>
               Edit Profile
         </Button>		
 	</Stack>
