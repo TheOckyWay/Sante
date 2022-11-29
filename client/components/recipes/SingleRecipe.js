@@ -20,6 +20,10 @@ import {
   DialogTitle,
 } from "@mui/material";
 import { Stack } from "@mui/system";
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import ListSubheader from '@mui/material/ListSubheader';
 
 function SingleRecipe() {
   const dispatch = useDispatch();
@@ -94,8 +98,12 @@ function SingleRecipe() {
   return (
     <Container>
       {todayTrackerId ? (
-        <Grid container direction="column" marginBottom="20px">
+        <Stack>
+
+     <Stack>
+         <Grid container direction="column" marginBottom="20px">
           <Grid item display="flex" flexDirection="column">
+
             <Typography
               variant="h5"
               textAlign="center"
@@ -103,6 +111,7 @@ function SingleRecipe() {
             >
               {name}
             </Typography>
+
             <Dialog open={open} onClose={handleClose}>
               <DialogTitle>
                 {name} was successfully added to today's tracker!
@@ -118,6 +127,7 @@ function SingleRecipe() {
                 </Button>
               </Box>
             </Dialog>
+            
           </Grid>
           <Grid
             item
@@ -206,6 +216,9 @@ function SingleRecipe() {
             </Box>
           </Grid>
         </Grid>
+     </Stack>
+
+     </Stack>
       ) : (
         <CircularProgress />
       )}
