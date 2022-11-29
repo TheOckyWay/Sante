@@ -136,64 +136,68 @@ function Profile() {
 					</Stack>
 				</Stack>
 
-				<Stack direction="column" spacing={5}>
-					<Stack
-						direction="row"
-						divider={<Divider orientation="vertical" flexItem />}
-						spacing={0.5}
-					>
-						<TextField
-							sx={{
-								input: { color: "rgb(156 163 175)" },
-								"& .MuiFormLabel-root": {
-									color: "rgba(247, 171, 10, 50)",
-								},
-								"& .MuiOutlinedInput-root": {
-									"& > fieldset": {
-										borderColor: "rgba(247, 171, 10, 50)",
-									},
-								},
-								"& .MuiOutlinedInput-root.Mui-focused": {
-									"& > fieldset": {
-										borderColor: "rgba(247, 171, 10, 50)",
-									},
-								},
-							}}
-							label="Username"
-							defaultValue={user.username}
-							inputProps={{ min: 0, style: { textAlign: "center" } }}
-							InputProps={{
-								readOnly: true,
-							}}
-							variant="outlined"
-						/>
+        <Stack direction="column" spacing={5}>
+          <Stack
+            direction="row"
+            divider={<Divider orientation="vertical" flexItem />}
+            spacing={0.5}
+          >
+            <TextField
+              sx={{
+                input: { color: "rgb(156 163 175)" },
+                "& .MuiFormLabel-root": {
+                  color: "rgba(247, 171, 10, 50)",
+                },
+                "& .MuiOutlinedInput-root": {
+                  "& > fieldset": {
+                    borderColor: "rgba(247, 171, 10, 50)",
+                    boxShadow: "6",
+                  },
+                },
+                "& .MuiOutlinedInput-root.Mui-focused": {
+                  "& > fieldset": {
+                    borderColor: "rgba(247, 171, 10, 50)",
+                    boxShadow: "6",
+                  },
+                },
+              }}
+              label="Username"
+              defaultValue={user.username}
+              inputProps={{ min: 0, style: { textAlign: "center" } }}
+              InputProps={{
+                readOnly: true,
+              }}
+              variant="outlined"
+            />
 
-						<TextField
-							sx={{
-								input: { color: "rgb(156 163 175)" },
-								"& .MuiFormLabel-root": {
-									color: "rgba(247, 171, 10, 50)",
-								},
-								"& .MuiOutlinedInput-root": {
-									"& > fieldset": {
-										borderColor: "rgba(247, 171, 10, 50)",
-									},
-								},
-								"& .MuiOutlinedInput-root.Mui-focused": {
-									"& > fieldset": {
-										borderColor: "rgba(247, 171, 10, 50)",
-									},
-								},
-							}}
-							label="Age"
-							defaultValue={user.age}
-							inputProps={{ min: 0, style: { textAlign: "center" } }}
-							InputProps={{
-								readOnly: true,
-							}}
-							variant="outlined"
-						/>
-					</Stack>
+            <TextField
+              sx={{
+                input: { color: "rgb(156 163 175)" },
+                "& .MuiFormLabel-root": {
+                  color: "rgba(247, 171, 10, 50)",
+                },
+                "& .MuiOutlinedInput-root": {
+                  "& > fieldset": {
+                    borderColor: "rgba(247, 171, 10, 50)",
+                    boxShadow: "6",
+                  },
+                },
+                "& .MuiOutlinedInput-root.Mui-focused": {
+                  "& > fieldset": {
+                    borderColor: "rgba(247, 171, 10, 50)",
+                    boxShadow: "6",
+                  },
+                },
+              }}
+              label="Age"
+              defaultValue={user.age}
+              inputProps={{ min: 0, style: { textAlign: "center" } }}
+              InputProps={{
+                readOnly: true,
+              }}
+              variant="outlined"
+            />
+          </Stack>
 
 					<Stack
 						style={{}}
