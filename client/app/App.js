@@ -16,10 +16,13 @@ const App = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          pt: 0,
+            mt: 0,
         }}
       >
         <h1
           style={{
+            
             border: " 1px solid rgba(247, 171, 10, 50)",
             padding: "10px",
             color: "rgba(247, 171, 10, 50)",

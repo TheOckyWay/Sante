@@ -42,7 +42,8 @@ function Recipes() {
                 boxShadow: "6",
                 alignItems: 'center',
                 minWidth: '50%',
-                minHeight: '50%'
+                minHeight: '50%',
+                borderRadius: 5,
               }}
               variant="outlined"
               borderradius="15%"
