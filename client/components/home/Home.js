@@ -162,15 +162,15 @@ const Home = (props) => {
 					<Grid container spacing={2} marginTop={1.5} marginBottom={4}>
 						<Grid item xs={6}>
 							<Typography
-								marginLeft={2}
-								fontSize={17}
+								marginLeft={5}
+								fontSize={17.5}
 								variant="subtitle1"
 								align="left"
 								color="rgba(247, 171, 10, 50)"
 							>
 								Cals. Remaining: {user.targetCalories - totalCalories} cals.
 							</Typography>
-							<Stack spacing={2} marginLeft={3.5} marginTop={2}>
+							<Stack spacing={2} marginLeft={5} marginTop={2}>
 								<CircularProgress
 									size="8rem"
 									variant="determinate"
