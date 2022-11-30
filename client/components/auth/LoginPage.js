@@ -9,8 +9,7 @@ import {
 	Link,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { authenticate } from "../../app/store";
-
+import { authenticateLogin } from "../../app/store";
 
 // InputLabelProps={{ shrink: true }} used to make text appear on top
 // 	- If the code above is not present, the text inside is directly on the edge of the outline
@@ -36,69 +35,132 @@ function LoginPage(props) {
 
 	const handleSubmit = (evt) => {
 		evt.preventDefault();
-		dispatch(authenticate({ username, password, method: props.name }));
+		dispatch(authenticateLogin({ username, password, method: props.name }));
 	};
 
 	return (
-		<Container component="main" maxWidth="xs">
+		<div>
 			<Box
 				sx={{
-					marginTop: 8,
+					height: "100%",
 					display: "flex",
-					flexDirection: "column",
 					alignItems: "center",
+					justifyContent: "center",
+					width: "100%",
 				}}
 			>
-				<Typography component="h1" variant="h5">
-					Sign in
-				</Typography>
-
-				<ErrorMessage />
-
-				<Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-					<TextField
-						margin="normal"
-						required
-						fullWidth
-						id="username"
-						label="Username"
-						name="username"
-						error={error ? true : false}
-						autoFocus
-						InputLabelProps={{ shrink: true }}
-						onInput={(e) => setUsername(e.target.value)}
-					/>
-					<TextField
-						margin="normal"
-						required
-						fullWidth
-						name="password"
-						label="Password"
-						type="password"
-						id="password"
-						error={error ? true : false}
-						InputLabelProps={{ shrink: true }}
-						onInput={(e) => setPassword(e.target.value)}
-					/>
-					<Button
-						type="submit"
-						fullWidth
-						variant="contained"
-						sx={{ mx: 2, mt: 1, mb: 1 }}
+				<Box
+					sx={{
+						height: 500,
+						width: 450,
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						justifyContent: "center",
+						backgroundColor: "#303030",
+					}}
+				>
+					<Typography
+						color="rgba(247, 171, 10, 50)"
+						component="h1"
+						variant="h5"
 					>
-						Sign In
-					</Button>
+						Sign in
+					</Typography>
 
-					<Grid container>
-						<Grid item>
-							<Link href="/signup" variant="body2">
-								{"Don't have an account? Sign Up"}
-							</Link>
+					<ErrorMessage />
+
+					<Box
+						component="form"
+						onSubmit={handleSubmit}
+						noValidate
+						sx={{
+							mt: 1,
+							display: "flex",
+							flexDirection: "column",
+							alignItems: "center",
+							justifyContent: "center",
+						}}
+					>
+						<TextField
+							sx={{
+								width: "50ch",
+								input: { color: "rgb(156 163 175)" },
+								"& .MuiFormLabel-root": {
+									color: "rgba(247, 171, 10, 50)",
+								},
+								"& .MuiOutlinedInput-root": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+										boxShadow: "6",
+									},
+								},
+								"& .MuiOutlinedInput-root.Mui-focused": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+										boxShadow: "6",
+									},
+								},
+							}}
+							margin="normal"
+							required
+							id="username"
+							label="Username"
+							name="username"
+							error={error ? true : false}
+							autoFocus
+							InputLabelProps={{ shrink: true }}
+							onInput={(e) => setUsername(e.target.value)}
+						/>
+						<TextField
+							margin="normal"
+							sx={{
+								width: "50ch",
+								input: { color: "rgb(156 163 175)" },
+								"& .MuiFormLabel-root": {
+									color: "rgba(247, 171, 10, 50)",
+								},
+								"& .MuiOutlinedInput-root": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+										boxShadow: "6",
+									},
+								},
+								"& .MuiOutlinedInput-root.Mui-focused": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+										boxShadow: "6",
+									},
+								},
+							}}
+							required
+							name="password"
+							label="Password"
+							type="password"
+							id="password"
+							error={error ? true : false}
+							InputLabelProps={{ shrink: true }}
+							onInput={(e) => setPassword(e.target.value)}
+						/>
+						<Button
+							type="submit"
+							variant="contained"
+							sx={{ mx: 2, mt: 1, mb: 1, width: "45ch" }}
+						>
+							Sign In
+						</Button>
+
+						<Grid container>
+							<Grid item marginLeft={3}>
+								<Link href="/signup" variant="body2">
+									{"Don't have an account? Sign Up"}
+								</Link>
+							</Grid>
 						</Grid>
-					</Grid>
+					</Box>
 				</Box>
 			</Box>
-		</Container>
+		</div>
 	);
 }
 

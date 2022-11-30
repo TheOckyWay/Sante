@@ -44,3 +44,7 @@ form div {
 .yellowcolor {
   color: #f7ab0a;
 }
+
+#entire-app {
+  padding-bottom: 5em;
+}
