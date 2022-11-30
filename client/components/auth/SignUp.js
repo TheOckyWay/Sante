@@ -18,7 +18,7 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { authenticateSignup } from "../authSlice";
+import { authenticateSignup } from "./authSlice";
 
 function SignUp({ name }) {
 	const dispatch = useDispatch();
@@ -63,7 +63,6 @@ function SignUp({ name }) {
 		} else {
 			values.targetChange = "Maintain";
 		}
-		console.log(values.targetChange);
 		dispatch(authenticateSignup({ values, method: name }));
 	};
 

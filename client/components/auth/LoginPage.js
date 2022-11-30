@@ -17,6 +17,7 @@ import { authenticateLogin } from "../../app/store";
 function LoginPage(props) {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+
 	// returns 'incorrect username/password' as a string
 	const { error } = useSelector((state) => state.auth);
 
@@ -67,7 +68,6 @@ function LoginPage(props) {
 					>
 						Sign in
 					</Typography>
-
 					<ErrorMessage />
 
 					<Box
@@ -112,6 +112,7 @@ function LoginPage(props) {
 							InputLabelProps={{ shrink: true }}
 							onInput={(e) => setUsername(e.target.value)}
 						/>
+
 						<TextField
 							margin="normal"
 							sx={{
@@ -142,6 +143,7 @@ function LoginPage(props) {
 							InputLabelProps={{ shrink: true }}
 							onInput={(e) => setPassword(e.target.value)}
 						/>
+
 						<Button
 							type="submit"
 							variant="contained"

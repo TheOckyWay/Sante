@@ -27,6 +27,7 @@
     "@mui/material": "^5.10.14",
     "@mui/x-date-pickers": "^5.0.8",
     "bcrypt": "^5.1.0",
+    "bootstrap": "^5.2.3",
     "compression": "^1.7.4",
     "dayjs": "^1.11.6",
     "dotenv": "^16.0.3",

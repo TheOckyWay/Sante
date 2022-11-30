@@ -1,27 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Stack, Typography } from "@mui/material";
-import { fetchUser } from "./profileSlice";
-import { editProfile, me } from "../auth/authSlice";
-import Box from "@mui/material/Box";
-import Fab from "@mui/material/Fab";
-import EditIcon from "@mui/icons-material/Edit";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import FormHelperText from "@mui/material/FormHelperText";
-import Avatar from "@mui/material/Avatar";
-import { blue } from "@mui/material/colors";
-import { styled } from "@mui/material/styles";
-import Divider from "@mui/material/Divider";
-import { logout } from "../../app/store";
+import { editProfile } from "../auth/authSlice";
+import {
+	Button,
+	MenuItem,
+	FormControl,
+	Select,
+	FormHelperText,
+	OutlinedInput,
+	InputAdornment,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputAdornment from "@mui/material/InputAdornment";
 
 const EditProfile = () => {
 	const dispatch = useDispatch();
@@ -116,11 +106,11 @@ const EditProfile = () => {
 		);
 		navigate("/profile");
 	};
+
 	return (
 		<Stack spacing={1}>
 			<Typography variant="h3" color="rgb(156 163 175)">
-				{" "}
-				Edit Profile:{" "}
+				Edit Profile:
 			</Typography>
 
 			<FormControl
@@ -284,7 +274,6 @@ const EditProfile = () => {
 					}}
 				/>
 				<FormHelperText sx={{ color: "rgba(247, 171, 10, 50)" }}>
-					{" "}
 					Current Height
 				</FormHelperText>
 			</FormControl>
@@ -309,7 +298,6 @@ const EditProfile = () => {
 						},
 					}}
 				>
-					{/* <InputLabel>Weight Goal</InputLabel> */}
 					<Select
 						value={weightGoal}
 						onChange={handleWeightGoalChange}
@@ -344,7 +332,6 @@ const EditProfile = () => {
 						},
 					}}
 				>
-					{/* <InputLabel>Activity Factor</InputLabel> */}
 					<Select
 						value={activity}
 						onChange={handleActivityChange}

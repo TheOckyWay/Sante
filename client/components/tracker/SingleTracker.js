@@ -20,7 +20,6 @@ function SingleTracker() {
 	const { id } = useParams();
 
 	const tracker = useSelector((state) => state.tracker.singleTracker);
-	console.log(tracker);
 
 	const {
 		totalCalories,
@@ -37,7 +36,7 @@ function SingleTracker() {
 
 	return (
 		<Container>
-			{tracker ? (
+			{tracker && (
 				<Grid container width="100%">
 					<Grid item container>
 						<Grid item container textAlign="center" direction="column">
@@ -104,7 +103,7 @@ function SingleTracker() {
 								<div></div>
 							)}
 						</Grid>
-						<Grid item marginTop={10}>
+						<Grid item marginTop={5}>
 							<Link to={`/trackers/${tracker.id}/add-food`}>
 								<Button variant="contained" sx={{ width: "50%" }}>
 									Add Food
@@ -120,7 +119,7 @@ function SingleTracker() {
 						</Grid>
 					</Grid>
 				</Grid>
-			) : null}
+			)}
 		</Container>
 	);
 }

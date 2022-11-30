@@ -70,8 +70,6 @@ export const authenticateSignup = createAsyncThunk(
 				height,
 			} = values;
 
-			console.log("activity", activityStatus);
-
 			const res = await axios.post(`/auth/${method}`, {
 				username,
 				password,
@@ -88,7 +86,6 @@ export const authenticateSignup = createAsyncThunk(
 				currentWeight: startingWeight,
 			});
 
-			console.log("after signup");
 			window.localStorage.setItem(TOKEN, res.data.token);
 			thunkAPI.dispatch(me());
 		} catch (err) {
@@ -166,12 +163,6 @@ export const authSlice = createSlice({
 		builder.addCase(me.fulfilled, (state, action) => {
 			state.me = action.payload;
 		});
-		// builder.addCase(authenticateLogin.fulfilled, (state, action) => {
-		// 	state.me = action.payload;
-		// });
-		// builder.addCase(authenticateSignup.fulfilled, (state, action) => {
-		// 	state.me = action.payload;
-		// });
 		builder.addCase(me.rejected, (state, action) => {
 			state.error = action.error;
 		});
