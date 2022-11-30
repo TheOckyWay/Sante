@@ -48,7 +48,7 @@ function Recipes() {
               variant="outlined"
               borderradius="15%"
             >
-              <Stack  sx={{textAlign: 'center', maxWidth: '50%'  }}>
+              <Stack  sx={{textAlign: 'center', maxWidth: '80%', minWidth: '50%'  }}>
               <Link to={`/recipes/${recipe.id}`} >
                     <h2 className="linkColor">{recipe.name}</h2>
                   </Link>
@@ -63,7 +63,7 @@ function Recipes() {
                   />
 
                 <Stack direction='column' spacing={5} sx={{m:1}}>
-                <Chip label={`Calories: ${recipe.calories}`} color="warning"/>
+                <Chip label={`Calories: ${recipe.calories}Cal`} color="warning"/>
                 <Chip label={`Course Type: ${recipe.courseType}`} color="error"/>
                 </Stack>
                 </Stack>
