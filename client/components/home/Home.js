@@ -24,14 +24,6 @@ const Home = (props) => {
 
   const user = useSelector((state) => state.auth.me);
   const trackers = useSelector((state) => state.tracker.allTracker);
-  
-
-  let sortArray =  [...trackers]
-  sortArray.sort((a,b)=>{
-    return a.id-b.id
-  })
-  let tracker = sortArray[sortArray.length-1];
-
 
 	// Get trackers in order from date
 	let sortArray = [...trackers];
