@@ -14,12 +14,16 @@ import {
   Tabs,
   Tab,
 } from "@mui/material";
-import { SubscriptionsOutlined } from "@mui/icons-material";
+
 
 function AllTracker() {
   const dispatch = useDispatch();
 
   const trackers = useSelector((state) => state.tracker.allTracker);
+  let sortArray =  [...trackers]
+  sortArray.sort((a,b)=>{
+    return a.id-b.id
+  })
 
   useEffect(() => {
     dispatch(fetchTrackers());
@@ -67,11 +71,11 @@ function AllTracker() {
 
   return (
     <Container>
-      <Typography variant="h4" textAlign="center" color="#ffffff">
+      <Typography variant="h4" textAlign="center" className="linkColor">
         Trackers
       </Typography>
       <Stack textAlign="center" sx={{ pb: 5 }}>
-        {trackers.map((tracker) => {
+        {sortArray.map((tracker) => {
           return (
             <Typography
               key={tracker.id}
@@ -88,7 +92,7 @@ function AllTracker() {
             >
               <Stack sx={{}}>
                 <Link to={`/trackers/${tracker.id}`}>
-                  <h2 className="linkColor">{`${day(tracker.date)}`}</h2>
+                  <h2 className="textcolor">{`${day(tracker.date)}`}</h2>
                 </Link>
                 <Typography variant="h5" color="rgb(156 163 175)">
                   Total Daily Calories:{" "}
