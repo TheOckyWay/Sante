@@ -1,50 +1,49 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
 import { addToSingleTracker } from "./trackerSlice";
 import { addRecipe } from "../recipes/recipeSlice";
 import {
-  Typography,
-  TextField,
-  Container,
-  FormControl,
-  FormLabel,
-  Button,
-  Select,
-  InputLabel,
-  MenuItem,
+	Typography,
+	TextField,
+	Container,
+	FormControl,
+	Button,
+	Select,
+	InputLabel,
+	MenuItem,
 } from "@mui/material";
 
 function TrackerForm(props) {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { id } = useParams();
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const { id } = useParams();
 
-  const [newFood, setNewFood] = useState({
-    foodName: "",
-    calories: "",
-    protein: "",
-    carbs: "",
-    fat: "",
-    courseType: "",
-    water: "0",
-  });
+	const [newFood, setNewFood] = useState({
+		foodName: "",
+		calories: "",
+		protein: "",
+		carbs: "",
+		fat: "",
+		courseType: "",
+		water: "0",
+	});
 
-  async function handleAddFoodWaterTracker(e) {
-    e.preventDefault();
-    await dispatch(addRecipe({ newFood }));
-    await dispatch(addToSingleTracker({ id, newFood }));
-    setNewFood({
-      foodName: "",
-      calories: "",
-      protein: "",
-      carbs: "",
-      fat: "",
-      courseType: "",
-      water: "0",
-    });
-    navigate(`/trackers/${id}`);
-  }
+	async function handleAddFoodWaterTracker(e) {
+		e.preventDefault();
+		await dispatch(addRecipe({ newFood }));
+		await dispatch(addToSingleTracker({ id, newFood }));
+		setNewFood({
+			foodName: "",
+			calories: "",
+			protein: "",
+			carbs: "",
+			fat: "",
+			courseType: "",
+			water: "0",
+		});
+		navigate(`/trackers/${id}`);
+	}
 
   return (
     <Container>

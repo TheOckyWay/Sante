@@ -18,7 +18,7 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { authenticateSignup } from "../authSlice";
+import { authenticateSignup } from "./authSlice";
 
 function SignUp({ name }) {
 	const dispatch = useDispatch();
@@ -35,7 +35,7 @@ function SignUp({ name }) {
 		targetWeight: 0,
 		targetChange: "",
 		activityStatus: "",
-		targetWater: 0,
+		height: 0,
 		showPassword: false,
 	});
 
@@ -63,7 +63,6 @@ function SignUp({ name }) {
 		} else {
 			values.targetChange = "Maintain";
 		}
-		console.log(values.targetChange);
 		dispatch(authenticateSignup({ values, method: name }));
 	};
 
@@ -271,6 +270,34 @@ function SignUp({ name }) {
 							label="Age"
 							name="age"
 							onChange={handleChange("age")}
+						/>
+					</Grid>
+					<Grid item xs />
+
+					<Grid item xs={4}>
+						<TextField
+							color="primary"
+							sx={{
+								input: { color: "rgb(156 163 175)" },
+								"& .MuiFormLabel-root": {
+									color: "rgba(247, 171, 10, 50)",
+								},
+								"& .MuiOutlinedInput-root": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+								"& .MuiOutlinedInput-root.Mui-focused": {
+									"& > fieldset": {
+										borderColor: "rgba(247, 171, 10, 50)",
+									},
+								},
+							}}
+							margin="normal"
+							id="height"
+							label="Height"
+							name="height"
+							onChange={handleChange("height")}
 						/>
 					</Grid>
 					<Grid item xs />
@@ -563,48 +590,6 @@ function SignUp({ name }) {
 										label="Extra Active (Athelete)"
 									/>
 								</RadioGroup>
-							</FormControl>
-						</Grid>
-
-						<Grid marginTop={3} item xs={12}>
-							<FormControl
-								sx={{
-									width: "15ch",
-									input: { color: "rgb(156 163 175)" },
-									"& .MuiFormLabel-root": {
-										color: "rgba(247, 171, 10, 50)",
-									},
-									"& .MuiOutlinedInput-root": {
-										"& > fieldset": {
-											borderColor: "rgba(247, 171, 10, 50)",
-										},
-									},
-									"& .MuiOutlinedInput-root.Mui-focused": {
-										"& > fieldset": {
-											borderColor: "rgba(247, 171, 10, 50)",
-										},
-									},
-								}}
-								variant="outlined"
-							>
-								<Typography color="rgba(247, 171, 10, 50)" variant="subtitle2">
-									Target Water:
-								</Typography>
-								<OutlinedInput
-									id="outlined-adornment-weight"
-									value={values.targetWater}
-									onChange={handleChange("targetWater")}
-									endAdornment={
-										<InputAdornment position="end">
-											<Typography sx={{ color: "rgba(247, 171, 10, 50)" }}>
-												ml
-											</Typography>
-										</InputAdornment>
-									}
-									inputProps={{
-										"aria-label": "weight",
-									}}
-								/>
 							</FormControl>
 						</Grid>
 
