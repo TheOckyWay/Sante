@@ -22,8 +22,8 @@ import { styled } from "@mui/material/styles";
 const Home = (props) => {
 	const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.auth.me);
-  const trackers = useSelector((state) => state.tracker.allTracker);
+	const user = useSelector((state) => state.auth.me);
+	const trackers = useSelector((state) => state.tracker.allTracker);
 
 	// Get trackers in order from date
 	let sortArray = [...trackers];
@@ -174,14 +174,24 @@ const Home = (props) => {
 								<CircularProgress
 									size="8rem"
 									variant="determinate"
+									value={100}
+									sx={{ color: "#fce7b6", z: 2, pb: 2, pr: 2 }}
+								/>
+								<CircularProgress
+									size="8rem"
+									variant="determinate"
 									value={percentagecalories}
-									sx={{ color: "#f7ab0a" }}
+									sx={{
+										color: "#df9a07",
+										z: 10,
+										position: "absolute",
+									}}
 								/>
 							</Stack>
 						</Grid>
 
 						<Grid item xs={6}>
-							<Stack spacing={2} marginLeft={5}>
+							<Stack spacing={3.5} marginLeft={5}>
 								<Typography color="rgba(247, 171, 10, 50)">Protein:</Typography>
 								<LinearProgress
 									size="10rem"
