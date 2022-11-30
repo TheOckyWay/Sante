@@ -26,7 +26,7 @@ const User = db.define("user", {
 		type: Sequelize.ENUM("male", "female"),
 	},
 	activityFactor: {
-		type: Sequelize.STRING,
+		type: Sequelize.TEXT,
 	},
 	currentHeight: {
 		type: Sequelize.INTEGER,

@@ -67,10 +67,10 @@ export const authenticateSignup = createAsyncThunk(
 				targetWeight,
 				targetChange,
 				activityStatus,
-				targetWater,
+				height,
 			} = values;
 
-			console.log("before in signup");
+			console.log("activity", activityStatus);
 
 			const res = await axios.post(`/auth/${method}`, {
 				username,
@@ -84,7 +84,8 @@ export const authenticateSignup = createAsyncThunk(
 				targetWeight,
 				targetChange,
 				activityStatus,
-				targetWater,
+				height,
+				currentWeight: startingWeight,
 			});
 
 			console.log("after signup");
